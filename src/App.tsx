@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { AzureMap, IAzureMapOptions } from "react-azure-maps"
+import { AuthenticationType} from 'azure-maps-control'
+
 import './App.css';
 
 const App: React.FC = () => {
+  const option: IAzureMapOptions = {
+
+    authOptions: {
+      authType: AuthenticationType.subscriptionKey,
+      subscriptionKey: "INSERT_KEY_HERE",
+    },
+    center: [-122.33, 47.6],
+    zoom: 12,
+    view:'auto'
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="App">
+        <AzureMap options={option} />
+      </div>
     </div>
   );
 }

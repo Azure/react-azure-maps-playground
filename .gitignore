@@ -2,8 +2,10 @@
 
 # dependencies
 /node_modules
+/.yalc
 /.pnp
 .pnp.js
+yalc.lock
 
 # testing
 /coverage
