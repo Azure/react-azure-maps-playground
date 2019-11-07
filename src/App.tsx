@@ -1,5 +1,5 @@
 import React from 'react';
-import { AzureMap, IAzureMapOptions } from "react-azure-maps"
+import { AzureMap, IAzureMapOptions, AzureMapsProvider } from "react-azure-maps"
 import { AuthenticationType} from 'azure-maps-control'
 
 import './App.css';
@@ -9,16 +9,21 @@ const App: React.FC = () => {
 
     authOptions: {
       authType: AuthenticationType.subscriptionKey,
-      subscriptionKey: "INSERT_KEY_HERE",
+      subscriptionKey: "KEY",
     },
     center: [-122.33, 47.6],
     zoom: 12,
-    view:'auto'
+    view:'Auto'
   };
   return (
     <div>
       <div className="App">
-        <AzureMap options={option} />
+        <AzureMapsProvider>
+          <AzureMap options={option} />
+        </AzureMapsProvider>
+        <AzureMapsProvider>
+          <AzureMap options={option} />
+        </AzureMapsProvider>
       </div>
     </div>
   );
