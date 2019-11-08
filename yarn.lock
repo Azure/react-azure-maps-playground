@@ -1954,22 +1954,6 @@ azure-maps-control@2.0.14:
   dependencies:
     "@types/adal-angular" "^1.0.1"
 
-azure-maps-control@^2.0.14:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-2.0.15.tgz#29494eb307908884402ded955ac1c9b3808cbd25"
-  integrity sha512-PtNM44CDAB+G3D7ZtwUuLIAriaynXaGmVTtm6tiXSoD36Wdz5ZspcL1eqtN4CuRkY5t0yocXf2Jtw2lbvsna1g==
-  dependencies:
-    "@types/adal-angular" "^1.0.1"
-
-"azure-maps-react@file:.yalc/azure-maps-react":
-  version "0.1.0-2f84abf9"
-  dependencies:
-    "@types/uuid" "^3.4.5"
-    azure-maps-control "^2.0.14"
-    guid-typescript "^1.0.9"
-    mapbox-gl "^1.4.1"
-    rollup-plugin-postcss "^2.0.3"
-
 babel-code-frame@^6.22.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -8368,7 +8352,7 @@ react-app-polyfill@^1.0.4:
     whatwg-fetch "3.0.0"
 
 "react-azure-maps@file:.yalc/react-azure-maps":
-  version "0.1.0-e9eb5416"
+  version "0.1.0-92831e4c"
   dependencies:
     "@types/uuid" "^3.4.5"
     azure-maps-control "2.0.14"
