@@ -1,54 +1,68 @@
-import React from 'react';
+import React from "react";
 import {
-    AzureMap,
-    AzureMapHtmlMarker,
-    IAzureMapOptions,
-    AzureMapsProvider,
-    HtmlMarkerMouseEvent
-} from "react-azure-maps"
-import { AuthenticationType } from 'azure-maps-control'
+  AzureMap,
+  AzureMapHtmlMarker,
+  IAzureMapOptions,
+  AzureMapsProvider,
+  IAzureMapHtmlMarkerEvent,
+  AzureMapDataSourceProvider,
+  AzureMapLayerProvider,
+  AzureMapFeature
+} from "react-azure-maps";
+import atlas, { AuthenticationType, data } from "azure-maps-control";
 
-import './App.css';
+import "./App.css";
+const xd = new data.Position(-100.01, 45.01);
 
 const App: React.FC = () => {
-    const option: IAzureMapOptions = {
+  const option: IAzureMapOptions = {
+    authOptions: {
+      authType: AuthenticationType.subscriptionKey,
+      subscriptionKey: ""
+    },
+    center: [-100.01, 45.01],
+    zoom: 12,
+    view: "Auto"
+  };
 
-        authOptions: {
-            authType: AuthenticationType.subscriptionKey,
-            subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA",
-        },
-        center: [-110, 45],
-        zoom: 12,
-        view: 'Auto'
-    };
+  const onClick = () => {
+    console.log("ASD");
+  };
 
-    const onClick = () => {
-        console.log('ASD')
-    }
+  const azureHtmlMapMarkerOptions = {
+    htmlContent: '<div class="pulseIcon"></div>',
+    position: [-110, 45]
+  };
 
-    const azureHtmlMapMarkerOptions = {
-        htmlContent: '<div class="pulseIcon"></div>',
-        position: [-110, 45]
-    }
+  const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
+    { eventName: "click", callback: onClick }
+  ];
 
-    const eventToMarker: Array<HtmlMarkerMouseEvent> = [
-        {eventName: 'click', callback: onClick}, {eventName: 'mouseover', callback: onClick}
-    ]
-
-    return (
-        <div>
-            <div className="App">
-                <AzureMapsProvider>
-                    <AzureMap options={option}>
-                        <AzureMapHtmlMarker options={azureHtmlMapMarkerOptions} events={eventToMarker}/>
-                    </AzureMap>
-                </AzureMapsProvider>
-                <AzureMapsProvider>
-                    <AzureMap options={option}/>
-                </AzureMapsProvider>
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <div className="App">
+        <AzureMapsProvider>
+          <AzureMap options={option}>
+            <AzureMapDataSourceProvider>
+              <AzureMapLayerProvider></AzureMapLayerProvider>
+              <AzureMapFeature
+                type="Point"
+                coordinate={xd}
+                properties={{
+                  title: "Microsoft",
+                  icon: "pin-round-blue"
+                }}
+              ></AzureMapFeature>
+            </AzureMapDataSourceProvider>
+            <AzureMapHtmlMarker
+              options={azureHtmlMapMarkerOptions}
+              events={eventToMarker}
+            />
+          </AzureMap>
+        </AzureMapsProvider>
+      </div>
+    </div>
+  );
+};
 
 export default App;
