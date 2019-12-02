@@ -46,8 +46,8 @@ const AzureLayer: React.FC = () => {
     <div>
       <AzureMapsProvider>
         <AzureMap options={option}>
-          <AzureMapDataSourceProvider id={'asdasas'}>
-            <AzureMapLayerProvider id={'asd'} options={{url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates:[[-70, 40], [-60, 37], [-63, 30], [-72, 33]]}} type={'ImageLayer'}></AzureMapLayerProvider>
+          <AzureMapDataSourceProvider id={'dataSource'}>
+            <AzureMapLayerProvider id={'layer'} options={{url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates:[[-70, 40], [-60, 37], [-63, 30], [-72, 33]]}} type={'ImageLayer'}></AzureMapLayerProvider>
             <AzureMapFeature
                 type="Point"
                 coordinate={point1}
