@@ -1,4 +1,5 @@
 import DefaultMap from "./DefaultMap";
+import AzureLayer from "./AzureLayer";
 
 export type MapExampleItem = {
   name: string;
@@ -15,8 +16,8 @@ export const examplesList: MapExampleItem[] = [
     exact: true
   },
   {
-    name: "Default map 2",
-    component: DefaultMap,
-    path: "/foo"
+    name: "Layers",
+    component: AzureLayer,
+    path: "/layers"
   }
 ];
