@@ -1,5 +1,7 @@
 import DefaultMap from "./DefaultMap";
 import AzureLayer from "./AzureLayer";
+import MyDump from "./MyDump/MyDump";
+import {MyDumpContainer} from "./MyDump/MyDumpContainer";
 
 export type MapExampleItem = {
   name: string;
@@ -19,5 +21,10 @@ export const examplesList: MapExampleItem[] = [
     name: "Layers",
     component: AzureLayer,
     path: "/layers"
+  },
+  {
+    name: "MyDump",
+    component: MyDumpContainer,
+    path: "/myDump"
   }
 ];
