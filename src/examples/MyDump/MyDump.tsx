@@ -83,14 +83,15 @@ const MyDump: React.FC = () => {
             <div>
                 <AzureMapsProvider>
                     <AzureMap options={option}>
-                        <AzureMapDataSourceProvider>
-                            <AzureMapLayerProvider options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
+                        <AzureMapDataSourceProvider id={'jsdjasjd'}>
+                            <AzureMapLayerProvider id={'dsadas'} options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
                             {markers.map(marker =>
                                 renderPoint(marker)
                             )}
                             {/*{renderPoint([12, 23])}*/}
                         </AzureMapDataSourceProvider>
                         <AzureMapHtmlMarker
+                            id={'hhhtml'}
                             options={azureHtmlMapMarkerOptions}
                             events={eventToMarker}
                         />
