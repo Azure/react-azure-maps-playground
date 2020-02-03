@@ -18,7 +18,7 @@ const DefaultMap: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: ""
+        subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
       },
       center: [-100.01, 45.01],
       zoom: 12,
@@ -43,8 +43,8 @@ const DefaultMap: React.FC = () => {
     <div>
       <AzureMapsProvider>
         <AzureMap options={option}>
-          <AzureMapDataSourceProvider>
-            <AzureMapLayerProvider></AzureMapLayerProvider>
+          <AzureMapDataSourceProvider id={'default'}>
+            <AzureMapLayerProvider id={'asd'} options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
             <AzureMapFeature
               type="Point"
               coordinate={xd}
@@ -55,6 +55,7 @@ const DefaultMap: React.FC = () => {
             ></AzureMapFeature>
           </AzureMapDataSourceProvider>
           <AzureMapHtmlMarker
+              id={'cxzvcxdfsd'}
             options={azureHtmlMapMarkerOptions}
             events={eventToMarker}
           />
