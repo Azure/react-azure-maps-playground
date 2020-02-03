@@ -1,15 +1,15 @@
-import React, { useMemo } from "react";
+import React, {useMemo} from "react";
 import {
-  AzureMapsProvider,
   AzureMap,
   AzureMapDataSourceProvider,
-  AzureMapLayerProvider,
   AzureMapFeature,
   AzureMapHtmlMarker,
-  IAzureMapOptions,
-  IAzureMapHtmlMarkerEvent
+  AzureMapLayerProvider,
+  AzureMapsProvider,
+  IAzureMapHtmlMarkerEvent,
+  IAzureMapOptions
 } from "react-azure-maps";
-import atlas, { AuthenticationType, data } from "azure-maps-control";
+import {AuthenticationType, data} from "azure-maps-control";
 
 const DefaultMap: React.FC = () => {
   const xd = new data.Position(-100.01, 45.01);
@@ -18,7 +18,7 @@ const DefaultMap: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
+        subscriptionKey: ""
       },
       center: [-100.01, 45.01],
       zoom: 12,
@@ -43,9 +43,10 @@ const DefaultMap: React.FC = () => {
     <div>
       <AzureMapsProvider>
         <AzureMap options={option}>
-          <AzureMapDataSourceProvider id={'default'}>
-            <AzureMapLayerProvider id={'asd'} options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
+          <AzureMapDataSourceProvider id={'default DataSourceProvider'}>
+            <AzureMapLayerProvider id={'default LayerProvider'} options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
             <AzureMapFeature
+                id={'default MapFeature'}
               type="Point"
               coordinate={xd}
               properties={{
@@ -55,7 +56,7 @@ const DefaultMap: React.FC = () => {
             ></AzureMapFeature>
           </AzureMapDataSourceProvider>
           <AzureMapHtmlMarker
-              id={'cxzvcxdfsd'}
+              id={'default HtmlMarker'}
             options={azureHtmlMapMarkerOptions}
             events={eventToMarker}
           />

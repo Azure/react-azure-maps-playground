@@ -20,7 +20,7 @@ const AzureLayer: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
+        subscriptionKey: ""
       },
       center: [-100.01, 45.01],
       zoom: 2,
@@ -64,13 +64,18 @@ const AzureLayer: React.FC = () => {
             options={azureHtmlMapMarkerOptions}
             events={eventToMarker}
           />
+          <AzureMapHtmlMarker
+              id={'dasdas'}
+            options={azureHtmlMapMarkerOptions}
+            events={eventToMarker}
+          />
         </AzureMap>
       </AzureMapsProvider>
     </div>
     <div>
     <AzureMapsProvider>
       <AzureMap options={option}>
-        <AzureMapDataSourceProvider id={'dddd'}>
+        <AzureMapDataSourceProvider id={'data source'}>
           <AzureMapLayerProvider id={'heatMap'} options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
           <AzureMapFeature
               id={'luuuuju'}
