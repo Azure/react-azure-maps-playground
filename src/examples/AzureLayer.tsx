@@ -20,7 +20,7 @@ const AzureLayer: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: ""
+        subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
       },
       center: [-100.01, 45.01],
       zoom: 2,
@@ -46,9 +46,11 @@ const AzureLayer: React.FC = () => {
     <div>
       <AzureMapsProvider>
         <AzureMap options={option}>
-          <AzureMapDataSourceProvider id={'asdasas'}>
-            <AzureMapLayerProvider id={'asd'} options={{url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates:[[-70, 40], [-60, 37], [-63, 30], [-72, 33]]}} type={'ImageLayer'}></AzureMapLayerProvider>
+          <AzureMapDataSourceProvider id={'dataSource'}>
+            <AzureMapLayerProvider id={'layer'} options={{url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates:[[-70, 40], [-60, 37], [-63, 30], [-72, 33]]}} type={'ImageLayer'}></AzureMapLayerProvider>
             <AzureMapFeature
+                id={'itsmyfeature'}
+                key={'asd'}
                 type="Point"
                 coordinate={point1}
                 properties={{
@@ -58,6 +60,7 @@ const AzureLayer: React.FC = () => {
             ></AzureMapFeature>
           </AzureMapDataSourceProvider>
           <AzureMapHtmlMarker
+              id={'dasdas'}
             options={azureHtmlMapMarkerOptions}
             events={eventToMarker}
           />
@@ -67,9 +70,11 @@ const AzureLayer: React.FC = () => {
     <div>
     <AzureMapsProvider>
       <AzureMap options={option}>
-        <AzureMapDataSourceProvider>
-          <AzureMapLayerProvider options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
+        <AzureMapDataSourceProvider id={'dddd'}>
+          <AzureMapLayerProvider id={'heatMap'} options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
           <AzureMapFeature
+              id={'luuuuju'}
+              key={'dddd'}
               type="Point"
               coordinate={point1}
               properties={{
@@ -77,16 +82,9 @@ const AzureLayer: React.FC = () => {
                 icon: "pin-round-blue"
               }}
           ></AzureMapFeature>
-          <AzureMapFeature
-              type="Point"
-              coordinate={point2}
-              properties={{
-                title: "Microsoft",
-                icon: "pin-round-blue"
-              }}
-          ></AzureMapFeature>
         </AzureMapDataSourceProvider>
         <AzureMapHtmlMarker
+            id={'asdasdxzcvcbsdvgf'}
             options={azureHtmlMapMarkerOptions}
             events={eventToMarker}
         />
