@@ -25,7 +25,7 @@ const MyDump: React.FC = () => {
         return {
             authOptions: {
                 authType: AuthenticationType.subscriptionKey,
-                subscriptionKey: ""
+                subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
             },
             center: [-100.01, 45.01],
             zoom: 2,

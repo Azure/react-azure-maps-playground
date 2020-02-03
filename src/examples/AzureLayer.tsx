@@ -20,7 +20,7 @@ const AzureLayer: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: ""
+        subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
       },
       center: [-100.01, 45.01],
       zoom: 2,
@@ -49,6 +49,7 @@ const AzureLayer: React.FC = () => {
           <AzureMapDataSourceProvider id={'dataSource'}>
             <AzureMapLayerProvider id={'layer'} options={{url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates:[[-70, 40], [-60, 37], [-63, 30], [-72, 33]]}} type={'ImageLayer'}></AzureMapLayerProvider>
             <AzureMapFeature
+                key={'asd'}
                 type="Point"
                 coordinate={point1}
                 properties={{
@@ -68,18 +69,11 @@ const AzureLayer: React.FC = () => {
     <AzureMapsProvider>
       <AzureMap options={option}>
         <AzureMapDataSourceProvider>
-          <AzureMapLayerProvider options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
+          <AzureMapLayerProvider id={'heatMap'} options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
           <AzureMapFeature
+              key={'dddd'}
               type="Point"
               coordinate={point1}
-              properties={{
-                title: "Microsoft",
-                icon: "pin-round-blue"
-              }}
-          ></AzureMapFeature>
-          <AzureMapFeature
-              type="Point"
-              coordinate={point2}
               properties={{
                 title: "Microsoft",
                 icon: "pin-round-blue"
