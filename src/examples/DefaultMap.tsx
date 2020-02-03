@@ -46,6 +46,7 @@ const DefaultMap: React.FC = () => {
           <AzureMapDataSourceProvider id={'default'}>
             <AzureMapLayerProvider id={'asd'} options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
             <AzureMapFeature
+                id={'Default'}
               type="Point"
               coordinate={xd}
               properties={{
