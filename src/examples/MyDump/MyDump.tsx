@@ -5,27 +5,68 @@ import {
     AzureMapFeature,
     AzureMapHtmlMarker,
     AzureMapLayerProvider,
-    AzureMapsProvider,
-    IAzureMapHtmlMarkerEvent,
+    AzureMapsProvider, IAzureDataSourceChildren, IAzureMapHtmlMarker,
+    IAzureMapHtmlMarkerEvent, IAzureMapLayerType,
     IAzureMapOptions
 } from "react-azure-maps";
-import {AuthenticationType, data} from "azure-maps-control";
+import {AuthenticationType, data, HtmlMarkerOptions} from "azure-maps-control";
 
 const point1 = new data.Position(-100.01, 45.01);
 const point2 = new data.Position(-120.2, 45.1);
 const point3 = new data.Position(-120.2, 50.1);
 
+const onClick = () => {
+    console.log("ASD");
+};
+
+function azureHtmlMapMarkerOptions(coordinates: data.Position): HtmlMarkerOptions {
+    return ({
+        htmlContent: '<div class="pulseIcon"></div>',
+        position: coordinates
+    })
+};
+
+const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
+    {eventName: "click", callback: onClick}
+];
+
+const renderPoint = (coordinates: data.Position) => {
+    const rendId = Math.random()
+
+    return <AzureMapFeature
+        key={rendId}
+        id={rendId.toString()}
+        type="Point"
+        coordinate={coordinates}
+        properties={{
+            title: "Microsoft",
+            icon: "pin-round-blue"
+        }}
+    />
+}
+
+function renderHTMLPoint(coordinates: data.Position): any {
+    const rendId = Math.random()
+    return <AzureMapHtmlMarker
+        key={rendId}
+        id={rendId.toString()}
+        options={azureHtmlMapMarkerOptions(coordinates)}
+        events={eventToMarker}
+    />
+}
 
 
 const MyDump: React.FC = () => {
     const [dump, setDump] = useState('START');
     const [markers, setMarkers] = useState([point1, point2, point3]);
+    const [htmlMarkers, setHtmlMarkers] = useState([point1]);
+    const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>('HeatLayer');
 
     const option: IAzureMapOptions = useMemo(() => {
         return {
             authOptions: {
                 authType: AuthenticationType.subscriptionKey,
-                subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
+                subscriptionKey: ""
             },
             center: [-100.01, 45.01],
             zoom: 2,
@@ -33,42 +74,38 @@ const MyDump: React.FC = () => {
         };
     }, []);
 
-    const onClick = () => {
-        console.log("ASD");
-    };
 
-    const azureHtmlMapMarkerOptions = {
-        htmlContent: '<div class="pulseIcon"></div>',
-        position: [-110, 45]
-    };
-
-    const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-        {eventName: "click", callback: onClick}
-    ];
-
-    const addMarker = () => {
+    const addRandomMarker = () => {
         const randomLongitude = Math.floor(Math.random() * (-80 - (-120)) + -120);
         const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65);
         const newPoint = new data.Position(randomLongitude, randomLatitude)
-        setMarkers([newPoint])
+        setMarkers([...markers, newPoint])
     }
 
-    const renderPoint = (marker: data.Position) => {
-
-
-        const rendId = Math.floor(Math.random() * (80 - (120)) + 120);
-
-        return <AzureMapFeature
-            key={rendId}
-            id={rendId.toString()}
-            type="Point"
-            coordinate={marker}
-            properties={{
-                title: "Microsoft",
-                icon: "pin-round-blue"
-            }}
-        />
+    const addRandomHTMLMarker = () => {
+        const randomLongitude = Math.floor(Math.random() * (-80 - (-120)) + -120);
+        const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65);
+        const newPoint = new data.Position(randomLongitude, randomLatitude)
+        setHtmlMarkers([...htmlMarkers, newPoint])
     }
+
+    const removeAllMarkers = () => {
+        setMarkers([])
+        setHtmlMarkers([])
+    }
+
+    const memoizedMarkerRender: IAzureDataSourceChildren = useMemo((): any => (
+        markers.map(marker =>
+            renderPoint(marker)
+        )
+    ), [markers])
+
+    const memoizedHtmlMarkerRender: IAzureDataSourceChildren = useMemo((): any => (
+            htmlMarkers.map(marker =>
+                renderHTMLPoint(marker)
+            )
+        ), [htmlMarkers]
+    )
 
 
     console.log("MAP")
@@ -76,23 +113,32 @@ const MyDump: React.FC = () => {
         <>
             MAP {dump}
             <div style={styles.buttonContainer}>
-                <div style={styles.button} onClick={addMarker}> ADD</div>
-                <div style={styles.button} onClick={() => setMarkers([[-22, 55]])}> REMOVE LAST</div>
-                <div style={styles.button}> TRHRS</div>
+                <div>
+                    <div>
+                        Markers Point on map: {markers.length}
+                    </div>
+                    <div>
+                        Markers HTML on map: {htmlMarkers.length}
+                    </div>
+                </div>
+                <div style={styles.button} onClick={addRandomMarker}> MARKER POINT</div>
+                <div style={styles.button} onClick={addRandomHTMLMarker}> HTML MARKER</div>
+                <div style={styles.button} onClick={removeAllMarkers}> REMOVE ALL</div>
+                <div style={styles.button} onClick={() => setMarkersLayer('SymbolLayer')}> SET POINT </div>
+                <div style={styles.button} onClick={() => setMarkersLayer('HeatLayer')}> SET HEAT </div>
             </div>
             <div>
                 <AzureMapsProvider>
                     <AzureMap options={option}>
-                        <AzureMapDataSourceProvider id={'jsdjasjd'}>
-                            <AzureMapLayerProvider id={'dsadas'} options={{}} type={'SymbolLayer'}></AzureMapLayerProvider>
-                            {markers.map(marker =>
-                                renderPoint(marker)
-                            )}
-                            {/*{renderPoint([12, 23])}*/}
+                        <AzureMapDataSourceProvider id={'myDump AzureMapDataSourceProvider'}>
+                            <AzureMapLayerProvider id={'myDump AzureMapLayerProvider'} options={{}}
+                                                   type={markersLayer}></AzureMapLayerProvider>
+                            {memoizedMarkerRender}
+                            {memoizedHtmlMarkerRender}
                         </AzureMapDataSourceProvider>
                         <AzureMapHtmlMarker
-                            id={'hhhtml'}
-                            options={azureHtmlMapMarkerOptions}
+                            id={'myDump HtmlMarker'}
+                            options={azureHtmlMapMarkerOptions([100.3, 30])}
                             events={eventToMarker}
                         />
                     </AzureMap>
