@@ -128,13 +128,17 @@ const MyDump: React.FC = () => {
                 <div style={styles.button} onClick={addRandomMarker}> MARKER POINT</div>
                 <div style={styles.button} onClick={addRandomHTMLMarker}> HTML MARKER</div>
                 <div style={styles.button} onClick={removeAllMarkers}> REMOVE ALL</div>
-                <div style={styles.button} onClick={() => setMarkersLayer('SymbolLayer')}> SET POINT </div>
-                <div style={styles.button} onClick={() => setMarkersLayer('HeatLayer')}> SET HEAT </div>
+                <div style={styles.button} onClick={() => setMarkersLayer('SymbolLayer')}> SET POINT</div>
+                <div style={styles.button} onClick={() => setMarkersLayer('HeatLayer')}> SET HEAT</div>
             </div>
             <div>
                 <AzureMapsProvider>
                     <AzureMap options={option}>
-                        <AzureMapDataSourceProvider id={'myDump AzureMapDataSourceProvider'}>
+                        <AzureMapDataSourceProvider events={{
+                            'dataadded': (e: any) => {
+                                console.log('Data on source added', e)
+                            }
+                        }} id={'myDump AzureMapDataSourceProvider'}>
                             <AzureMapLayerProvider
                                 id={'myDump AzureMapLayerProvider'}
                                 options={{}}
@@ -143,7 +147,9 @@ const MyDump: React.FC = () => {
                                     'dbclick': clusterClicked
                                 }}
                                 lifecycleEvents={{
-                                    'layeradded': () => {console.log("LAYER ADDED TO MAP")},
+                                    'layeradded': () => {
+                                        console.log("LAYER ADDED TO MAP")
+                                    },
                                 }}
                                 type={markersLayer}
                             ></AzureMapLayerProvider>
