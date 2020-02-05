@@ -70,7 +70,7 @@ const MyDump: React.FC = () => {
         return {
             authOptions: {
                 authType: AuthenticationType.subscriptionKey,
-                subscriptionKey: ""
+                subscriptionKey: "tTk1JVEaeNvDkxxnxHm9cYaCvqlOq1u-fXTvyXn2XkA"
             },
             center: [-100.01, 45.01],
             zoom: 2,
@@ -142,7 +142,11 @@ const MyDump: React.FC = () => {
                                     'click': clusterClicked,
                                     'dbclick': clusterClicked
                                 }}
-                                type={markersLayer}></AzureMapLayerProvider>
+                                lifecycleEvents={{
+                                    'layeradded': () => {console.log("LAYER ADDED TO MAP")},
+                                }}
+                                type={markersLayer}
+                            ></AzureMapLayerProvider>
                             {memoizedMarkerRender}
                             {memoizedHtmlMarkerRender}
                         </AzureMapDataSourceProvider>
