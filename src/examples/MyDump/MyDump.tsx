@@ -15,6 +15,10 @@ const point1 = new data.Position(-100.01, 45.01);
 const point2 = new data.Position(-120.2, 45.1);
 const point3 = new data.Position(-120.2, 50.1);
 
+function clusterClicked(e: any) {
+    console.log('clusterClicked', e)
+}
+
 const onClick = () => {
     console.log("ASD");
 };
@@ -60,7 +64,7 @@ const MyDump: React.FC = () => {
     const [dump, setDump] = useState('START');
     const [markers, setMarkers] = useState([point1, point2, point3]);
     const [htmlMarkers, setHtmlMarkers] = useState([point1]);
-    const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>('HeatLayer');
+    const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>('SymbolLayer');
 
     const option: IAzureMapOptions = useMemo(() => {
         return {
@@ -131,8 +135,14 @@ const MyDump: React.FC = () => {
                 <AzureMapsProvider>
                     <AzureMap options={option}>
                         <AzureMapDataSourceProvider id={'myDump AzureMapDataSourceProvider'}>
-                            <AzureMapLayerProvider id={'myDump AzureMapLayerProvider'} options={{}}
-                                                   type={markersLayer}></AzureMapLayerProvider>
+                            <AzureMapLayerProvider
+                                id={'myDump AzureMapLayerProvider'}
+                                options={{}}
+                                events={{
+                                    'click': clusterClicked,
+                                    'dbclick': clusterClicked
+                                }}
+                                type={markersLayer}></AzureMapLayerProvider>
                             {memoizedMarkerRender}
                             {memoizedHtmlMarkerRender}
                         </AzureMapDataSourceProvider>
