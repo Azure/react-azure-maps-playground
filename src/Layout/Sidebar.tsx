@@ -4,13 +4,16 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 import { examplesList } from "../examples/examplesList";
+import { withRouter, RouteProps } from "react-router";
 
-const Sidebar = () => {
+
+const Sidebar = ({ location }: RouteProps) => {
+
   return (
     <div className="sidebar">
       <List disablePadding dense>
         {examplesList.map(item => (
-          <ListItem key={item.name} button component={Link} to={item.path}>
+          <ListItem selected={location && location.pathname === item.path} key={item.name} button component={Link} to={item.path}>
             <ListItemText>{item.name}</ListItemText>
           </ListItem>
         ))}
@@ -19,4 +22,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
