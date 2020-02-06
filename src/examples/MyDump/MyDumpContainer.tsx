@@ -1,29 +1,26 @@
 // @flow
 import * as React from 'react';
 import MyDump from "./MyDump";
-import {MyDumpWrapper} from "./MyDumpWrapper";
+import { MyDumpWrapper } from "./MyDumpWrapper";
+import { Paper } from '@material-ui/core';
+
 
 type Props = {
 
 };
 export const MyDumpContainer = (props: Props) => {
     return (
-        <div>
-            <div style={styles.buttons}>
-                My Dump container
-                <MyDumpWrapper/>
-
-            </div>
-        </div>
+        <Paper elevation={2} style={styles.buttons} >
+            My Dump container
+                <MyDumpWrapper />
+        </Paper >
     );
 };
 
 
 export const styles = {
     buttons: {
-        border: "solid",
-        borderSize: "2px",
+        padding: '15px',
         flex: 1,
-        borderColor: '#885875'
     }
 }
