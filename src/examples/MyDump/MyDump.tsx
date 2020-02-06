@@ -1,4 +1,4 @@
-import React, {memo, useMemo, useState} from "react";
+import React, { memo, useMemo, useState } from "react";
 import {
     AzureMap,
     AzureMapDataSourceProvider,
@@ -9,7 +9,8 @@ import {
     IAzureMapHtmlMarkerEvent, IAzureMapLayerType,
     IAzureMapOptions
 } from "react-azure-maps";
-import {AuthenticationType, data, HtmlMarkerOptions} from "azure-maps-control";
+import { AuthenticationType, data, HtmlMarkerOptions } from "azure-maps-control";
+import { Button, Chip } from '@material-ui/core';
 
 const point1 = new data.Position(-100.01, 45.01);
 const point2 = new data.Position(-120.2, 45.1);
@@ -31,7 +32,7 @@ function azureHtmlMapMarkerOptions(coordinates: data.Position): HtmlMarkerOption
 };
 
 const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-    {eventName: "click", callback: onClick}
+    { eventName: "click", callback: onClick }
 ];
 
 const renderPoint = (coordinates: data.Position) => {
@@ -105,10 +106,10 @@ const MyDump: React.FC = () => {
     ), [markers])
 
     const memoizedHtmlMarkerRender: IAzureDataSourceChildren = useMemo((): any => (
-            htmlMarkers.map(marker =>
-                renderHTMLPoint(marker)
-            )
-        ), [htmlMarkers]
+        htmlMarkers.map(marker =>
+            renderHTMLPoint(marker)
+        )
+    ), [htmlMarkers]
     )
 
 
@@ -117,19 +118,16 @@ const MyDump: React.FC = () => {
         <>
             MAP {dump}
             <div style={styles.buttonContainer}>
-                <div>
-                    <div>
-                        Markers Point on map: {markers.length}
-                    </div>
-                    <div>
-                        Markers HTML on map: {htmlMarkers.length}
-                    </div>
-                </div>
-                <div style={styles.button} onClick={addRandomMarker}> MARKER POINT</div>
-                <div style={styles.button} onClick={addRandomHTMLMarker}> HTML MARKER</div>
-                <div style={styles.button} onClick={removeAllMarkers}> REMOVE ALL</div>
-                <div style={styles.button} onClick={() => setMarkersLayer('SymbolLayer')}> SET POINT</div>
-                <div style={styles.button} onClick={() => setMarkersLayer('HeatLayer')}> SET HEAT</div>
+
+                <Button size="small" variant="contained" color="primary" onClick={addRandomMarker}> MARKER POINT</Button>
+                <Button size="small" variant="contained" color="primary" onClick={addRandomHTMLMarker}> HTML MARKER</Button>
+                <Button size="small" variant="contained" color="primary" onClick={() => setMarkersLayer('SymbolLayer')}> SET POINT</Button>
+                <Button size="small" variant="contained" color="primary" onClick={() => setMarkersLayer('HeatLayer')}> SET HEAT</Button>
+                <Button size="small" variant="contained" color="primary" onClick={removeAllMarkers}> REMOVE ALL</Button>
+
+
+                <Chip label={`Markers Point on map: ${markers.length}`} />
+                <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
             </div>
             <div>
                 <AzureMapsProvider>
@@ -170,10 +168,12 @@ const MyDump: React.FC = () => {
 
 const styles = {
     buttonContainer: {
-        height: 40,
-        display: 'flex',
-        justifyContent: 'space-around',
-        padding: 10
+        display: 'grid',
+        gridAutoFlow: 'column',
+        gridGap: '10px',
+        gridAutoColumns: 'max-content',
+        padding: '10px 0',
+        alignItems: 'center'
     },
     button: {
         height: 35,
