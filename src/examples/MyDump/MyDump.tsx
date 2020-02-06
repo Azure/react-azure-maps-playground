@@ -164,13 +164,8 @@ const MyDump: React.FC = () => {
                                 type={markersLayer}
                             ></AzureMapLayerProvider>
                             {memoizedMarkerRender}
-                            {/*{memoizedHtmlMarkerRender}*/}
+                            {memoizedHtmlMarkerRender}
                         </AzureMapDataSourceProvider>
-                        {/*<AzureMapHtmlMarker*/}
-                        {/*    id={'myDump HtmlMarker'}*/}
-                        {/*    options={azureHtmlMapMarkerOptions([100.3, 30])}*/}
-                        {/*    events={eventToMarker}*/}
-                        {/*/>*/}
                     </AzureMap>
                 </AzureMapsProvider>
             </div>
