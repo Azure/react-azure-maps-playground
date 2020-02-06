@@ -11,10 +11,12 @@ import {
 } from "react-azure-maps";
 import { AuthenticationType, data, HtmlMarkerOptions } from "azure-maps-control";
 import { Button, Chip } from '@material-ui/core';
+import {key} from "../../key";
 
 const point1 = new data.Position(-100.01, 45.01);
 const point2 = new data.Position(-120.2, 45.1);
 const point3 = new data.Position(-120.2, 50.1);
+const point4 = new data.Position(-126.2, 55.1);
 
 function clusterClicked(e: any) {
     console.log('clusterClicked', e)
@@ -27,7 +29,9 @@ const onClick = () => {
 function azureHtmlMapMarkerOptions(coordinates: data.Position): HtmlMarkerOptions {
     return ({
         htmlContent: '<div class="pulseIcon"></div>',
-        position: coordinates
+        position: coordinates,
+        text: 'Texxxt',
+        title: 'evvv'
     })
 };
 
@@ -44,8 +48,8 @@ const renderPoint = (coordinates: data.Position) => {
         type="Point"
         coordinate={coordinates}
         properties={{
-            title: "Microsoft",
-            icon: "pin-round-blue"
+            title: "Pin",
+            icon: "pin-round-blue",
         }}
     />
 }
@@ -64,14 +68,14 @@ function renderHTMLPoint(coordinates: data.Position): any {
 const MyDump: React.FC = () => {
     const [dump, setDump] = useState('START');
     const [markers, setMarkers] = useState([point1, point2, point3]);
-    const [htmlMarkers, setHtmlMarkers] = useState([point1]);
+    const [htmlMarkers, setHtmlMarkers] = useState([point4]);
     const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>('SymbolLayer');
 
     const option: IAzureMapOptions = useMemo(() => {
         return {
             authOptions: {
                 authType: AuthenticationType.subscriptionKey,
-                subscriptionKey: ""
+                subscriptionKey: key
             },
             center: [-100.01, 45.01],
             zoom: 2,
@@ -129,17 +133,23 @@ const MyDump: React.FC = () => {
                 <Chip label={`Markers Point on map: ${markers.length}`} />
                 <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
             </div>
-            <div>
+            <div style={styles.map}>
                 <AzureMapsProvider>
                     <AzureMap options={option}>
                         <AzureMapDataSourceProvider events={{
                             'dataadded': (e: any) => {
                                 console.log('Data on source added', e)
                             }
-                        }} id={'myDump AzureMapDataSourceProvider'}>
+                        }} id={'myDump AzureMapDataSourceProvider'} options={
+                            {cluster: true}
+                        }>
                             <AzureMapLayerProvider
                                 id={'myDump AzureMapLayerProvider'}
-                                options={{}}
+                                options={
+                                    {textOptions: {
+                                        textField: ['get', 'title'],    //Specify the property name that contains the text you want to appear with the symbol.
+                                        offset: [0, 1.2]}
+                                    }}
                                 events={{
                                     'click': clusterClicked,
                                     'dbclick': clusterClicked
@@ -154,11 +164,6 @@ const MyDump: React.FC = () => {
                             {memoizedMarkerRender}
                             {memoizedHtmlMarkerRender}
                         </AzureMapDataSourceProvider>
-                        <AzureMapHtmlMarker
-                            id={'myDump HtmlMarker'}
-                            options={azureHtmlMapMarkerOptions([100.3, 30])}
-                            events={eventToMarker}
-                        />
                     </AzureMap>
                 </AzureMapsProvider>
             </div>
@@ -167,6 +172,9 @@ const MyDump: React.FC = () => {
 };
 
 const styles = {
+    map: {
+        height: 300
+    },
     buttonContainer: {
         display: 'grid',
         gridAutoFlow: 'column',

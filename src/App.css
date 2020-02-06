@@ -11,12 +11,7 @@
 }
 
 header {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(5, 32, 33, 1) 57%
-  );
+  background: #002639;
   color: #ffffff;
   position: fixed;
   top: 0;
@@ -28,7 +23,7 @@ header {
 }
 
 header img {
-  height: 30px;
+  height: 100%;
   padding-left: 16px;
   padding-right: 16px;
 }

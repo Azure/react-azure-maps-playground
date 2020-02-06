@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import PageContent from "./PageContent";
-import logo from "../Assets/Melly_logo.png";
+import logo from "../Assets/wired-logo.png";
 
 const Layout: React.FC = () => {
   return (

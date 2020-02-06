@@ -10,6 +10,7 @@ import {
   IAzureMapHtmlMarkerEvent
 } from "react-azure-maps";
 import atlas, { AuthenticationType, data } from "azure-maps-control";
+import {key} from "../key";
 
 const AzureLayer: React.FC = () => {
   const point1 = new data.Position(-100.01, 45.01);
@@ -20,7 +21,7 @@ const AzureLayer: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: ""
+        subscriptionKey: key
       },
       center: [-100.01, 45.01],
       zoom: 2,
@@ -42,13 +43,13 @@ const AzureLayer: React.FC = () => {
   ];
 
   return (
-      <>
-    <div>
-      <AzureMapsProvider>
-        <AzureMap options={option}>
-          <AzureMapDataSourceProvider id={'dataSource'}>
-            <AzureMapLayerProvider id={'layer'} options={{url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates:[[-70, 40], [-60, 37], [-63, 30], [-72, 33]]}} type={'ImageLayer'}></AzureMapLayerProvider>
-            <AzureMapFeature
+    <>
+      <div style={styles.map}>
+        <AzureMapsProvider>
+          <AzureMap options={option}>
+            <AzureMapDataSourceProvider id={'dataSource'}>
+              <AzureMapLayerProvider id={'layer'} options={{ url: 'https://i.imgur.com/KBkuZLV.jpg', coordinates: [[-70, 40], [-60, 37], [-63, 30], [-72, 33]] }} type={'ImageLayer'}></AzureMapLayerProvider>
+              <AzureMapFeature
                 id={'itsmyfeature'}
                 key={'asd'}
                 type="Point"
@@ -57,47 +58,54 @@ const AzureLayer: React.FC = () => {
                   title: "Microsoft",
                   icon: "pin-round-blue"
                 }}
-            ></AzureMapFeature>
-          </AzureMapDataSourceProvider>
-          <AzureMapHtmlMarker
+              ></AzureMapFeature>
+            </AzureMapDataSourceProvider>
+            <AzureMapHtmlMarker
               id={'dasdas'}
-            options={azureHtmlMapMarkerOptions}
-            events={eventToMarker}
-          />
-          <AzureMapHtmlMarker
+              options={azureHtmlMapMarkerOptions}
+              events={eventToMarker}
+            />
+            <AzureMapHtmlMarker
               id={'dasdas'}
-            options={azureHtmlMapMarkerOptions}
-            events={eventToMarker}
-          />
-        </AzureMap>
-      </AzureMapsProvider>
-    </div>
-    <div>
-    <AzureMapsProvider>
-      <AzureMap options={option}>
-        <AzureMapDataSourceProvider id={'data source'}>
-          <AzureMapLayerProvider id={'heatMap'} options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
-          <AzureMapFeature
-              id={'luuuuju'}
-              key={'dddd'}
-              type="Point"
-              coordinate={point1}
-              properties={{
-                title: "Microsoft",
-                icon: "pin-round-blue"
-              }}
-          ></AzureMapFeature>
-        </AzureMapDataSourceProvider>
-        <AzureMapHtmlMarker
-            id={'asdasdxzcvcbsdvgf'}
-            options={azureHtmlMapMarkerOptions}
-            events={eventToMarker}
-        />
-      </AzureMap>
-    </AzureMapsProvider>
-    </div>
-  </>
+              options={azureHtmlMapMarkerOptions}
+              events={eventToMarker}
+            />
+          </AzureMap>
+        </AzureMapsProvider>
+      </div>
+      <div style={styles.map}>
+        <AzureMapsProvider>
+          <AzureMap options={option}>
+            <AzureMapDataSourceProvider id={'data source'}>
+              <AzureMapLayerProvider id={'heatMap'} options={{}} type={'HeatLayer'}></AzureMapLayerProvider>
+              <AzureMapFeature
+                id={'luuuuju'}
+                key={'dddd'}
+                type="Point"
+                coordinate={point1}
+                properties={{
+                  title: "Microsoft",
+                  icon: "pin-round-blue"
+                }}
+              ></AzureMapFeature>
+            </AzureMapDataSourceProvider>
+            <AzureMapHtmlMarker
+              id={'asdasdxzcvcbsdvgf'}
+              options={azureHtmlMapMarkerOptions}
+              events={eventToMarker}
+            />
+          </AzureMap>
+        </AzureMapsProvider>
+      </div>
+    </>
   );
 };
+
+const styles = {
+  map: {
+    height: 300,
+    marginBottom: 50
+  },
+}
 
 export default AzureLayer;
