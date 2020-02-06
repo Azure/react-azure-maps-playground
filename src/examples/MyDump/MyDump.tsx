@@ -30,9 +30,8 @@ function azureHtmlMapMarkerOptions(coordinates: data.Position): HtmlMarkerOption
     return ({
         htmlContent: '<div class="pulseIcon"></div>',
         position: coordinates,
-        text: 'Jebac',
+        text: 'Texxxt',
         title: 'evvv'
-
     })
 };
 
@@ -49,9 +48,8 @@ const renderPoint = (coordinates: data.Position) => {
         type="Point"
         coordinate={coordinates}
         properties={{
-            title: "Microsoft",
+            title: "Pin",
             icon: "pin-round-blue",
-            text: 'Jebac',
         }}
     />
 }
