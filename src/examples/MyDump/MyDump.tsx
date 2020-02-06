@@ -129,7 +129,7 @@ const MyDump: React.FC = () => {
                 <Chip label={`Markers Point on map: ${markers.length}`} />
                 <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
             </div>
-            <div>
+            <div style={styles.map}>
                 <AzureMapsProvider>
                     <AzureMap options={option}>
                         <AzureMapDataSourceProvider events={{
@@ -167,6 +167,9 @@ const MyDump: React.FC = () => {
 };
 
 const styles = {
+    map: {
+        height: 300
+    },
     buttonContainer: {
         display: 'grid',
         gridAutoFlow: 'column',
