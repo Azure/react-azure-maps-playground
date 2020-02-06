@@ -10,6 +10,7 @@ import {
   IAzureMapHtmlMarkerEvent
 } from "react-azure-maps";
 import atlas, { AuthenticationType, data } from "azure-maps-control";
+import {key} from "../key";
 
 const AzureLayer: React.FC = () => {
   const point1 = new data.Position(-100.01, 45.01);
@@ -20,7 +21,7 @@ const AzureLayer: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: ""
+        subscriptionKey: key
       },
       center: [-100.01, 45.01],
       zoom: 2,

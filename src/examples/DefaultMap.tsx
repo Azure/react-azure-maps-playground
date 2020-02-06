@@ -10,6 +10,7 @@ import {
   IAzureMapOptions
 } from "react-azure-maps";
 import {AuthenticationType, data} from "azure-maps-control";
+import {key} from "../key";
 
 const DefaultMap: React.FC = () => {
   const xd = new data.Position(-100.01, 45.01);
@@ -18,7 +19,7 @@ const DefaultMap: React.FC = () => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: ""
+        subscriptionKey: key
       },
       center: [-100.01, 45.01],
       zoom: 12,
