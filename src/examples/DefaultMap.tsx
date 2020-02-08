@@ -40,7 +40,9 @@ const DefaultMap: React.FC = () => {
   ]
 
   return (
-    <div>
+    <div style={{
+        height: '300px'
+    }}>
       <AzureMapsProvider>
         <AzureMap options={option}>
           <AzureMapDataSourceProvider id={'default DataSourceProvider'}>

@@ -183,11 +183,11 @@ const MarkersExample: React.FC = () => {
                   console.log('Data on source added', e)
                 }
               }}
-              id={'myDump AzureMapDataSourceProvider'}
+              id={'markersExample AzureMapDataSourceProvider'}
               options={{ cluster: true }}
             >
               <AzureMapLayerProvider
-                id={'myDump AzureMapLayerProvider'}
+                id={'markersExample AzureMapLayerProvider'}
                 options={{
                   textOptions: {
                     textField: ['get', 'title'], //Specify the property name that contains the text you want to appear with the symbol.
