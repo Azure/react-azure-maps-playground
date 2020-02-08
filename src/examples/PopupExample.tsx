@@ -71,22 +71,24 @@ const PopupExample: React.FC = () => {
             Close Popup
           </Button>
         </div>
-        <AzureMapsProvider>
-          <AzureMap options={option}>
-            <AzureMapPopup
-              isVisible={isVisible}
-              options={popupOptions}
-              popupContent={
-                <div style={wrapperStyles.popupStyles}>Hello World</div>
-              }
-            />
-            <AzureMapHtmlMarker
-              isPopupVisible={isHtmlMarkerPopupVisible}
-              markerContent={<div className="pulseIcon"></div>}
-              options={htmlMarkerOptions}
-            />
-          </AzureMap>
-        </AzureMapsProvider>
+        <div style={wrapperStyles.map}>
+          <AzureMapsProvider>
+            <AzureMap options={option}>
+              <AzureMapPopup
+                  isVisible={isVisible}
+                  options={popupOptions}
+                  popupContent={
+                    <div style={wrapperStyles.popupStyles}>Hello World</div>
+                  }
+              />
+              <AzureMapHtmlMarker
+                  isPopupVisible={isHtmlMarkerPopupVisible}
+                  markerContent={<div className="pulseIcon"></div>}
+                  options={htmlMarkerOptions}
+              />
+            </AzureMap>
+          </AzureMapsProvider>
+        </div>
       </Paper>
     </div>
   )
@@ -94,7 +96,7 @@ const PopupExample: React.FC = () => {
 
 export const wrapperStyles = {
   map: {
-    height: '300px'
+    height: '500px'
   },
   wrapper: {
     padding: '15px',
