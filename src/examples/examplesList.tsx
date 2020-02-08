@@ -1,30 +1,35 @@
-import DefaultMap from "./DefaultMap";
-import AzureLayer from "./AzureLayer";
-import MyDump from "./MyDump/MyDump";
-import {MyDumpContainer} from "./MyDump/MyDumpContainer";
+import DefaultMap from './DefaultMap'
+import AzureLayer from './AzureLayer'
+import { MarkersExampleContainer } from './MarkersExample/MarkersExampleContainer'
+import PopupExample from './PopupExample';
 
 export type MapExampleItem = {
-  name: string;
-  component: React.FC;
-  path: string;
-  exact?: boolean;
-};
+  name: string
+  component: React.FC
+  path: string
+  exact?: boolean
+}
 
 export const examplesList: MapExampleItem[] = [
   {
-    name: "Default map",
+    name: 'Default map',
     component: DefaultMap,
-    path: "/",
+    path: '/',
     exact: true
   },
   {
-    name: "Layers",
+    name: 'Layers',
     component: AzureLayer,
-    path: "/layers"
+    path: '/layers'
   },
   {
-    name: "MyDump",
-    component: MyDumpContainer,
-    path: "/myDump"
+    name: 'Markers Example',
+    component: MarkersExampleContainer,
+    path: '/markers-example'
+  },
+  {
+    name: 'Popup Example',
+    component: PopupExample,
+    path: '/popup-example'
   }
-];
+]
