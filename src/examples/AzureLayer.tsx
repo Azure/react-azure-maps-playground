@@ -9,14 +9,11 @@ import {
   IAzureMapOptions,
   IAzureMapHtmlMarkerEvent
 } from "react-azure-maps";
-import atlas, { AuthenticationType, data } from "azure-maps-control";
+import { AuthenticationType, data } from "azure-maps-control";
 import {key} from "../key";
 
 const AzureLayer: React.FC = () => {
   const point1 = new data.Position(-100.01, 45.01);
-  const point2 = new data.Position(-100.2, 45.1);
-
-
   const option: IAzureMapOptions = useMemo(() => {
     return {
       authOptions: {

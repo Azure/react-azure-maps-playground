@@ -13,7 +13,7 @@ import {AuthenticationType, data} from "azure-maps-control";
 import {key} from "../key";
 
 const DefaultMap: React.FC = () => {
-  const xd = new data.Position(-100.01, 45.01);
+  const position = new data.Position(-100.01, 45.01);
 
   const option: IAzureMapOptions = useMemo(() => {
     return {
@@ -49,7 +49,7 @@ const DefaultMap: React.FC = () => {
             <AzureMapFeature
                 id={'default MapFeature'}
               type="Point"
-              coordinate={xd}
+              coordinate={position}
               properties={{
                 title: "Microsoft",
                 icon: "pin-round-blue"
