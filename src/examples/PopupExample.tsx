@@ -4,17 +4,28 @@ import {
   AzureMap,
   AzureMapsProvider,
   IAzureMapOptions,
-  AzureMapPopup
+  AzureMapPopup,
+  AzureMapHtmlMarker,
+  useCreatePopup
 } from 'react-azure-maps'
-import { AuthenticationType,data } from 'azure-maps-control'
+import { AuthenticationType, data } from 'azure-maps-control'
 import { key } from '../key'
 
 const popupOptions = {
-  position: new data.Position(-100.01, 45.01),
+  position: new data.Position(-100.01, 45.01)
 }
 
 const PopupExample: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [isHtmlMarkerPopupVisible, setIsHtmlMarkerPopupVisible] = useState(
+    false
+  )
+  const htmlMarkerOptions = {
+    popup: useCreatePopup({
+      options: {},
+      popupContent: <div style={wrapperStyles.popupStyles}>Hello World Html marker popup</div>
+    })
+  }
   const option: IAzureMapOptions = useMemo(() => {
     return {
       authOptions: {
@@ -31,6 +42,16 @@ const PopupExample: React.FC = () => {
     <div style={wrapperStyles.map}>
       <Paper elevation={3} style={wrapperStyles.wrapper}>
         <div style={wrapperStyles.buttonContainer}>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              setIsHtmlMarkerPopupVisible(true)
+            }}
+          >
+            Open Popup HtmlMarker
+          </Button>
           <Button
             size="small"
             variant="contained"
@@ -58,6 +79,11 @@ const PopupExample: React.FC = () => {
               popupContent={
                 <div style={wrapperStyles.popupStyles}>Hello World</div>
               }
+            />
+            <AzureMapHtmlMarker
+              isPopupVisible={isHtmlMarkerPopupVisible}
+              markerContent={<div className="pulseIcon"></div>}
+              options={htmlMarkerOptions}
             />
           </AzureMap>
         </AzureMapsProvider>

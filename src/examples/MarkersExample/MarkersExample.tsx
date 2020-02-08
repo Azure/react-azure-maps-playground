@@ -32,7 +32,6 @@ function azureHtmlMapMarkerOptions(
   coordinates: data.Position
 ): HtmlMarkerOptions {
   return {
-    htmlContent: '<div class="pulseIcon"></div>',
     position: coordinates,
     text: 'Texxxt',
     title: 'evvv'
@@ -65,7 +64,7 @@ function renderHTMLPoint(coordinates: data.Position): any {
   return (
     <AzureMapHtmlMarker
       key={rendId}
-      id={rendId.toString()}
+      markerContent={<div className="pulseIcon"></div>}
       options={azureHtmlMapMarkerOptions(coordinates)}
       events={eventToMarker}
     />
