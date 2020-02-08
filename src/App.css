@@ -34,3 +34,7 @@ header img {
   min-height: calc(100vh - 64px);
   overflow: hidden;
 }
+
+.popup-collection-container {
+  overflow: initial !important;
+}

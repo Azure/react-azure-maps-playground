@@ -9,6 +9,7 @@ yalc.lock
 
 # testing
 /coverage
+key.ts
 
 # production
 /build
