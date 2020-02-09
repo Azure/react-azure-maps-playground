@@ -1,5 +1,5 @@
 import atlas, {data} from 'azure-maps-control'
-import {AzureMapDataSourceProvider, AzureMapFeature, generateLinesFromArrayOfPosition, generatePixelHeading, AzureDataLineString} from "react-azure-maps";
+import {AzureMapFeature, generateLinesFromArrayOfPosition, generatePixelHeading} from "react-azure-maps";
 import React from "react";
 import {IAzureMapFeatureType} from "react-azure-maps/src/types";
 
@@ -12,7 +12,6 @@ export const lineData = [
 
 export const renderMultiLine = (type: IAzureMapFeatureType, coordinates: data.Position[], properties: Object) => {
     const rendId = Math.random()
-    console.log("RENDER ", type, rendId)
 
     return (
         <AzureMapFeature
@@ -27,7 +26,6 @@ export const renderMultiLine = (type: IAzureMapFeatureType, coordinates: data.Po
 
 const renderFeature = (type: IAzureMapFeatureType, coordinates: atlas.data.Position, properties: Object) => {
     const rendId = Math.random()
-    console.log("RENDER ", type, rendId)
 
     return (
         <AzureMapFeature
@@ -42,7 +40,6 @@ const renderFeature = (type: IAzureMapFeatureType, coordinates: atlas.data.Posit
 
 export function calculateLineEndPoints(lines: any): any {
     const points = [];
-    console.log("LIJES", lines)
     for (let i = 0; i < lines.length; i++) {
         const p = calculateLineEndPoint(lines[i]);
         if (p) {
@@ -55,7 +52,6 @@ export function calculateLineEndPoints(lines: any): any {
 
 
 export function calculateLineEndPoint(line: any): any {
-    console.log('line', line.type)
     let l = null;
 
     if (line && line.getCoordinates) {
@@ -65,7 +61,6 @@ export function calculateLineEndPoint(line: any): any {
     } else if (line.type === 'LineString') {
         l = line.coordinates;
     }
-
 
     if (l && l.length >= 2) {
         //Use the last coordinate of the line for the point of the end. Calculate the heading from the second last coordinate to the last coordinate.

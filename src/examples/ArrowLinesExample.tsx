@@ -1,6 +1,7 @@
 import React from 'react'
 import {Paper} from '@material-ui/core'
 import {
+    AzureDataPosition,
     AzureMap,
     AzureMapDataSourceProvider,
     AzureMapLayerProvider,
@@ -23,12 +24,15 @@ function mouseOverLineString(e: any) {
     console.log('LineLayer mouseOver', e)
 }
 
-const line1 = [[-70.13671, 37.23032], [-74.09179, 40.71395]]
-const line2 = [[-73.91601, 28.99853], [-80.59570, 24.36711], [-88.33007, 24.44714], [-95.00976, 29.30556]]
-const line3 = [[-156.00585, 20.79720], [-142.38281, 20.46818], [-127.00195, 31.65338], [-118.82812, 33.65120]]
-const line4 = [[-136.49414, 57.23150], [-143.17382, 53.80065], [-130.78125, 46.31658], [-124.27734, 46.07323]]
+const line1: AzureDataPosition[] = [[-70.13671, 37.23032], [-74.09179, 40.71395]]
+const line2: AzureDataPosition[] = [[-73.91601, 28.99853], [-80.59570, 24.36711], [-88.33007, 24.44714], [-95.00976, 29.30556]]
+const line3: AzureDataPosition[] = [[-156.00585, 20.79720], [-142.38281, 20.46818], [-127.00195, 31.65338], [-118.82812, 33.65120]]
+const line4: AzureDataPosition[] = [[-136.49414, 57.23150], [-143.17382, 53.80065], [-130.78125, 46.31658], [-124.27734, 46.07323]]
 
-export const lines: any = [line1, line2, line3, line4]
+export const lines: Array<AzureDataPosition[]> = [
+    line1, line2, line3, line4
+]
+
 
 const imageSprites = {
     id: 'arrow-icon',
@@ -111,9 +115,9 @@ const ArrowLineExample: React.FC = () => {
                                     }}
                                     type={"LineLayer"}
                                 ></AzureMapLayerProvider>
-                                {lines.map((value: any) => {
-                                    return (renderMultiLine("LineString", value, {}))
-                                })}
+                                {lines.map((value: AzureDataPosition[]) =>
+                                    (renderMultiLine("LineString", value, {}))
+                                )}
                             </AzureMapDataSourceProvider>
                         </AzureMap>
                     </AzureMapsProvider>
