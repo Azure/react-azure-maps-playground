@@ -1,9 +1,10 @@
 import DefaultMap from './DefaultMap'
 import AzureLayer from './AzureLayer'
-import { MarkersExampleContainer } from './MarkersExample/MarkersExampleContainer'
+import {MarkersExampleContainer} from './MarkersExample/MarkersExampleContainer'
 import PopupExample from './PopupExample';
 import RouteExample from "./RouteExample";
 import ArrowLineExample from "./ArrowLinesExample";
+import ControlExample from "./ControlExample";
 
 export type MapExampleItem = {
   name: string
@@ -43,5 +44,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Arrow Lines & Image Sprite',
     component: ArrowLineExample,
     path: '/arrowLine-example'
+  },
+  {
+    name: 'Style Controls',
+    component: ControlExample,
+    path: '/controls'
   }
 ]

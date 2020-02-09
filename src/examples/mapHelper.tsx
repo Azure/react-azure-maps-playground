@@ -1,5 +1,9 @@
 import atlas, {data} from 'azure-maps-control'
-import {AzureMapFeature, generateLinesFromArrayOfPosition, generatePixelHeading} from "react-azure-maps";
+import {
+    AzureMapFeature,
+    generateLinesFromArrayOfPosition,
+    generatePixelHeading,
+} from "react-azure-maps";
 import React from "react";
 import {IAzureMapFeatureType} from "react-azure-maps/src/types";
 
