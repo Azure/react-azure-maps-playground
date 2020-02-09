@@ -37,20 +37,6 @@ const points = [
     [-122.10565, 47.67498]
 ]
 
-const renderFeature = (type: IAzureMapFeatureType, coordinates: data.Position, properties: Object) => {
-    const rendId = Math.random()
-    console.log("RENDER ", type, rendId)
-
-    return (
-        <AzureMapFeature
-            key={rendId}
-            id={rendId.toString()}
-            type={type}
-            coordinate={coordinates}
-            properties={properties}
-        />
-    )
-}
 
 const option: IAzureMapOptions = {
     authOptions: {
