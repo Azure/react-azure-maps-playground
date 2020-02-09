@@ -23,12 +23,12 @@ export const examplesList: MapExampleItem[] = [
     path: '/layers'
   },
   {
-    name: 'Markers Example',
+    name: 'Markers',
     component: MarkersExampleContainer,
     path: '/markers-example'
   },
   {
-    name: 'Popup Example',
+    name: 'Popup',
     component: PopupExample,
     path: '/popup-example'
   }

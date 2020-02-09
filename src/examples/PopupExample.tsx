@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, {useCallback, useMemo, useState} from 'react'
 import { Paper, Button } from '@material-ui/core'
 import {
   AzureMap,
@@ -18,7 +18,7 @@ const popupOptions = {
 const PopupExample: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [isHtmlMarkerPopupVisible, setIsHtmlMarkerPopupVisible] = useState(
-    false
+    true
   )
   const htmlMarkerOptions = {
     popup: useCreatePopup({
@@ -38,6 +38,28 @@ const PopupExample: React.FC = () => {
     }
   }, [])
 
+  const memoizedMapPopup = useMemo(() => (<AzureMapPopup
+      isVisible={isVisible}
+      options={popupOptions}
+      popupContent={
+        <div style={wrapperStyles.popupStyles}>Hello World</div>
+      }
+  />), [isVisible])
+
+  const memoizedHtmlMarker = useMemo(() => (
+      <AzureMapHtmlMarker
+          isPopupVisible={isHtmlMarkerPopupVisible}
+          markerContent={<div className="pulseIcon"></div>}
+          options={htmlMarkerOptions}
+      />
+  ), [isHtmlMarkerPopupVisible])
+
+  const toggleHtmlMarkerPopup = useCallback(() => {
+    setIsHtmlMarkerPopupVisible(prevState => !prevState)
+  }, [isHtmlMarkerPopupVisible])
+
+
+
   return (
     <div style={wrapperStyles.map}>
       <Paper elevation={3} style={wrapperStyles.wrapper}>
@@ -47,10 +69,10 @@ const PopupExample: React.FC = () => {
             variant="contained"
             color="secondary"
             onClick={() => {
-              setIsHtmlMarkerPopupVisible(true)
+              toggleHtmlMarkerPopup()
             }}
           >
-            Open Popup HtmlMarker
+            Toggle Popup HtmlMarker
           </Button>
           <Button
             size="small"
@@ -74,18 +96,8 @@ const PopupExample: React.FC = () => {
         <div style={wrapperStyles.map}>
           <AzureMapsProvider>
             <AzureMap options={option}>
-              <AzureMapPopup
-                  isVisible={isVisible}
-                  options={popupOptions}
-                  popupContent={
-                    <div style={wrapperStyles.popupStyles}>Hello World</div>
-                  }
-              />
-              <AzureMapHtmlMarker
-                  isPopupVisible={isHtmlMarkerPopupVisible}
-                  markerContent={<div className="pulseIcon"></div>}
-                  options={htmlMarkerOptions}
-              />
+              {memoizedMapPopup}
+              {memoizedHtmlMarker}
             </AzureMap>
           </AzureMapsProvider>
         </div>
