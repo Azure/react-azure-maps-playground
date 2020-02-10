@@ -1,5 +1,5 @@
 import React from 'react'
-import {Paper} from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import {
     AzureMap,
     AzureMapDataSourceProvider,
@@ -8,9 +8,9 @@ import {
     AzureMapsProvider,
     IAzureMapOptions
 } from 'react-azure-maps'
-import {AuthenticationType, data} from 'azure-maps-control'
-import {key} from '../key'
-import {IAzureMapFeatureType} from "react-azure-maps/src/types";
+import { AuthenticationType, data } from 'azure-maps-control'
+import { key } from '../key'
+import { IAzureMapFeatureType } from "react-azure-maps";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 
@@ -108,10 +108,10 @@ const RouteExample: React.FC = () => {
                         </AzureMap>
                     </AzureMapsProvider>
                 </div>
-                <Card style={{padding: 5}}>
-                <Typography gutterBottom variant="body1">
-                    This sample shows how to apply a stroke gradient to a line on the map. In order to apply this
-                    feature to a line, the data source must have the lineMetrics option set to true.
+                <Card style={{ padding: 5 }}>
+                    <Typography gutterBottom variant="body1">
+                        This sample shows how to apply a stroke gradient to a line on the map. In order to apply this
+                        feature to a line, the data source must have the lineMetrics option set to true.
                 </Typography>
                 </Card>
             </Paper>

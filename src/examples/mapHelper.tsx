@@ -1,14 +1,14 @@
-import atlas, {data} from 'azure-maps-control'
+import atlas, { data } from 'azure-maps-control'
 import {
     AzureMapFeature,
     generateLinesFromArrayOfPosition,
     generatePixelHeading,
 } from "react-azure-maps";
 import React from "react";
-import {IAzureMapFeatureType} from "react-azure-maps/src/types";
+import { IAzureMapFeatureType } from "react-azure-maps";
 
 export const lineData = [
-    generateLinesFromArrayOfPosition( [[-70.13671, 37.23032], [-74.09179, 40.71395]]),
+    generateLinesFromArrayOfPosition([[-70.13671, 37.23032], [-74.09179, 40.71395]]),
     generateLinesFromArrayOfPosition([[-73.91601, 28.99853], [-80.59570, 24.36711], [-88.33007, 24.44714], [-95.00976, 29.30556]]),
     generateLinesFromArrayOfPosition([[-156.00585, 20.79720], [-142.38281, 20.46818], [-127.00195, 31.65338], [-118.82812, 33.65120]]),
     generateLinesFromArrayOfPosition([[-136.49414, 57.23150], [-143.17382, 53.80065], [-130.78125, 46.31658], [-124.27734, 46.07323]])
