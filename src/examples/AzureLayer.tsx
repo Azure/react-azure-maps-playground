@@ -11,7 +11,14 @@ import {
 } from 'react-azure-maps'
 import { AuthenticationType, data } from 'azure-maps-control'
 import { key } from '../key'
+import {wrapperStyles} from "./RouteExample";
+import {Paper} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
 
+function getCoordinates(e: any) {
+  console.log('Clicked on:', e)
+}
 const AzureLayer: React.FC = () => {
   const point1 = new data.Position(-100.01, 45.01)
   const option: IAzureMapOptions = useMemo(() => {
@@ -40,22 +47,38 @@ const AzureLayer: React.FC = () => {
 
   return (
     <>
+      <div style={wrapperStyles.map}>
+        <Paper elevation={3} style={wrapperStyles.wrapper}>
+          <Typography gutterBottom variant="h4">
+            Azure Map Layers Examples
+          </Typography>
+          <Card style={{padding: 5}}>
+            <Typography gutterBottom variant="body1">
+              This sample shows how to add layers and global map events. Open dev tools console and click on map.
+            </Typography>
+          </Card>
       <div style={styles.map}>
         <AzureMapsProvider>
-          <AzureMap options={option}>
+          <AzureMap options={option} events={{click: getCoordinates}}>
             <AzureMapDataSourceProvider id={'dataSource'}>
               <AzureMapLayerProvider
                 id={'layer'}
                 options={{
-                  url: 'https://i.imgur.com/KBkuZLV.jpg',
+                  // URL to an image to overlay. Images hosted on other domains must have CORs enabled.
+                  url: 'https://i.imgur.com/fc4Tw0H.jpg',
+                  // * An array of positions for the corners of the image listed in clockwise order: [top left, top right, bottom right, bottom left].
                   coordinates: [
-                    [-70, 40],
-                    [-60, 37],
-                    [-63, 30],
-                    [-72, 33]
-                  ]
+                    [-130, 45],
+                    [-115 , 45],
+                    [-115, 35],
+                    [-130, 35]
+                  ],
+                  opacity: 0.8,
                 }}
                 type={'ImageLayer'}
+                events={{
+                  mouseenter: getCoordinates
+                }}
               ></AzureMapLayerProvider>
               <AzureMapFeature
                 id={'itsmyfeature'}
@@ -68,17 +91,6 @@ const AzureLayer: React.FC = () => {
                 }}
               ></AzureMapFeature>
             </AzureMapDataSourceProvider>
-            <AzureMapHtmlMarker
-              markerContent={<div className="pulseIcon"></div>}
-              options={azureHtmlMapMarkerOptions}
-              events={eventToMarker}
-            />
-            <AzureMapHtmlMarker
-              markerContent={<div className="pulseIcon"></div>}
-              options={azureHtmlMapMarkerOptions}
-              events={eventToMarker}
-            />
-
             <AzureMapHtmlMarker
               markerContent={<div className="pulseIcon"></div>}
               options={azureHtmlMapMarkerOptions}
@@ -109,6 +121,8 @@ const AzureLayer: React.FC = () => {
             </AzureMapDataSourceProvider>
           </AzureMap>
         </AzureMapsProvider>
+      </div>
+        </Paper>
       </div>
     </>
   )
