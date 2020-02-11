@@ -37,7 +37,7 @@ const ControlExample: React.FC = () => {
         <div style={wrapperStyles.map}>
             <Paper elevation={3} style={wrapperStyles.wrapper}>
                 <Typography gutterBottom variant="h4">
-                    Map Style Picker
+                    Map Control Style
                 </Typography>
                 <div style={wrapperStyles.map}>
                     <AzureMapsProvider>
