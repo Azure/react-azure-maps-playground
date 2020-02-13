@@ -9,7 +9,7 @@ const PageContent = () => {
         {examplesList.map(item => (
           <Route key={item.name} exact={item.exact} path={item.path}>
             <React.Fragment>
-              <h2>{item.name}</h2>
+              <h1>{item.name}</h1>
               {<item.component />}
             </React.Fragment>
           </Route>

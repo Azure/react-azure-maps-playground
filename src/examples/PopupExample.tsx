@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo, useState} from 'react'
-import { Paper, Button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import {
   AzureMap,
   AzureMapsProvider,
@@ -62,7 +62,6 @@ const PopupExample: React.FC = () => {
 
   return (
     <div style={wrapperStyles.map}>
-      <Paper elevation={3} style={wrapperStyles.wrapper}>
         <div style={wrapperStyles.buttonContainer}>
           <Button
             size="small"
@@ -101,7 +100,6 @@ const PopupExample: React.FC = () => {
             </AzureMap>
           </AzureMapsProvider>
         </div>
-      </Paper>
     </div>
   )
 }
