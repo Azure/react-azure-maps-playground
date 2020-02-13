@@ -24,8 +24,8 @@ function clusterClicked(e: any) {
   console.log('clusterClicked', e)
 }
 
-const onClick = () => {
-  console.log('ASD')
+const onClick = (e: any) => {
+  console.log('You click on: ', e)
 }
 
 function azureHtmlMapMarkerOptions(
@@ -33,8 +33,8 @@ function azureHtmlMapMarkerOptions(
 ): HtmlMarkerOptions {
   return {
     position: coordinates,
-    text: 'Texxxt',
-    title: 'evvv'
+    text: 'My text',
+    title: 'Title'
   }
 }
 
@@ -72,7 +72,6 @@ function renderHTMLPoint(coordinates: data.Position): any {
 }
 
 const MarkersExample: React.FC = () => {
-  const [dump] = useState('START')
   const [markers, setMarkers] = useState([point1, point2, point3])
   const [htmlMarkers, setHtmlMarkers] = useState([point4])
   const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>(
@@ -120,10 +119,9 @@ const MarkersExample: React.FC = () => {
     [htmlMarkers]
   )
 
-  console.log('MAP')
+  console.log('MarkerExample RENDER')
   return (
     <>
-      MAP {dump}
       <div style={styles.buttonContainer}>
         <Button
           size="small"
@@ -170,7 +168,6 @@ const MarkersExample: React.FC = () => {
           {' '}
           REMOVE ALL
         </Button>
-
         <Chip label={`Markers Point on map: ${markers.length}`} />
         <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
       </div>

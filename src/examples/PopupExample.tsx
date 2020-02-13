@@ -33,7 +33,7 @@ const PopupExample: React.FC = () => {
         subscriptionKey: key
       },
       center: [-100.01, 45.01],
-      zoom: 12,
+      zoom: 1,
       view: 'Auto'
     }
   }, [])

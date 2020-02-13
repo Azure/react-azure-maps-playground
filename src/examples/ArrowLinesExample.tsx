@@ -70,7 +70,7 @@ const ArrowLineExample: React.FC = () => {
     <div style={wrapperStyles.map}>
       <Paper elevation={3} style={wrapperStyles.wrapper}>
         <Typography gutterBottom variant="h4">
-          arrows to end of paths
+          Arrows to end of paths
         </Typography>
         <div style={wrapperStyles.map}>
           <AzureMapsProvider>

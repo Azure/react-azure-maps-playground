@@ -17,9 +17,24 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 
 function getCoordinates(e: any) {
-  console.log('Clicked on:', e)
+  console.log('Clicked on:', e.position)
 }
+
+const onClick = () => {
+  console.log('ASD')
+}
+
+const azureHtmlMapMarkerOptions = {
+  position: [-110, 45]
+}
+
+const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
+  { eventName: 'click', callback: onClick }
+]
+
+
 const AzureLayer: React.FC = () => {
+  const point = new data.Position(-80.01, 35.01)
   const point1 = new data.Position(-100.01, 45.01)
   const option: IAzureMapOptions = useMemo(() => {
     return {
@@ -32,19 +47,6 @@ const AzureLayer: React.FC = () => {
       view: 'Auto'
     }
   }, [])
-
-  const onClick = () => {
-    console.log('ASD')
-  }
-
-  const azureHtmlMapMarkerOptions = {
-    position: [-110, 45]
-  }
-
-  const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-    { eventName: 'click', callback: onClick }
-  ]
-
   return (
     <>
       <div style={wrapperStyles.map}>
@@ -60,9 +62,9 @@ const AzureLayer: React.FC = () => {
       <div style={styles.map}>
         <AzureMapsProvider>
           <AzureMap options={option} events={{click: getCoordinates}}>
-            <AzureMapDataSourceProvider id={'dataSource'}>
+            <AzureMapDataSourceProvider id={'LayerExample1 DataSource '}>
               <AzureMapLayerProvider
-                id={'layer'}
+                id={'LayerExample1 Layer'}
                 options={{
                   // URL to an image to overlay. Images hosted on other domains must have CORs enabled.
                   url: 'https://i.imgur.com/fc4Tw0H.jpg',
@@ -76,19 +78,26 @@ const AzureLayer: React.FC = () => {
                   opacity: 0.8,
                 }}
                 type={'ImageLayer'}
-                events={{
-                  mouseenter: getCoordinates
-                }}
+              ></AzureMapLayerProvider>
+            </AzureMapDataSourceProvider>
+            <AzureMapDataSourceProvider id={'LayerExample1 DataSource2 '}>
+              <AzureMapLayerProvider
+                  id={'LayerExample1 Layer2'}
+                  options={{
+                    opacity: 0.8,
+                    iconOptions: {
+                      image: 'pin-round-red'
+                    }
+                  }}
+                  type={"SymbolLayer"}
               ></AzureMapLayerProvider>
               <AzureMapFeature
-                id={'itsmyfeature'}
-                key={'asd'}
-                type="Point"
-                coordinate={point1}
-                properties={{
-                  title: 'Microsoft',
-                  icon: 'pin-round-blue'
-                }}
+                  id={'LayerExample1 MapFeature'}
+                  type="Point"
+                  coordinate={point}
+                  properties={{
+                    title: 'My Title',
+                  }}
               ></AzureMapFeature>
             </AzureMapDataSourceProvider>
             <AzureMapHtmlMarker
@@ -102,21 +111,17 @@ const AzureLayer: React.FC = () => {
       <div style={styles.map}>
         <AzureMapsProvider>
           <AzureMap options={option}>
-            <AzureMapDataSourceProvider id={'data source'}>
+            <AzureMapDataSourceProvider id={'LayerExample2 DataSource'}>
               <AzureMapLayerProvider
-                id={'heatMap'}
+                id={'LayerExample2 HeatMap'}
                 options={{}}
                 type={'HeatLayer'}
               ></AzureMapLayerProvider>
               <AzureMapFeature
-                id={'luuuuju'}
+                id={'LayerExample2 MapFeature2'}
                 key={'dddd'}
                 type="Point"
                 coordinate={point1}
-                properties={{
-                  title: 'Microsoft',
-                  icon: 'pin-round-blue'
-                }}
               ></AzureMapFeature>
             </AzureMapDataSourceProvider>
           </AzureMap>

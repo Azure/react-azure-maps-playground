@@ -1,11 +1,11 @@
 import DefaultMap from './DefaultMap'
 import AzureLayer from './AzureLayer'
-import { MarkersExampleContainer } from './MarkersExample/MarkersExampleContainer'
 import PopupExample from './PopupExample'
 import RouteExample from './RouteExample'
 import ArrowLineExample from './ArrowLinesExample'
 import ControlExample from './ControlExample'
 import ChronoplethMap from './ChoroplethMap'
+import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 
 export type MapExampleItem = {
   name: string
@@ -28,7 +28,7 @@ export const examplesList: MapExampleItem[] = [
   },
   {
     name: 'Markers',
-    component: MarkersExampleContainer,
+    component: MarkersExampleWrapper,
     path: '/markers-example'
   },
   {
