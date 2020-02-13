@@ -55,7 +55,7 @@ const ChronoplethMap: React.FC = () => {
         <AzureMap options={option}>
           <AzureMapDataSourceProvider
             id={'default DataSourceProvider'}
-            dataFromurl="https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/US_States_Population_Density.json"
+            dataFromUrl="https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/US_States_Population_Density.json"
           >
             <AzureMapLayerProvider
               options={{
