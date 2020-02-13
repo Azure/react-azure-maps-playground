@@ -1,10 +1,11 @@
 import DefaultMap from './DefaultMap'
 import AzureLayer from './AzureLayer'
-import {MarkersExampleContainer} from './MarkersExample/MarkersExampleContainer'
-import PopupExample from './PopupExample';
-import RouteExample from "./RouteExample";
-import ArrowLineExample from "./ArrowLinesExample";
-import ControlExample from "./ControlExample";
+import { MarkersExampleContainer } from './MarkersExample/MarkersExampleContainer'
+import PopupExample from './PopupExample'
+import RouteExample from './RouteExample'
+import ArrowLineExample from './ArrowLinesExample'
+import ControlExample from './ControlExample'
+import ChronoplethMap from './ChoroplethMap'
 
 export type MapExampleItem = {
   name: string
@@ -49,5 +50,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Style Controls',
     component: ControlExample,
     path: '/controls'
+  },
+  {
+    name: 'Chronopleth map',
+    component: ChronoplethMap,
+    path: '/chrono'
   }
 ]
