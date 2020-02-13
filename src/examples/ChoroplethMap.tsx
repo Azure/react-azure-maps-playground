@@ -1,14 +1,13 @@
-import React, { useMemo, useState } from 'react'
+import React, {useMemo, useState} from 'react'
 import {
   AzureMap,
   AzureMapDataSourceProvider,
   AzureMapLayerProvider,
   AzureMapsProvider,
-  IAzureMapOptions,
-  AzureMapPopup
+  IAzureMapOptions
 } from 'react-azure-maps'
-import { AuthenticationType, data, MapMouseEvent } from 'azure-maps-control'
-import { key } from '../key'
+import {AuthenticationType, MapMouseEvent} from 'azure-maps-control'
+import {key} from '../key'
 
 const defaultColor = '#FFEDA0'
 const steppedExp = [
@@ -54,11 +53,12 @@ const ChronoplethMap: React.FC = () => {
       <AzureMapsProvider>
         <AzureMap options={option}>
           <AzureMapDataSourceProvider
-            id={'default DataSourceProvider'}
+            id={'chronoplethMap DataSourceProvider'}
             dataFromUrl="https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/US_States_Population_Density.json"
           >
             <AzureMapLayerProvider
-              options={{
+                id={'chronoplethMap LayerProvider'}
+                options={{
                 base: 100,
                 fillColor: steppedExp,
                 fillOpacity: 0.7,

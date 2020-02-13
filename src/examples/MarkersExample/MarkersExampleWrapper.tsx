@@ -4,19 +4,14 @@ import MarkersExample from "./MarkersExample";
 import { Button } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 
-
-export type DumpProps = {
-    text?: String
-};
-export const MarkersExampleWrapper = (props: DumpProps) => {
+const MarkersExampleWrapper: React.FC = () => {
     const [dump, setDump] = useState('START');
     return (
         <Paper elevation={3} style={wrapperStyles.wrapper}>
-            Wrapper {dump}
+            Simple example with memoization {dump}
             <div style={wrapperStyles.buttonContainer}>
-                <Button size="small" variant="contained" color="secondary" onClick={() => setDump('FIRST BUTTON')}>Button </Button>
-                <Button size="small" variant="contained" color="secondary" onClick={() => setDump('SECOND BUTTON')}>Button </Button>
-                <Button size="small" variant="contained" color="secondary" >Button </Button>
+                <Button size="small" variant="contained" color="secondary" onClick={() => setDump('FIRST BUTTON')}>First </Button>
+                <Button size="small" variant="contained" color="secondary" onClick={() => setDump('SECOND BUTTON')}>Second </Button>
             </div>
             <MarkersExample />
         </Paper>
@@ -36,3 +31,4 @@ export const wrapperStyles = {
         padding: '10px 0',
     },
 }
+export default MarkersExampleWrapper

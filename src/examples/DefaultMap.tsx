@@ -12,6 +12,19 @@ import {
 import { AuthenticationType, data } from 'azure-maps-control'
 import { key } from '../key'
 
+const onClick = () => {
+  console.log('CLICK')
+}
+
+const azureHtmlMapMarkerOptions = {
+  position: [-110, 45]
+}
+
+const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
+  { eventName: 'click', callback: onClick }
+]
+
+
 const DefaultMap: React.FC = () => {
   const position = new data.Position(-100.01, 45.01)
 
@@ -27,27 +40,15 @@ const DefaultMap: React.FC = () => {
     }
   }, [])
 
-  const onClick = () => {
-    console.log('ASD')
-  }
-
-  const azureHtmlMapMarkerOptions = {
-    position: [-110, 45]
-  }
-
-  const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-    { eventName: 'click', callback: onClick }
-  ]
-
   return (
     <div style={{
         height: '300px'
     }}>
       <AzureMapsProvider>
         <AzureMap options={option}>
-          <AzureMapDataSourceProvider id={'default DataSourceProvider'}>
+          <AzureMapDataSourceProvider id={'defaultMap DataSourceProvider'}>
             <AzureMapLayerProvider
-              id={'default LayerProvider'}
+              id={'defaultMap LayerProvider'}
               options={{}}
               type={'SymbolLayer'}
             ></AzureMapLayerProvider>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper } from '@material-ui/core'
+import {Paper} from '@material-ui/core'
 import {
     AzureMap,
     AzureMapDataSourceProvider,
@@ -8,9 +8,8 @@ import {
     AzureMapsProvider,
     IAzureMapOptions
 } from 'react-azure-maps'
-import { AuthenticationType, data } from 'azure-maps-control'
-import { key } from '../key'
-import { IAzureMapFeatureType } from "react-azure-maps";
+import {AuthenticationType} from 'azure-maps-control'
+import {key} from '../key'
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 
