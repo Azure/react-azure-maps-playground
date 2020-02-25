@@ -1,5 +1,4 @@
-import atlas from 'azure-maps-control';
-import {DataSourceType} from "react-azure-maps/dist/types/types";
+import atlas, {data as AtlasData} from 'azure-maps-control'
 
 /** Options for the BringDataIntoViewControl. */
 interface BringDataIntoViewControlOptions {
@@ -43,7 +42,7 @@ export class BringDataIntoViewControl implements atlas.Control {
      */
     constructor(options?: BringDataIntoViewControlOptions | any) {
         if (options) {
-            this._options = { ...this._options, ...options };
+            this._options = {...this._options, ...options};
         }
     }
 
@@ -70,7 +69,9 @@ export class BringDataIntoViewControl implements atlas.Control {
             color = this._darkColor;
         } else if (color === 'auto') {
             //Color will change between light and dark depending on map style.
-            this._map.events.add('styledata', () => { this._mapStyleChanged(); });
+            this._map.events.add('styledata', () => {
+                this._mapStyleChanged();
+            });
             color = this._getColorFromMapStyle();
         }
 
@@ -105,8 +106,9 @@ export class BringDataIntoViewControl implements atlas.Control {
 
             let bounds = null;
 
+
             if (data.length > 0) {
-                bounds = atlas.data.BoundingBox.fromData(data);
+                bounds = AtlasData.BoundingBox.fromData(data);
             }
 
             const pos = [];
@@ -116,44 +118,44 @@ export class BringDataIntoViewControl implements atlas.Control {
             }
 
             if (pos.length > 0) {
-                var b = atlas.data.BoundingBox.fromPositions(pos);
+                var b = AtlasData.BoundingBox.fromPositions(pos);
                 if (bounds === null) {
                     bounds = b;
                 } else {
-                    bounds = atlas.data.BoundingBox.merge(bounds, b);
+                    bounds = AtlasData.BoundingBox.merge(bounds, b);
                 }
             }
             // @ts-ignore
             const l = this._map.getLayers();
             for (let i = 0; i < l.length; i++) {
-                if (l[i] instanceof atlas.layer.ImageLayer) {
+                if (l[i].getOptions) {
                     // @ts-ignore
-                    var b = atlas.data.BoundingBox.fromPositions((<atlas.layer.ImageLayer>l[i]).getOptions().coordinates);
+                    var b = AtlasData.BoundingBox.fromPositions((<atlas.layer.ImageLayer>l[i]).getOptions().coordinates);
 
                     if (bounds === null) {
                         bounds = b;
                     } else {
-                        bounds = atlas.data.BoundingBox.merge(bounds, b);
+                        bounds = AtlasData.BoundingBox.merge(bounds, b);
                     }
                 }
             }
 
             if (bounds !== null) {
-                const w = atlas.data.BoundingBox.getWidth(bounds);
-                const h = atlas.data.BoundingBox.getHeight(bounds);
+                const w = AtlasData.BoundingBox.getWidth(bounds);
+                const h = AtlasData.BoundingBox.getHeight(bounds);
 
                 //If the bounding box is really small, likely a single point, use center/zoom.
                 if (w < 0.000001 || h < 0.000001) {
                     // @ts-ignore
                     this._map.setCamera({
-                        center: atlas.data.BoundingBox.getCenter(bounds),
+                        center: AtlasData.BoundingBox.getCenter(bounds),
                         zoom: 17
                     });
                 } else {
                     // @ts-ignore
                     this._map.setCamera({
                         bounds: bounds,
-                        padding: this._options.padding
+                        // padding: this._options.padding -- this break zoom
                     });
                 }
             }
@@ -175,7 +177,9 @@ export class BringDataIntoViewControl implements atlas.Control {
 
         if (this._options.style === 'auto') {
             // @ts-ignore
-            this._map.events.remove('styledata', () => { this._mapStyleChanged(); });
+            this._map.events.remove('styledata', () => {
+                this._mapStyleChanged();
+            });
         }
         // @ts-ignore
         this._map = null;

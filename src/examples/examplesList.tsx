@@ -58,7 +58,7 @@ export const examplesList: MapExampleItem[] = [
     path: '/chrono'
   },
   {
-    name: 'Bring Data Control',
+    name: 'Custom Control',
     component: BringDataControl,
     path: '/bring-data-control'
   }
