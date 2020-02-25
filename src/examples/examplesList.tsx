@@ -6,6 +6,7 @@ import ArrowLineExample from './ArrowLinesExample'
 import ControlExample from './ControlExample'
 import ChronoplethMap from './ChoroplethMap'
 import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
+import BringDataControl from "./CustomControl/BringDataControl";
 
 export type MapExampleItem = {
   name: string
@@ -55,5 +56,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Chronopleth map',
     component: ChronoplethMap,
     path: '/chrono'
+  },
+  {
+    name: 'Custom Control',
+    component: BringDataControl,
+    path: '/bring-data-control'
   }
 ]
