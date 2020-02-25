@@ -8,12 +8,12 @@ import {
     IAzureMapOptions,
     IAzureCustomControls
 } from 'react-azure-maps'
-import {AuthenticationType} from 'azure-maps-control'
-import {BringDataIntoViewControl} from "./BringDataControlHelper";
-import {key} from "../../key";
+import { AuthenticationType, ControlPosition } from 'azure-maps-control'
+import { BringDataIntoViewControl } from "./BringDataControlHelper";
+import { key } from "../../key";
 import Typography from "@material-ui/core/Typography";
 import Description from "../../Layout/Description";
-import {wrapperStyles} from "../RouteExample";
+import { wrapperStyles } from "../RouteExample";
 
 const option: IAzureMapOptions = {
     authOptions: {
@@ -28,7 +28,7 @@ const controls: [IAzureCustomControls] = [{
         units: 'imperial',
     }),
     controlOptions: {
-        position: 'top-left'
+        position: ControlPosition.TopLeft
     }
 }]
 
@@ -44,7 +44,7 @@ const BringDataControl: React.FC = () => (
             is loaded on the map. This works with data in a HtmlMarkers, DataSource and ImageLayers. Does not support
             TileLayers and VectorTileSources.
         </Description>
-        <div style={{height: '300px'}}>
+        <div style={{ height: '300px' }}>
             <AzureMapsProvider>
                 <AzureMap options={option} customControls={controls}>
                     <AzureMapDataSourceProvider
