@@ -5,7 +5,8 @@ import {
     AzureMapHtmlMarker,
     AzureMapLayerProvider,
     AzureMapsProvider,
-    IAzureMapOptions
+    IAzureMapOptions,
+    IAzureCustomControls
 } from 'react-azure-maps'
 import {AuthenticationType} from 'azure-maps-control'
 import {BringDataIntoViewControl} from "./BringDataControlHelper";
@@ -22,7 +23,7 @@ const option: IAzureMapOptions = {
     view: 'Auto'
 }
 
-const controls: any = [{
+const controls: [IAzureCustomControls] = [{
     control: new BringDataIntoViewControl({
         units: 'imperial',
     }),
