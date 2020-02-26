@@ -7,6 +7,7 @@ import ControlExample from './ControlExample'
 import ChronoplethMap from './ChoroplethMap'
 import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
+import BubbleLayer from "./BubbleLayer";
 
 export type MapExampleItem = {
   name: string
@@ -26,6 +27,11 @@ export const examplesList: MapExampleItem[] = [
     name: 'Layers',
     component: AzureLayer,
     path: '/layers'
+  },
+  {
+    name: 'Bubble layer',
+    component: BubbleLayer,
+    path: '/bubble-layer'
   },
   {
     name: 'Markers',
