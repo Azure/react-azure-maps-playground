@@ -8,6 +8,7 @@ import ChronoplethMap from './ChoroplethMap'
 import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
 import BubbleLayer from "./BubbleLayer";
+import SymbolAlongPath from "./Animations/SymbolAlongPath";
 
 export type MapExampleItem = {
   name: string
@@ -27,6 +28,11 @@ export const examplesList: MapExampleItem[] = [
     name: 'Layers',
     component: AzureLayer,
     path: '/layers'
+  },
+  {
+    name: 'Animate Symbol',
+    component: SymbolAlongPath,
+    path: '/symbolAlongPath'
   },
   {
     name: 'Bubble layer',
