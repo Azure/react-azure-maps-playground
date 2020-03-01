@@ -4,7 +4,6 @@ import {
   AzureMapDataSourceProvider,
   AzureMapFeature,
   AzureMapLayerProvider,
-  AzureMapShapeProvider,
   AzureMapsProvider,
   IAzureMapOptions
 } from 'react-azure-maps'
@@ -78,9 +77,9 @@ const ShapeExample: React.FC = () => {
                 id={'shape AzureMapLayerProvider'}
                 type={'BubbleLayer'}
               ></AzureMapLayerProvider>
-              <AzureMapShapeProvider>
                 <AzureMapFeature
                   key={'feature'}
+                  variant={'shape'}
                   id={'feature feee'}
                   type="Point"
                   coordinate={coords1}
@@ -91,7 +90,6 @@ const ShapeExample: React.FC = () => {
                   setCoords={coords1}
                   setProperties={featureProperties}
                 />
-              </AzureMapShapeProvider>
             </AzureMapDataSourceProvider>
           </AzureMap>
         </AzureMapsProvider>
