@@ -1,16 +1,15 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
   AzureMap,
   AzureMapDataSourceProvider,
   AzureMapFeature,
   AzureMapLayerProvider,
-  AzureMapShapeProvider,
   AzureMapsProvider,
   IAzureMapOptions
 } from 'react-azure-maps'
-import {AuthenticationType, data} from 'azure-maps-control'
-import {key} from "../../key";
-import {Button} from "@material-ui/core";
+import { AuthenticationType, data } from 'azure-maps-control'
+import { key } from "../../key";
+import { Button } from "@material-ui/core";
 import Description from "../../Layout/Description";
 
 const option: IAzureMapOptions = {
@@ -27,7 +26,7 @@ const randomColor = (): Object => {
   const colorValue = "#000000".replace(/0/g, function () {
     return (~~(Math.random() * 16)).toString(16);
   })
-  return {color: colorValue}
+  return { color: colorValue }
 }
 
 const renderPoint = (): data.Position => {
@@ -42,8 +41,8 @@ const ShapeExample: React.FC = () => {
 
   return (
     <>
-      <Description>Simple shape example <br/>
-        Use Shape for easy to update and maintain Feature. <br/>
+      <Description>Simple shape example <br />
+        Use Shape for easy to update and maintain Feature. <br />
         Wrap feature that you want dynamically update by AzureMapShapeProvider
       </Description>
       <div style={styles.buttonContainer}>
@@ -67,7 +66,7 @@ const ShapeExample: React.FC = () => {
           Change color
         </Button>
       </div>
-      <div style={{height: '300px'}}>
+      <div style={{ height: '300px' }}>
         <AzureMapsProvider>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider id={'DataSource Provider'}>
@@ -78,20 +77,19 @@ const ShapeExample: React.FC = () => {
                 id={'shape AzureMapLayerProvider'}
                 type={'BubbleLayer'}
               ></AzureMapLayerProvider>
-              <AzureMapShapeProvider>
-                <AzureMapFeature
-                  key={'feature'}
-                  id={'feature feee'}
-                  type="Point"
-                  coordinate={coords1}
-                  properties={{
-                    title: 'Pin',
-                    icon: 'pin-round-blue'
-                  }}
-                  setCoords={coords1}
-                  setProperties={featureProperties}
-                />
-              </AzureMapShapeProvider>
+              <AzureMapFeature
+                key={'feature'}
+                id={'feature feee'}
+                type="Point"
+                coordinate={coords1}
+                properties={{
+                  title: 'Pin',
+                  icon: 'pin-round-blue'
+                }}
+                variant="shape"
+                setCoords={coords1}
+                setProperties={featureProperties}
+              />
             </AzureMapDataSourceProvider>
           </AzureMap>
         </AzureMapsProvider>
