@@ -9,6 +9,7 @@ import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
 import BubbleLayer from "./BubbleLayer";
 import MultiPOint from './MultiplePointWithPopup'
+import ShapeExample from "./Shape/Shape";
 
 export type MapExampleItem = {
   name: string
@@ -38,6 +39,11 @@ export const examplesList: MapExampleItem[] = [
     name: 'Markers',
     component: MarkersExampleWrapper,
     path: '/markers-example'
+  },
+  {
+    name: 'Shape',
+    component: ShapeExample,
+    path: '/shape-example'
   },
   {
     name: 'Popup',
