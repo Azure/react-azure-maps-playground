@@ -8,6 +8,7 @@ import ChronoplethMap from './ChoroplethMap'
 import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
 import BubbleLayer from "./BubbleLayer";
+import MultiPOint from './MultiplePointWithPopup'
 import ShapeExample from "./Shape/Shape";
 
 export type MapExampleItem = {
@@ -40,7 +41,7 @@ export const examplesList: MapExampleItem[] = [
     path: '/markers-example'
   },
   {
-  name: 'Shape',
+    name: 'Shape',
     component: ShapeExample,
     path: '/shape-example'
   },
@@ -48,6 +49,11 @@ export const examplesList: MapExampleItem[] = [
     name: 'Popup',
     component: PopupExample,
     path: '/popup-example'
+  },
+  {
+    name: 'Popup with multiple point on hover',
+    component: MultiPOint,
+    path: '/popup-multi-markers'
   },
   {
     name: 'Route Example',
