@@ -12,6 +12,7 @@ import {
 import { AuthenticationType, data, MapMouseEvent, PopupOptions } from 'azure-maps-control'
 import { Button, Chip } from '@material-ui/core'
 import { key } from '../key'
+import Description from "../Layout/Description";
 
 const points = Array.from({ length: 100 }).map(() => {
   const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120)
@@ -30,8 +31,8 @@ const renderPoint = (coordinates: data.Position) => {
       type="Point"
       coordinate={coordinates}
       properties={{
-        title: 'Pin',
-        icon: 'pin-round-blue'
+        id: rendId,
+        prop: 'My Feature Prop'
       }}
     />
   )
@@ -40,6 +41,7 @@ const renderPoint = (coordinates: data.Position) => {
 const MarkersExample: React.FC = () => {
   const [markers, setMarkers] = useState([...points])
   const [popupOptions, setPopupOptions] = useState<PopupOptions>({})
+  const [popupProperties, setPopupProperties] = useState({})
 
   const option: IAzureMapOptions = useMemo(() => {
     return {
@@ -69,9 +71,12 @@ const MarkersExample: React.FC = () => {
     [markers]
   )
 
-  console.log('MarkerExample RENDER')
+  console.log('MultiplePoint RENDER')
   return (
     <>
+      <Description>Simple example with marker's popup <br/>
+        Popup content are created from markers properties
+      </Description>
       <div style={styles.buttonContainer}>
         <Button
           size="small"
@@ -97,23 +102,30 @@ const MarkersExample: React.FC = () => {
         <AzureMapsProvider>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider
-              id={'markersExample AzureMapDataSourceProvider'}
+              id={'MultiplePoint AzureMapDataSourceProvider'}
             >
               <AzureMapLayerProvider
-                id={'markersExample AzureMapLayerProvider'}
+                id={'MultiplePoint AzureMapLayerProvider'}
                 options={{
-                  textOptions: {
-                    textField: ['get', 'title'], //Specify the property name that contains the text you want to appear with the symbol.
-                    offset: [0, 1.2]
+                  iconOptions: {
+                    image: 'pin-red'
                   }
                 }}
                 events={{
                   mousemove: (e: MapMouseEvent) => {
                     if (e.shapes && e.shapes.length > 0) {
                       const prop: any = e.shapes[0]
+                      // Set popup options
                       setPopupOptions({
                         ...popupOptions,
-                        position: new data.Position(prop.data.geometry.coordinates[0], prop.data.geometry.coordinates[1])
+                        position: new data.Position(prop.data.geometry.coordinates[0], prop.data.geometry.coordinates[1]),
+                        pixelOffset: [0, -18],
+                      })
+                      if(prop.data.properties)
+                        // Set popup properties from Feature Properties that are declared on create Feature
+                      setPopupProperties({
+                        ...prop.data.properties,
+                        dumpProp: 'My Popup'
                       })
                     }
                   }
@@ -126,7 +138,7 @@ const MarkersExample: React.FC = () => {
               isVisible={true}
               options={popupOptions}
               popupContent={
-                <div style={styles.popupStyles}>{JSON.stringify(popupOptions)}</div>
+                <div style={styles.popupStyles}>{JSON.stringify(popupProperties)}</div> // Inject your JSX
               }
             />
           </AzureMap>
