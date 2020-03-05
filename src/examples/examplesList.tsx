@@ -8,6 +8,7 @@ import ChronoplethMap from './ChoroplethMap'
 import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
 import BubbleLayer from "./BubbleLayer";
+import IssMapPosition from "./Live/issPosition";
 import MultiPOint from './MultiplePointWithPopup'
 import ShapeExample from "./Shape/Shape";
 
@@ -79,5 +80,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Custom Control',
     component: BringDataControl,
     path: '/bring-data-control'
+  },
+  {
+    name: 'ASync change custom pin position',
+    component: IssMapPosition,
+    path: '/iss-position'
   }
 ]
