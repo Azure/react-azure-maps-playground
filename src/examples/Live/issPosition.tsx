@@ -6,7 +6,8 @@ import {
   AzureMapLayerProvider,
   AzureMapsProvider,
   IAzureMapImageSprite,
-  IAzureMapOptions
+  IAzureMapOptions,
+  AzureDataPosition
 } from 'react-azure-maps'
 import {AuthenticationType} from 'azure-maps-control'
 import {key} from "../../key";
@@ -56,7 +57,7 @@ const getData = (setIssPosition: Function) => {
 
 const IssMapPosition: React.FC = () => {
 
-  const [issPosition, setIssPosition] = useState(null)
+  const [issPosition, setIssPosition] = useState<AzureDataPosition | null>(null)
 
   useEffect(() => {
     getData(setIssPosition)
@@ -80,16 +81,16 @@ const IssMapPosition: React.FC = () => {
                 }}
                 type={"SymbolLayer"}
               ></AzureMapLayerProvider>
-              {issPosition ? (<AzureMapFeature
+              {issPosition && (<AzureMapFeature
                 id={"LayerExample1 MapFeature"}
                 type="Point"
-                coordinate={issPosition as any} // todo remove this ugly any
+                coordinate={issPosition}
                 properties={{
                   title: "My Title"
                 }}
                 variant={'shape'}
-                setCoords={issPosition as any}
-              ></AzureMapFeature>) : null}
+                setCoords={issPosition}
+              ></AzureMapFeature>)}
             </AzureMapDataSourceProvider>
           </AzureMap>
         </AzureMapsProvider>

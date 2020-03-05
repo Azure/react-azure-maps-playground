@@ -70,7 +70,7 @@ export const examplesList: MapExampleItem[] = [
     path: '/bring-data-control'
   },
   {
-    name: 'live ISS',
+    name: 'ASync change custom pin position',
     component: IssMapPosition,
     path: '/iss-position'
   }
