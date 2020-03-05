@@ -10,7 +10,7 @@
     "@types/react-dom": "16.9.2",
     "@types/react-router-dom": "^5.1.3",
     "react": "^16.10.2",
-    "react-azure-maps": "file:.yalc/react-azure-maps",
+    "react-azure-maps": "0.x",
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1",

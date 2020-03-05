@@ -9,6 +9,8 @@ import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
 import BubbleLayer from "./BubbleLayer";
 import IssMapPosition from "./Live/issPosition";
+import MultiPOint from './MultiplePointWithPopup'
+import ShapeExample from "./Shape/Shape";
 
 export type MapExampleItem = {
   name: string
@@ -40,9 +42,19 @@ export const examplesList: MapExampleItem[] = [
     path: '/markers-example'
   },
   {
+    name: 'Shape',
+    component: ShapeExample,
+    path: '/shape-example'
+  },
+  {
     name: 'Popup',
     component: PopupExample,
     path: '/popup-example'
+  },
+  {
+    name: 'Popup with multiple point on hover',
+    component: MultiPOint,
+    path: '/popup-multi-markers'
   },
   {
     name: 'Route Example',
