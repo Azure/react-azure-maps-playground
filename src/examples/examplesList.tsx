@@ -8,6 +8,7 @@ import ChronoplethMap from './ChoroplethMap'
 import MarkersExampleWrapper from "./MarkersExample/MarkersExampleWrapper";
 import BringDataControl from "./CustomControl/BringDataControl";
 import BubbleLayer from "./BubbleLayer";
+import IssMapPosition from "./Live/issPosition";
 
 export type MapExampleItem = {
   name: string
@@ -67,5 +68,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Custom Control',
     component: BringDataControl,
     path: '/bring-data-control'
+  },
+  {
+    name: 'live ISS',
+    component: IssMapPosition,
+    path: '/iss-position'
   }
 ]

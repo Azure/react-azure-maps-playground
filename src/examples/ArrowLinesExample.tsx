@@ -49,7 +49,7 @@ export const lines: Array<AzureDataPosition[]> = [line1, line2, line3, line4];
 
 const imageSprites = {
   id: "arrow-icon",
-  templateName: "triangle-arrow-up",
+  templateName: "triangle-arrow-up",  // This templateName is already in map
   color: "DarkOrchid",
   secondaryColor: "DarkOrchid"
 };
