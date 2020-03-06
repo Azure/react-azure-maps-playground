@@ -11,6 +11,7 @@ import BubbleLayer from "./BubbleLayer";
 import IssMapPosition from "./Live/issPosition";
 import MultiPOint from './MultiplePointWithPopup'
 import ShapeExample from "./Shape/Shape";
+import COVID from "./Live/COVID-19";
 
 export type MapExampleItem = {
   name: string
@@ -85,5 +86,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'ASync change custom pin position',
     component: IssMapPosition,
     path: '/iss-position'
+  },
+  {
+    name: 'COVID-19',
+    component: COVID,
+    path: '/COVID-19'
   }
 ]
