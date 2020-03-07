@@ -1,4 +1,4 @@
-import React, { memo, useMemo, useState } from 'react'
+import React, {memo, useMemo, useState} from 'react'
 import {
   AzureMap,
   AzureMapDataSourceProvider,
@@ -11,9 +11,9 @@ import {
   IAzureMapLayerType,
   IAzureMapOptions
 } from 'react-azure-maps'
-import { AuthenticationType, data, HtmlMarkerOptions } from 'azure-maps-control'
-import { Button, Chip } from '@material-ui/core'
-import { key } from '../../key'
+import {AuthenticationType, data, HtmlMarkerOptions, SymbolLayerOptions} from 'azure-maps-control'
+import {Button, Chip} from '@material-ui/core'
+import {key} from '../../key'
 
 const point1 = new data.Position(-100.01, 45.01)
 const point2 = new data.Position(-120.2, 45.1)
@@ -38,8 +38,15 @@ function azureHtmlMapMarkerOptions(
   }
 }
 
+const memoizedOptions: SymbolLayerOptions = {
+  textOptions: {
+    textField: ['get', 'title'], //Specify the property name that contains the text you want to appear with the symbol.
+    offset: [0, 1.2],
+  }
+}
+
 const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-  { eventName: 'click', callback: onClick }
+  {eventName: 'click', callback: onClick}
 ]
 
 const renderPoint = (coordinates: data.Position) => {
@@ -71,12 +78,27 @@ function renderHTMLPoint(coordinates: data.Position): any {
   )
 }
 
+const colorValue = () => (
+  "#000000".replace(/0/g, function () {
+    return (~~(Math.random() * 16)).toString(16);
+  })
+)
+const markersStandardImages = [
+  `marker-black`, `marker-blue`, `marker-darkblue`, `marker-red`, `marker-yellow`, `pin-blue`, `pin-darkblue`, `pin-red`, `pin-round-blue`, `pin-round-darkblue`, `pin-round-red`
+]
+
+const rand = () => {
+  const randomImage2 = markersStandardImages[Math.floor(Math.random() * markersStandardImages.length)]
+  return randomImage2
+}
 const MarkersExample: React.FC = () => {
   const [markers, setMarkers] = useState([point1, point2, point3])
   const [htmlMarkers, setHtmlMarkers] = useState([point4])
   const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>(
     'SymbolLayer'
   )
+  const [layerOptions, setLayerOptions] = useState<SymbolLayerOptions>(memoizedOptions)
+
 
   const option: IAzureMapOptions = useMemo(() => {
     return {
@@ -145,19 +167,31 @@ const MarkersExample: React.FC = () => {
           size="small"
           variant="contained"
           color="primary"
-          onClick={() => setMarkersLayer('SymbolLayer')}
+          onClick={() => setLayerOptions(
+            {
+              textOptions: {
+                color: colorValue(),
+                size: 16,
+              },
+            }
+          )}
         >
           {' '}
-          SET POINT
+          Text Options
         </Button>
         <Button
           size="small"
           variant="contained"
           color="primary"
-          onClick={() => setMarkersLayer('HeatLayer')}
-        >
+          onClick={() => setLayerOptions(
+            {
+              iconOptions: {
+                image: rand()
+              },
+            }
+          )}>
           {' '}
-          SET HEAT
+          ICON OPTIONS
         </Button>
         <Button
           size="small"
@@ -168,8 +202,8 @@ const MarkersExample: React.FC = () => {
           {' '}
           REMOVE ALL
         </Button>
-        <Chip label={`Markers Point on map: ${markers.length}`} />
-        <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
+        <Chip label={`Markers Point on map: ${markers.length}`}/>
+        <Chip label={`Markers HTML on map: ${htmlMarkers.length}`}/>
       </div>
       <div style={styles.map}>
         <AzureMapsProvider>
@@ -181,16 +215,11 @@ const MarkersExample: React.FC = () => {
                 }
               }}
               id={'markersExample AzureMapDataSourceProvider'}
-              options={{ cluster: true }}
+              options={{cluster: true, clusterRadius: 2}}
             >
               <AzureMapLayerProvider
                 id={'markersExample AzureMapLayerProvider'}
-                options={{
-                  textOptions: {
-                    textField: ['get', 'title'], //Specify the property name that contains the text you want to appear with the symbol.
-                    offset: [0, 1.2]
-                  }
-                }}
+                options={layerOptions}
                 events={{
                   click: clusterClicked,
                   dbclick: clusterClicked
