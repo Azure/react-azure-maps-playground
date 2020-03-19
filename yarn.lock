@@ -934,7 +934,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.8.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.7.tgz#8fefce9802db54881ba59f90bb28719b4996324d"
   integrity sha512-+AATMUFppJDw6aiR5NVPHqIQBlV/Pj8wY/EZH+lmvRdUo9xBaz/rF3alAwFJQavvKfeOlPE7oaaDHVbcySbCsg==
@@ -1425,6 +1425,14 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
+"@testing-library/react-hooks@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-3.2.1.tgz#19b6caa048ef15faa69d439c469033873ea01294"
+  integrity sha512-1OB6Ksvlk6BCJA1xpj8/WWz0XVd1qRcgqdaFAq+xeC6l61Ucj0P6QpA5u+Db/x9gU4DCX8ziR5b66Mlfg0M2RA==
+  dependencies:
+    "@babel/runtime" "^7.5.4"
+    "@types/testing-library__react-hooks" "^3.0.0"
+
 "@types/adal-angular@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/adal-angular/-/adal-angular-1.0.1.tgz#424822e2e17a6c185f33ef80b1208f035e52a735"
@@ -1585,6 +1593,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-test-renderer@*":
+  version "16.9.2"
+  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.9.2.tgz#e1c408831e8183e5ad748fdece02214a7c2ab6c5"
+  integrity sha512-4eJr1JFLIAlWhzDkBCkhrOIWOvOxcCAfQh+jiKg7l/nNZcCIL2MHl2dZhogIFKyHzedVWHaVP1Yydq/Ruu4agw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.2.0":
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.2.4.tgz#c7416225987ccdb719262766c1483da8f826838d"
@@ -1612,6 +1627,14 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
+
+"@types/testing-library__react-hooks@^3.0.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@types/testing-library__react-hooks/-/testing-library__react-hooks-3.2.0.tgz#52f3a109bef06080e3b1e3ae7ea1c014ce859897"
+  integrity sha512-dE8iMTuR5lzB+MqnxlzORlXzXyCL0EKfzH0w/lau20OpkHD37EaWjZDz0iNG8b71iEtxT4XKGmSKAGVEqk46mw==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-test-renderer" "*"
 
 "@types/uuid@^7.0.0":
   version "7.0.0"
@@ -2223,13 +2246,6 @@ azure-maps-control@2.0.21:
   version "2.0.21"
   resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-2.0.21.tgz#9f7c0fc647bc0c0d4bf186d4e70a1f9d6db00899"
   integrity sha512-lgmX/527qlN+yeKKsNvZA8tj88dUTsiU4lk+pPyRA6HUq/T1M9V+u8UFAvjazPs764mYfIcS3Em4t3m3TVwe1Q==
-  dependencies:
-    "@types/adal-angular" "^1.0.1"
-
-azure-maps-control@2.0.23:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-2.0.23.tgz#a588069e048dc8043750c835a8053274cfa16e63"
-  integrity sha512-pEK9hOajeF9qpLlobfZwygp0SfCeRrVDsLcs/ZjJMx07ikI0ewS/hRGzSwwt/NWFrWcURJh+n7Vuzrm6H+L2iw==
   dependencies:
     "@types/adal-angular" "^1.0.1"
 
@@ -8952,15 +8968,17 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-azure-maps@0.x:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-0.0.5.tgz#c448e61aa2e8f9a5e6c3a0260e1e1c7fa35f8e63"
-  integrity sha512-VBa4O8P41Nfy+4JE83DlXomaZw0gmNdqOPs3goZ729g7lYGsjI35j02PbiwgVbnFFZg1mORz+tUNPHOCMALFCw==
+react-azure-maps@^0.x:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-0.0.6.tgz#ac36b92b1b0d5e34d8dcac338f07b0c1739e8143"
+  integrity sha512-rCtPjAbSciKwH3D/EUeBk1iMwwNbq58wQVwdUWFxn81i93Ia30adbc3dQv1M3lC9Bax60TkECkaWRwIk/pxMlA==
   dependencies:
+    "@testing-library/react-hooks" "^3.2.1"
     "@types/uuid" "^7.0.0"
-    azure-maps-control "2.0.23"
+    azure-maps-control "2.0.21"
     guid-typescript "^1.0.9"
     mapbox-gl "^1.8.1"
+    react-test-renderer "^16.13.0"
     rollup-plugin-peer-deps-external "^2.2.2"
     rollup-plugin-postcss "^2.1.1"
 
@@ -9009,7 +9027,7 @@ react-error-overlay@^6.0.6:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.6.tgz#ac4d9dc4c1b5c536c2c312bf66aa2b09bfa384e2"
   integrity sha512-Yzpno3enVzSrSCnnljmr4b/2KUQSMZaPuqmS26t9k4nW7uwJk6STWmH9heNjPuvqUTO3jOSPkHoKgO4+Dw7uIw==
 
-react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
   integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
@@ -9102,6 +9120,16 @@ react-scripts@^3.4.0:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.1.2"
+
+react-test-renderer@^16.13.0:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.13.0.tgz#39ba3bf72cedc8210c3f81983f0bb061b14a3014"
+  integrity sha512-NQ2S9gdMUa7rgPGpKGyMcwl1d6D9MCF0lftdI3kts6kkiX+qvpC955jNjAZXlIDTjnN9jwFI8A8XhRh/9v0spA==
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    react-is "^16.8.6"
+    scheduler "^0.19.0"
 
 react-transition-group@^4.3.0:
   version "4.3.0"
