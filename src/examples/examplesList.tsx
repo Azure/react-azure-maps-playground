@@ -12,6 +12,7 @@ import IssMapPosition from "./Live/issPosition";
 import MultiPOint from './MultiplePointWithPopup'
 import ShapeExample from "./Shape/Shape";
 import COVID from "./Live/COVID-19";
+import HtmlMarkerLayer from "./CustomLayer/HTMLMarkerLayer";
 
 export type MapExampleItem = {
   name: string
@@ -91,5 +92,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'COVID-19',
     component: COVID,
     path: '/COVID-19'
+  },
+  {
+    name: 'HTML Markers Layer',
+    component: HtmlMarkerLayer,
+    path: '/html-markers-layer'
   }
 ]
