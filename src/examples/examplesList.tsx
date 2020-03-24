@@ -88,11 +88,11 @@ export const examplesList: MapExampleItem[] = [
     component: IssMapPosition,
     path: '/iss-position'
   },
-  {
-    name: 'COVID-19',
-    component: COVID,
-    path: '/COVID-19'
-  },
+  // {
+  //   name: 'COVID-19',
+  //   component: COVID,
+  //   path: '/COVID-19'
+  // },
   {
     name: 'HTML Markers Layer',
     component: HtmlMarkerLayer,

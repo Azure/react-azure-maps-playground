@@ -23,10 +23,8 @@
 */
 
 // @ts-ignore
-import atlas, {source, data, Shape, ClusteredProperties, LayerOptions, HtmlMarker, layer, Map, BubbleLayerOptions} from "azure-maps-control";
-
+import atlas, { source, data, Shape, ClusteredProperties, LayerOptions, HtmlMarker, layer, Map, BubbleLayerOptions } from "azure-maps-control";
 const { BubbleLayer } = layer
-console.log("HELLP", layer)
 /**
  * Options for the HTML Marker Layer class.
  */
@@ -78,11 +76,13 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
     /*********************
      * Private Properties
      *********************/
+    // @ts-ignore
 
-        // @ts-ignore
+    // @ts-ignore
     private _options = <HtmlMarkerLayerOptions>{
         sourceLayer: undefined,
-        source: undefined,
+        source: null,
+        type: 'circle',
         filter: undefined,
         minZoom: 0,
         maxZoom: 24,
@@ -128,7 +128,9 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             strokeWidth: 0
         });
         // @ts-ignore
-        // this.setOptions(options);
+        this.setOptions({ ...options, source, id });
+        // @ts-ignore
+        // this.__proto__._buildLayers().bind(this)
     }
 
     /*********************
@@ -161,7 +163,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             newBaseOptions.sourceLayer = options.sourceLayer;
             cc = true;
         }
-// @ts-ignore
+        // @ts-ignore
 
         if (options.filter && this._options.filter !== options.filter) {
             // @ts-ignore
@@ -170,7 +172,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             newBaseOptions.filter = options.filter;
             cc = true;
         }
-// @ts-ignore
+        // @ts-ignore
 
         if (typeof options.minZoom === 'number' && this._options.minZoom !== options.minZoom) {
             // @ts-ignore
@@ -178,7 +180,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             // @ts-ignore
             newBaseOptions.minZoom = options.minZoom;
         }
-// @ts-ignore
+        // @ts-ignore
 
         if (typeof options.maxZoom === 'number' && this._options.maxZoom !== options.maxZoom) {
             // @ts-ignore
@@ -186,7 +188,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             // @ts-ignore
             newBaseOptions.maxZoom = options.maxZoom;
         }
-// @ts-ignore
+        // @ts-ignore
 
         if (typeof options.visible !== 'undefined' && this._options.visible !== options.visible) {
             // @ts-ignore
@@ -194,7 +196,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             // @ts-ignore
             newBaseOptions.visible = options.visible;
         }
-// @ts-ignore
+        // @ts-ignore
 
         if (options.markerRenderCallback && this._options.markerRenderCallback != options.markerRenderCallback) {
             this._options.markerRenderCallback = options.markerRenderCallback;
@@ -215,7 +217,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
         } else {
             this.updateMarkers();
         }
-
+        // @ts-ignore
         super.setOptions(newBaseOptions);
     }
 
@@ -315,7 +317,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
         // @ts-ignore
         if (this._map && this._map.getCamera().zoom >= this._options.minZoom && this._map.getCamera().zoom <= this._options.maxZoom) {
             // @ts-ignore
-            var shapes = this._map.layers.getRenderedShapes(null, this, this._options.filter);
+            var shapes = this._map.layers.getRenderedShapes(null, this.getId(), this._options.filter);
 
             var newMarkers = [];
             var newMarkerIds = [];
@@ -342,8 +344,7 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
                     }
                 } else {
                     feature = <data.Feature<data.Geometry, any>>shapes[i];
-
-                    if (feature.geometry.type === 'Point') {
+                    if (feature.geometry && feature.geometry.type === 'Point') {
                         position = <data.Position>feature.geometry.coordinates;
                         properties = feature.properties;
 
@@ -395,7 +396,6 @@ export class HtmlMarkerLayerHelper extends BubbleLayer {
             return this._markerCache[id];
         } else {
             var m: HtmlMarker;
-
             if (properties && properties.cluster) {
                 if (this._options.clusterRenderCallback && typeof properties.cluster_id === 'number') {
                     m = this._options.clusterRenderCallback(id, position, properties);

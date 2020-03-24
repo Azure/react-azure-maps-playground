@@ -23,14 +23,16 @@ const option: IAzureMapOptions = {
     view: 'Auto'
 }
 
-const controls: [IAzureCustomControls] = [{
-    control: new BringDataIntoViewControl({
-        units: 'imperial',
-    }),
-    controlOptions: {
-        position: ControlPosition.TopLeft
-    }
-}]
+const controls: [IAzureCustomControls] =
+    [{
+        // @ts-ignore
+        control: new BringDataIntoViewControl({
+            units: 'imperial',
+        }),
+        controlOptions: {
+            position: ControlPosition.TopLeft
+        }
+    }]
 
 
 const BringDataControl: React.FC = () => (

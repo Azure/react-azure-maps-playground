@@ -6,12 +6,9 @@ import {
     AzureMapsProvider,
     IAzureMapOptions
 } from 'react-azure-maps'
-import {AuthenticationType} from 'azure-maps-control'
-import {key} from '../../key'
-import {samplePoiDatSet} from "../../Assets/geoJsons/dataSet";
-import {HtmlMarkerLayerHelper} from "./HtmlMarkerLayerHelper";
-import {HtmlMarkerLayerJS} from "./HTMLMarkerCustomLayer";
-import atlas from "azure-maps-control";
+import { key } from '../../key'
+import { HtmlMarkerLayerHelper } from "./HtmlMarkerLayerHelper";
+import atlas, { HtmlMarker, AuthenticationType, data, layer } from "azure-maps-control";
 
 // function markerHovered(e) {
 //     var content;
@@ -46,51 +43,62 @@ const option: IAzureMapOptions = {
     style: 'night',
     view: 'Auto',
 }
+
+
 const HtmlMarkerLayer: React.FC = () => (
-    <div style={{height: '300px'}}>
+    <div style={{ height: '300px' }}>
         <AzureMapsProvider>
             <AzureMap options={option}>
                 <AzureMapDataSourceProvider
-                id={'HTMLMarkers DataSrouceProvider'}
-                collection={samplePoiDatSet}
-                options={{cluster: true}}
+                    id={'HTMLMarkers DataSrouceProvider'}
+                    dataFromUrl="https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/SamplePoiDataSet.json"
+                    options={{ cluster: true }}
                 >
                     <AzureMapLayerProvider
-                        id={'BubbleLayer3 LayerProvider'}
-                        options={{
-                            // markerRenderCallback: (id: any, position: any, properties: any) => {
-                            //     debugger
-                            //     //Business logic to define color of marker.
-                            //     var color = 'blue';
-                            //
-                            //     switch (properties.EntityType) {
-                            //         case 'Gas Station':
-                            //             color = '#3366CC';
-                            //             break;
-                            //         case 'Grocery Store':
-                            //             color = '#DC3912';
-                            //             break;
-                            //         case 'Restaurant':
-                            //             color = '#FF9900';
-                            //             break;
-                            //         case 'School':
-                            //             color = '#109618';
-                            //             break;
-                            //         default:
-                            //             break;
-                            //     }
-                            //
-                            //     //Create an HtmlMarker with a random color.
-                            //     var marker = new atlas.HtmlMarker({
-                            //         position: position,
-                            //         color: color
-                            //     });
-                            //
-                            //     return marker;
-                            // },
-                        }}
                         type="custom"
-                        CustomkLayer={HtmlMarkerLayerHelper}
+                        onCreateCustomLayer={() => {
+                            const markerLayer = new HtmlMarkerLayerHelper('HTMLMarkers DataSrouceProvider', 'BubbleLayer3 LayerProvider',
+                                // @ts-ignore
+                                {
+                                    markerRenderCallback: (id: string, position: data.Position, properties: any) => {
+                                        //Business logic to define color of marker.
+                                        console.log('asd')
+                                        let color = 'blue';
+                                        switch (properties.EntityType) {
+                                            case 'Gas Station':
+                                                color = '#3366CC';
+                                                break;
+                                            case 'Grocery Store':
+                                                color = '#DC3912';
+                                                break;
+                                            case 'Restaurant':
+                                                color = '#FF9900';
+                                                break;
+                                            case 'School':
+                                                color = '#109618';
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                        //Create an HtmlMarker with a random color.
+                                        const marker = new HtmlMarker({
+                                            position: position,
+                                            color: color
+                                        });
+                                        return marker;
+                                    },
+                                    clusterRenderCallback: function (id: any, position: any, properties: any) {
+                                        var cluster = new HtmlMarker({
+                                            position: position,
+                                            color: 'DarkViolet',
+                                            text: properties.point_count_abbreviated
+                                        });
+                                        return cluster;
+                                    }
+                                });
+                            return markerLayer
+                        }}
                     ></AzureMapLayerProvider>
                 </AzureMapDataSourceProvider>
             </AzureMap>
