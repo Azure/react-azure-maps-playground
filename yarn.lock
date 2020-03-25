@@ -8973,8 +8973,10 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-"react-azure-maps@file:.yalc/react-azure-maps":
-  version "0.0.6-c4b7a3c3"
+react-azure-maps@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-0.0.7.tgz#f257f518068532dbf3a67588c4e8bf894597a9b6"
+  integrity sha512-c3taYtz4DApsWuro0nJKXhGL3qnR6mElQbXvyHHBUJ5YIJsS6dGTPuw1a6zr3H+U60ks0mjgWxhGvyQp8vpVRg==
   dependencies:
     "@testing-library/react-hooks" "^3.2.1"
     "@types/uuid" "^7.0.0"
