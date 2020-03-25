@@ -1,4 +1,4 @@
-import React, {memo, useMemo, useState} from 'react'
+import React, { memo, useMemo, useState } from 'react'
 import {
   AzureMap,
   AzureMapDataSourceProvider,
@@ -11,9 +11,9 @@ import {
   IAzureMapLayerType,
   IAzureMapOptions
 } from 'react-azure-maps'
-import {AuthenticationType, data, HtmlMarkerOptions, SymbolLayerOptions} from 'azure-maps-control'
-import {Button, Chip} from '@material-ui/core'
-import {key} from '../../key'
+import { AuthenticationType, data, HtmlMarkerOptions, SymbolLayerOptions } from 'azure-maps-control'
+import { Button, Chip } from '@material-ui/core'
+import { key } from '../../key'
 
 const point1 = new data.Position(-100.01, 45.01)
 const point2 = new data.Position(-120.2, 45.1)
@@ -46,7 +46,7 @@ const memoizedOptions: SymbolLayerOptions = {
 }
 
 const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [
-  {eventName: 'click', callback: onClick}
+  { eventName: 'click', callback: onClick }
 ]
 
 const renderPoint = (coordinates: data.Position) => {
@@ -72,7 +72,7 @@ function renderHTMLPoint(coordinates: data.Position): any {
     <AzureMapHtmlMarker
       key={rendId}
       markerContent={<div className="pulseIcon"></div>}
-      options={azureHtmlMapMarkerOptions(coordinates)}
+      options={{ ...azureHtmlMapMarkerOptions(coordinates) } as any}
       events={eventToMarker}
     />
   )
@@ -202,8 +202,8 @@ const MarkersExample: React.FC = () => {
           {' '}
           REMOVE ALL
         </Button>
-        <Chip label={`Markers Point on map: ${markers.length}`}/>
-        <Chip label={`Markers HTML on map: ${htmlMarkers.length}`}/>
+        <Chip label={`Markers Point on map: ${markers.length}`} />
+        <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
       </div>
       <div style={styles.map}>
         <AzureMapsProvider>
@@ -215,7 +215,7 @@ const MarkersExample: React.FC = () => {
                 }
               }}
               id={'markersExample AzureMapDataSourceProvider'}
-              options={{cluster: true, clusterRadius: 2}}
+              options={{ cluster: true, clusterRadius: 2 }}
             >
               <AzureMapLayerProvider
                 id={'markersExample AzureMapLayerProvider'}

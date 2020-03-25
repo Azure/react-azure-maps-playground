@@ -48,11 +48,6 @@ const getData = (setIssPosition: Function) => {
   xhr.open('GET', 'http://api.open-notify.org/iss-now.json')
   // send the request
   xhr.send()
-
-  // Timeout
-  setTimeout(() => {
-    getData(setIssPosition)
-  }, 3000)
 }
 
 const IssMapPosition: React.FC = () => {
@@ -61,6 +56,12 @@ const IssMapPosition: React.FC = () => {
 
   useEffect(() => {
     getData(setIssPosition)
+    const foo = setInterval(() => {
+      getData(setIssPosition)
+    }, 3000)
+    return () => {
+      clearInterval(foo)
+    }
   }, [])
 
   return (
