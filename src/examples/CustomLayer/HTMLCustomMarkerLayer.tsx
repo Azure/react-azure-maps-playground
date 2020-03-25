@@ -3,35 +3,32 @@ import {
     AzureMap,
     AzureMapDataSourceProvider,
     AzureMapLayerProvider,
+    AzureMapPopup,
     AzureMapsProvider,
     IAzureMapOptions
 } from 'react-azure-maps'
-import { key } from '../../key'
-import { HtmlMarkerLayerHelper } from "./HtmlMarkerLayerHelper";
-import atlas, { HtmlMarker, AuthenticationType, data, layer } from "azure-maps-control";
+import {key} from '../../key'
+import {AuthenticationType, data, HtmlMarker} from "azure-maps-control";
+import {wrapperStyles} from "../PopupExample";
+import {HtmlMarkerLayer} from "./HTMLMarkerLayer";
 
-// function markerHovered(e) {
-//     var content;
-//     var marker = e.target;
-//     if (marker.properties.cluster) {
-//         content = 'Cluster of ' + marker.properties.point_count_abbreviated + ' markers';
-//     } else {
-//         content = marker.properties.Name;
-//     }
-//
-//     //Update the content and position of the popup.
-//     popup.setOptions({
-//         content: '<div style="padding:10px;">' + content + '</div>',
-//         position: marker.getOptions().position
-//     });
-//
-//     //Open the popup.
-//     popup.open(map);
-// }
-//
-// function hidePopup() {
-//     popup.close();
-// }
+function markerHovered(e: any) {
+    var content;
+    var marker = e.target;
+    if (marker.properties.cluster) {
+        content = 'Cluster of ' + marker.properties.point_count_abbreviated + ' markers';
+    } else {
+        content = marker.properties.Name;
+    }
+    const popup = e.target.map.popups.popups.values().next().value
+    // Update the content and position of the popup.
+    popup.setOptions({
+        content: '<div style="padding:10px;">' + content + '</div>',
+        position: marker.getOptions().position
+    });
+    //Open the popup.
+    popup.open(e.target.map);
+}
 
 const option: IAzureMapOptions = {
     authOptions: {
@@ -45,24 +42,24 @@ const option: IAzureMapOptions = {
 }
 
 
-const HtmlMarkerLayer: React.FC = () => (
-    <div style={{ height: '300px' }}>
+const HTMLCustomMarkerLayer: React.FC = () => (
+    <div style={{height: '300px'}}>
         <AzureMapsProvider>
             <AzureMap options={option}>
                 <AzureMapDataSourceProvider
                     id={'HTMLMarkers DataSrouceProvider'}
                     dataFromUrl="https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/SamplePoiDataSet.json"
-                    options={{ cluster: true }}
+                    options={{cluster: true}}
+                    events={[]}
                 >
                     <AzureMapLayerProvider
                         type="custom"
-                        onCreateCustomLayer={() => {
-                            const markerLayer = new HtmlMarkerLayerHelper('HTMLMarkers DataSrouceProvider', 'BubbleLayer3 LayerProvider',
+                        onCreateCustomLayer={(dataSourceRef, mapRef) => {
+                            const markerLayer = new HtmlMarkerLayer('HTMLMarkers DataSrouceProvider', null,
                                 // @ts-ignore
                                 {
-                                    markerRenderCallback: (id: string, position: data.Position, properties: any) => {
+                                    markerRenderCallback: function (id: string, position: data.Position, properties: any) {
                                         //Business logic to define color of marker.
-                                        console.log('asd')
                                         let color = 'blue';
                                         switch (properties.EntityType) {
                                             case 'Gas Station':
@@ -86,6 +83,11 @@ const HtmlMarkerLayer: React.FC = () => (
                                             position: position,
                                             color: color
                                         });
+
+                                        if (mapRef) {
+                                            mapRef.events.add('mouseover', marker, markerHovered);
+                                        }
+
                                         return marker;
                                     },
                                     clusterRenderCallback: function (id: any, position: any, properties: any) {
@@ -94,16 +96,29 @@ const HtmlMarkerLayer: React.FC = () => (
                                             color: 'DarkViolet',
                                             text: properties.point_count_abbreviated
                                         });
+                                        if (mapRef) {
+                                            mapRef.events.add('mouseover', cluster, markerHovered);
+                                        }
                                         return cluster;
                                     }
                                 });
                             return markerLayer
                         }}
-                    ></AzureMapLayerProvider>
+                    />
                 </AzureMapDataSourceProvider>
+                <AzureMapPopup
+                    isVisible={true}
+                    options={{
+                        pixelOffset: [0, -20],
+                        closeButton: false
+                    }}
+                    popupContent={
+                        <div style={wrapperStyles.popupStyles}></div>
+                    }
+                />
             </AzureMap>
         </AzureMapsProvider>
     </div>
 )
 
-export default HtmlMarkerLayer
+export default HTMLCustomMarkerLayer
