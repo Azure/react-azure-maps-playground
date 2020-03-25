@@ -55,7 +55,7 @@ const HTMLCustomMarkerLayer: React.FC = () => (
                     <AzureMapLayerProvider
                         type="custom"
                         onCreateCustomLayer={(dataSourceRef, mapRef) => {
-                            const markerLayer = new HtmlMarkerLayer('HTMLMarkers DataSrouceProvider', null,
+                            const markerLayer = new HtmlMarkerLayer('HTMLMarkers DataSrouceProvider', 'HTMLMarker LayerProvider',
                                 // @ts-ignore
                                 {
                                     markerRenderCallback: function (id: string, position: data.Position, properties: any) {

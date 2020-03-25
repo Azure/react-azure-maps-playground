@@ -2207,10 +2207,10 @@ axobject-query@^2.0.2:
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.1.2.tgz#2bdffc0371e643e5f03ba99065d5179b9ca79799"
   integrity sha512-ICt34ZmrVt8UQnvPl6TVyDTkmhXmAyAT4Jh5ugfGUX4MOrZ+U/ZY6/sdylRw3qGNr9Ub5AJsaHeDMzNLehRdOQ==
 
-azure-maps-control@2.0.21:
-  version "2.0.21"
-  resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-2.0.21.tgz#9f7c0fc647bc0c0d4bf186d4e70a1f9d6db00899"
-  integrity sha512-lgmX/527qlN+yeKKsNvZA8tj88dUTsiU4lk+pPyRA6HUq/T1M9V+u8UFAvjazPs764mYfIcS3Em4t3m3TVwe1Q==
+azure-maps-control@2.0.25:
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-2.0.25.tgz#34a901efd7920e3d7223c31bd68ce1230c50437a"
+  integrity sha512-Afdw9ph+hOfauKYFec7V8ZWmTrqWSJJYo0mKPjEnUyOrEYgO9/uKbg/lleEgz/CHbhziyhwMBwXvSTMLbtqOZg==
   dependencies:
     "@types/adal-angular" "^1.0.1"
 
@@ -8974,11 +8974,11 @@ react-app-polyfill@^1.0.6:
     whatwg-fetch "^3.0.0"
 
 "react-azure-maps@file:.yalc/react-azure-maps":
-  version "0.0.6-90c61e9d"
+  version "0.0.6-c4b7a3c3"
   dependencies:
     "@testing-library/react-hooks" "^3.2.1"
     "@types/uuid" "^7.0.0"
-    azure-maps-control "2.0.21"
+    azure-maps-control "2.0.25"
     guid-typescript "^1.0.9"
     mapbox-gl "^1.8.1"
     react-test-renderer "^16.13.0"
