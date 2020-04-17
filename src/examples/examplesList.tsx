@@ -14,6 +14,7 @@ import ShapeExample from "./Shape/Shape";
 import COVID from "./Live/COVID-19";
 import HTMLCustomMarkerLayer from "./CustomLayer/HTMLCustomMarkerLayer";
 import AsyncPopup from './AsyncPopupExample'
+import PolygonExample from "./PolygonExample";
 
 export type MapExampleItem = {
   name: string
@@ -103,5 +104,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Async Popup',
     component: AsyncPopup,
     path: '/async-popup'
+  },
+  {
+    name: 'Polygon Example',
+    component: PolygonExample,
+    path: '/polygon-example'
   }
 ]
