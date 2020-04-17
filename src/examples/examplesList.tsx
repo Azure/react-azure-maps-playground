@@ -13,6 +13,7 @@ import MultiPOint from './MultiplePointWithPopup'
 import ShapeExample from "./Shape/Shape";
 import COVID from "./Live/COVID-19";
 import HTMLCustomMarkerLayer from "./CustomLayer/HTMLCustomMarkerLayer";
+import PolygonExample from "./PolygonExample";
 
 export type MapExampleItem = {
   name: string
@@ -97,5 +98,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'HTML Markers Layer',
     component: HTMLCustomMarkerLayer,
     path: '/html-markers-layer'
+  },
+  {
+    name: 'Polygon Example',
+    component: PolygonExample,
+    path: '/polygon-example'
   }
 ]
