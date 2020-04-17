@@ -13,6 +13,7 @@ import MultiPOint from './MultiplePointWithPopup'
 import ShapeExample from "./Shape/Shape";
 import COVID from "./Live/COVID-19";
 import HTMLCustomMarkerLayer from "./CustomLayer/HTMLCustomMarkerLayer";
+import AsyncPopup from './AsyncPopupExample'
 import PolygonExample from "./PolygonExample";
 
 export type MapExampleItem = {
@@ -98,6 +99,11 @@ export const examplesList: MapExampleItem[] = [
     name: 'HTML Markers Layer',
     component: HTMLCustomMarkerLayer,
     path: '/html-markers-layer'
+  },
+  {
+    name: 'Async Popup',
+    component: AsyncPopup,
+    path: '/async-popup'
   },
   {
     name: 'Polygon Example',
