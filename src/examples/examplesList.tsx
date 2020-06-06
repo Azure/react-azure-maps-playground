@@ -15,6 +15,8 @@ import COVID from "./Live/COVID-19";
 import HTMLCustomMarkerLayer from "./CustomLayer/HTMLCustomMarkerLayer";
 import AsyncPopup from './AsyncPopupExample'
 import PolygonExample from "./PolygonExample";
+import TrafficOptions from "./TrafficOptions";
+import TrafficOptionsExample from "./TrafficOptions";
 
 export type MapExampleItem = {
   name: string
@@ -109,5 +111,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Polygon Example',
     component: PolygonExample,
     path: '/polygon-example'
+  },
+  {
+    name: 'Traffic Options',
+    component: TrafficOptionsExample,
+    path: '/traffic-options'
   }
 ]
