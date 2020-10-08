@@ -17,6 +17,7 @@ import AsyncPopup from './AsyncPopupExample'
 import PolygonExample from "./PolygonExample";
 import TrafficOptions from "./TrafficOptions";
 import TrafficOptionsExample from "./TrafficOptions";
+import ChangeOptionsWrapper from "./Options/ChangeOptionsWrapper";
 
 export type MapExampleItem = {
   name: string
@@ -116,5 +117,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Traffic Options',
     component: TrafficOptionsExample,
     path: '/traffic-options'
+  },
+  {
+    name: 'Change Options In Child',
+    component: ChangeOptionsWrapper,
+    path: '/change-options-child'
   }
 ]
