@@ -1,24 +1,22 @@
-import React, {memo, useMemo} from 'react'
-import {AzureMap, AzureMapsProvider, IAzureMapOptions} from 'react-azure-maps'
-import {AuthenticationType} from 'azure-maps-control'
-import {key} from '../../key'
+import React, { memo, useMemo } from 'react';
+import { AzureMap, AzureMapsProvider, IAzureMapOptions } from 'react-azure-maps';
+import { AuthenticationType } from 'azure-maps-control';
+import { key } from '../../key';
 
-const ChangeOptionsExample: React.FC<any> = ({cameraOptions}) => {
-
+const ChangeOptionsExample: React.FC<any> = ({ cameraOptions }) => {
   const option: IAzureMapOptions = useMemo(() => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: key
+        subscriptionKey: key,
       },
       center: [-100.01, 45.01],
       zoom: 2,
-      view: 'Auto'
-    }
-  }, [])
+      view: 'Auto',
+    };
+  }, []);
 
-
-  console.log('Change Options RERENDER')
+  console.log('Change Options RERENDER');
   return (
     <>
       <div style={styles.map}>
@@ -27,12 +25,12 @@ const ChangeOptionsExample: React.FC<any> = ({cameraOptions}) => {
         </AzureMapsProvider>
       </div>
     </>
-  )
-}
+  );
+};
 
 const styles = {
   map: {
-    height: 300
+    height: 300,
   },
   buttonContainer: {
     display: 'grid',
@@ -40,14 +38,14 @@ const styles = {
     gridGap: '10px',
     gridAutoColumns: 'max-content',
     padding: '10px 0',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   button: {
     height: 35,
     width: 80,
     backgroundColor: '#68aba3',
-    'text-align': 'center'
-  }
-}
+    'text-align': 'center',
+  },
+};
 
-export default memo(ChangeOptionsExample)
+export default memo(ChangeOptionsExample);

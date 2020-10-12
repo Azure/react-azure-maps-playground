@@ -7,7 +7,7 @@ module.exports = {
   plugins: ['react', 'prettier', 'react-hooks'],
   settings: {
     react: {
-      pragma: 'React', // FWIW, I tried without as well.
+      pragma: 'React',
       version: 'detect', // Tried with explicit version number as well.
     },
   },
