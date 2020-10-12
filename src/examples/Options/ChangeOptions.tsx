@@ -3,7 +3,7 @@ import {AzureMap, AzureMapsProvider, IAzureMapOptions} from 'react-azure-maps'
 import {AuthenticationType} from 'azure-maps-control'
 import {key} from '../../key'
 
-const ChangeOptionsExample: React.FC<any> = ({cameraOptions}) => {
+const ChangeOptionsExample: React.FC<any> = ({bounds}) => {
 
   const option: IAzureMapOptions = useMemo(() => {
     return {
@@ -17,8 +17,11 @@ const ChangeOptionsExample: React.FC<any> = ({cameraOptions}) => {
     }
   }, [])
 
+  const cameraOptions = {
+    bounds: bounds
+  }
 
-  console.log('Change Options RERENDER')
+  console.log('Change Options RERENDER', bounds)
   return (
     <>
       <div style={styles.map}>

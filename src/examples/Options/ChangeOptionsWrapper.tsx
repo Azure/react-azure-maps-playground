@@ -28,7 +28,7 @@ const ChangeOptionsWrapper: React.FC = () => {
           Change Bounds
         </Button>
       </div>
-      <ChangeOptionsExample cameraOptions={{bounds: bounds}} />
+      <ChangeOptionsExample bounds={bounds} />
     </div>
   );
 };
