@@ -18,6 +18,7 @@ import PolygonExample from "./PolygonExample";
 import TrafficOptions from "./TrafficOptions";
 import TrafficOptionsExample from "./TrafficOptions";
 import ChangeOptionsWrapper from "./Options/ChangeOptionsWrapper";
+import Building3d from "./Buildings3D";
 
 export type MapExampleItem = {
   name: string
@@ -122,5 +123,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Change Options In Child',
     component: ChangeOptionsWrapper,
     path: '/change-options-child'
+  },
+  {
+    name: 'Building 3D',
+    component: Building3d,
+    path: '/building-3d'
   }
 ]
