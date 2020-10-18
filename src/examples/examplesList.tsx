@@ -11,13 +11,12 @@ import BubbleLayer from './BubbleLayer';
 import IssMapPosition from './Live/issPosition';
 import MultiPOint from './MultiplePointWithPopup';
 import ShapeExample from './Shape/Shape';
-import COVID from './Live/COVID-19';
 import HTMLCustomMarkerLayer from './CustomLayer/HTMLCustomMarkerLayer';
 import AsyncPopup from './AsyncPopupExample';
 import PolygonExample from './PolygonExample';
-import TrafficOptions from './TrafficOptions';
 import TrafficOptionsExample from './TrafficOptions';
 import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
+import MapParentComponent from './MapRef/MapParentComponent';
 
 export type MapExampleItem = {
   name: string;
@@ -32,6 +31,11 @@ export const examplesList: MapExampleItem[] = [
     component: DefaultMap,
     path: '/',
     exact: true,
+  },
+  {
+    name: 'Map Ref Example',
+    component: MapParentComponent,
+    path: '/map-ref-example',
   },
   {
     name: 'Layers',
