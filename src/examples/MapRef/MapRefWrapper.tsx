@@ -12,9 +12,6 @@ const MapRefWrapper = () => {
   // Here you use mapRef from context
   const { mapRef, isMapReady } = useContext<IAzureMapsContextProps>(AzureMapsContext);
   const [showTileBoundaries, setShowTileBoundaries] = useState(true);
-  const toggleTitleBoundaries = () => {
-    setShowTileBoundaries((prev) => !prev);
-  };
 
   useEffect(() => {
     if (isMapReady && mapRef) {
@@ -34,6 +31,10 @@ const MapRefWrapper = () => {
     if (mapRef) {
       mapRef.setCamera({ center: getRandomPosition() });
     }
+  };
+
+  const toggleTitleBoundaries = () => {
+    setShowTileBoundaries((prev) => !prev);
   };
 
   const addRandomMarker = () => {
