@@ -10,7 +10,7 @@ const option: IAzureMapOptions = {
   },
 };
 
-const MapRefMap: React.FC = () => {
+const MapComponent: React.FC = () => {
   return (
     <div style={{ height: '300px' }}>
       <AzureMap options={option} />
@@ -18,4 +18,4 @@ const MapRefMap: React.FC = () => {
   );
 };
 
-export default MapRefMap;
+export default MapComponent;

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AzureMapsContext, IAzureMapsContextProps } from 'react-azure-maps';
-import MapRefMap from './MapRefExample';
 import { Button } from '@material-ui/core';
 import Description from '../../Layout/Description';
 import { data, layer, source } from 'azure-maps-control';
+import MapComponent from './MapComponent';
 
 const dataSourceRef = new source.DataSource();
 const layerRef = new layer.SymbolLayer(dataSourceRef);
 
-const MapRefWrapper = () => {
+const MapController = () => {
   // Here you use mapRef from context
   const { mapRef, isMapReady } = useContext<IAzureMapsContextProps>(AzureMapsContext);
   const [showTileBoundaries, setShowTileBoundaries] = useState(true);
@@ -23,12 +23,14 @@ const MapRefWrapper = () => {
 
   useEffect(() => {
     if (mapRef) {
+      // Simple Style modification
       mapRef.setStyle({ showTileBoundaries: !showTileBoundaries });
     }
   }, [showTileBoundaries]);
 
   const changeMapCenter = () => {
     if (mapRef) {
+      // Simple Camera options modification
       mapRef.setCamera({ center: getRandomPosition() });
     }
   };
@@ -47,7 +49,7 @@ const MapRefWrapper = () => {
 
   return (
     <>
-      <div>Wrapper Component</div>
+      <div>Map Controller</div>
       <Description>
         With map ref you can do all that Azure Map can do <br />
       </Description>
@@ -62,7 +64,7 @@ const MapRefWrapper = () => {
           Add Pin
         </Button>
       </div>
-      <MapRefMap />
+      <MapComponent />
     </>
   );
 };
@@ -89,4 +91,4 @@ const styles = {
   },
 };
 
-export default MapRefWrapper;
+export default MapController;

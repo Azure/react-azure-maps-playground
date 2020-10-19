@@ -16,7 +16,7 @@ import AsyncPopup from './AsyncPopupExample';
 import PolygonExample from './PolygonExample';
 import TrafficOptionsExample from './TrafficOptions';
 import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
-import MapParentComponent from './MapRef/MapParentComponent';
+import MapWrapper from './MapRef/MapWrapper';
 
 export type MapExampleItem = {
   name: string;
@@ -34,7 +34,7 @@ export const examplesList: MapExampleItem[] = [
   },
   {
     name: 'Map Ref Example',
-    component: MapParentComponent,
+    component: MapWrapper,
     path: '/map-ref-example',
   },
   {
