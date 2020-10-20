@@ -92,11 +92,11 @@ const TrafficOptionsExample: React.FC = () => {
           Incidents: FALSE
         </Button>
       </div>
-      <div style={{ height: '600px' }}>
-        <AzureMapsProvider>
-          <AzureMap options={option} trafficOptions={trafficOptions}></AzureMap>
-        </AzureMapsProvider>
-      </div>
+      <AzureMapsProvider>
+        <div style={{ height: '600px' }}>
+          <AzureMap options={option} trafficOptions={trafficOptions} />
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

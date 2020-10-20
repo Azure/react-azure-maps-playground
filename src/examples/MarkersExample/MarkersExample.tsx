@@ -193,8 +193,8 @@ const MarkersExample: React.FC = () => {
         <Chip label={`Markers Point on map: ${markers.length}`} />
         <Chip label={`Markers HTML on map: ${htmlMarkers.length}`} />
       </div>
-      <div style={styles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={styles.map}>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider
               events={{
@@ -223,8 +223,8 @@ const MarkersExample: React.FC = () => {
               {memoizedHtmlMarkerRender}
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </>
   );
 };

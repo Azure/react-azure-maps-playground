@@ -45,8 +45,8 @@ const BringDataControl: React.FC = () => (
       map to fit any data that is loaded on the map. This works with data in a HtmlMarkers, DataSource and ImageLayers.
       Does not support TileLayers and VectorTileSources.
     </Description>
-    <div style={{ height: '300px' }}>
-      <AzureMapsProvider>
+    <AzureMapsProvider>
+      <div style={{ height: '300px' }}>
         <AzureMap options={option} customControls={controls}>
           <AzureMapDataSourceProvider
             id={'customControl DataSourceProvider'}
@@ -66,7 +66,7 @@ const BringDataControl: React.FC = () => (
                 clusterMaxZoom: 15,
               }}
               type="SymbolLayer"
-            ></AzureMapLayerProvider>
+            />
             <AzureMapHtmlMarker
               key={'myMarker'}
               options={{
@@ -77,8 +77,8 @@ const BringDataControl: React.FC = () => (
             />
           </AzureMapDataSourceProvider>
         </AzureMap>
-      </AzureMapsProvider>
-    </div>
+      </div>
+    </AzureMapsProvider>
   </div>
 );
 

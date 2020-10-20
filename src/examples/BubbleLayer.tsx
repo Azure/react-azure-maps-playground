@@ -96,8 +96,8 @@ const BubbleLayer: React.FC = () => (
       <br />
       point_count_abbreviated - A string that abbreviates the point_count value if it is long. (i.e. 4,000 becomes 4K)
     </Description>
-    <div style={{ height: '300px' }}>
-      <AzureMapsProvider>
+    <AzureMapsProvider>
+      <div style={{ height: '300px' }}>
         <AzureMap options={option}>
           <AzureMapDataSourceProvider
             id={'BubbleLayer DataSourceProvider'}
@@ -146,8 +146,8 @@ const BubbleLayer: React.FC = () => (
             ></AzureMapLayerProvider>
           </AzureMapDataSourceProvider>
         </AzureMap>
-      </AzureMapsProvider>
-    </div>
+      </div>
+    </AzureMapsProvider>
   </div>
 );
 

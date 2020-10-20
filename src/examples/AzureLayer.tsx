@@ -48,8 +48,8 @@ const AzureLayer: React.FC = () => {
         <Description>
           This sample shows how to add layers and global map events. Open dev tools console and click on map.
         </Description>
-        <div style={styles.map}>
-          <AzureMapsProvider>
+        <AzureMapsProvider>
+          <div style={styles.map}>
             <AzureMap options={option} events={{ click: getCoordinates }}>
               <AzureMapDataSourceProvider id={'LayerExample1 DataSource '}>
                 <AzureMapLayerProvider
@@ -95,10 +95,10 @@ const AzureLayer: React.FC = () => {
                 events={eventToMarker}
               />
             </AzureMap>
-          </AzureMapsProvider>
-        </div>
-        <div style={styles.map}>
-          <AzureMapsProvider>
+          </div>
+        </AzureMapsProvider>
+        <AzureMapsProvider>
+          <div style={styles.map}>
             <AzureMap options={option}>
               <AzureMapDataSourceProvider id={'LayerExample2 DataSource'}>
                 <AzureMapLayerProvider
@@ -114,8 +114,8 @@ const AzureLayer: React.FC = () => {
                 ></AzureMapFeature>
               </AzureMapDataSourceProvider>
             </AzureMap>
-          </AzureMapsProvider>
-        </div>
+          </div>
+        </AzureMapsProvider>
       </div>
     </>
   );

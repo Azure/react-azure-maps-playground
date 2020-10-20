@@ -45,12 +45,8 @@ const ChronoplethMap: React.FC = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        height: '300px',
-      }}
-    >
-      <AzureMapsProvider>
+    <AzureMapsProvider>
+      <div style={{ height: '300px' }}>
         <AzureMap options={option}>
           <AzureMapDataSourceProvider
             id={'chronoplethMap DataSourceProvider'}
@@ -76,9 +72,9 @@ const ChronoplethMap: React.FC = () => {
             ></AzureMapLayerProvider>
           </AzureMapDataSourceProvider>
         </AzureMap>
-      </AzureMapsProvider>
-      <div> {JSON.stringify(properties)}</div>
-    </div>
+        <div> {JSON.stringify(properties)}</div>
+      </div>
+    </AzureMapsProvider>
   );
 };
 

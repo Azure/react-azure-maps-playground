@@ -55,8 +55,8 @@ const RouteExample: React.FC = () => {
         This sample shows how to apply a stroke gradient to a line on the map. In order to apply this feature to a line,
         the data source must have the lineMetrics option set to true.
       </Description>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider
               events={{
@@ -102,7 +102,7 @@ const RouteExample: React.FC = () => {
                   },
                 }}
                 type={'LineLayer'}
-              ></AzureMapLayerProvider>
+              />
               <AzureMapFeature
                 key={'Line String Feature'}
                 id={'Line Strign ID'}
@@ -111,8 +111,8 @@ const RouteExample: React.FC = () => {
               />
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

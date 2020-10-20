@@ -104,14 +104,14 @@ const PopupExample: React.FC = () => {
           Change Popup HtmlMarker NUmber
         </Button>
       </div>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option}>
             {memoizedMapPopup}
             {memoizedHtmlMarker}
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

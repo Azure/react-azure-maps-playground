@@ -42,8 +42,8 @@ const option: IAzureMapOptions = {
 };
 
 const HTMLCustomMarkerLayer: React.FC = () => (
-  <div style={{ height: '300px' }}>
-    <AzureMapsProvider>
+  <AzureMapsProvider>
+    <div style={{ height: '300px' }}>
       <AzureMap options={option}>
         <AzureMapDataSourceProvider
           id={'HTMLMarkers DataSrouceProvider'}
@@ -117,8 +117,8 @@ const HTMLCustomMarkerLayer: React.FC = () => (
           popupContent={<div style={wrapperStyles.popupStyles}></div>}
         />
       </AzureMap>
-    </AzureMapsProvider>
-  </div>
+    </div>
+  </AzureMapsProvider>
 );
 
 export default HTMLCustomMarkerLayer;

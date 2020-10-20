@@ -18,8 +18,8 @@ const option: IAzureMapOptions = {
 };
 
 const PolygonExample: React.FC = () => (
-  <div style={{ height: '300px' }}>
-    <AzureMapsProvider>
+  <AzureMapsProvider>
+    <div style={{ height: '300px' }}>
       <AzureMap options={option}>
         <AzureMapDataSourceProvider id={'polygonExample AzureMapDataSourceProvider'} options={{}}>
           <AzureMapLayerProvider
@@ -39,7 +39,7 @@ const PolygonExample: React.FC = () => (
               [50, -20],
               [-50, -20],
             ]}
-          ></AzureMapFeature>
+          />
           <AzureMapFeature
             id={'polygonExample MapFeature2'}
             type="Polygon"
@@ -49,7 +49,7 @@ const PolygonExample: React.FC = () => (
               [45, 20],
               [30, 20],
             ]}
-          ></AzureMapFeature>
+          />
         </AzureMapDataSourceProvider>
         <AzureMapDataSourceProvider id={'polygonExample2 AzureMapDataSourceProvider'} options={{}}>
           <AzureMapLayerProvider
@@ -69,11 +69,11 @@ const PolygonExample: React.FC = () => (
               [180, 15],
               [125, 65],
             ]}
-          ></AzureMapFeature>
+          />
         </AzureMapDataSourceProvider>
       </AzureMap>
-    </AzureMapsProvider>
-  </div>
+    </div>
+  </AzureMapsProvider>
 );
 
 export default PolygonExample;

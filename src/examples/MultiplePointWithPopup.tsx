@@ -87,8 +87,8 @@ const MarkersExample: React.FC = () => {
         </Button>
         <Chip label={`Markers Point on map: ${markers.length}`} />
       </div>
-      <div style={styles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={styles.map}>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider id={'MultiplePoint AzureMapDataSourceProvider'}>
               <AzureMapLayerProvider
@@ -132,8 +132,8 @@ const MarkersExample: React.FC = () => {
               }
             />
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </>
   );
 };

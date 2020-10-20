@@ -19,11 +19,11 @@ const ChangeOptionsExample: React.FC<any> = ({ cameraOptions }) => {
   console.log('Change Options RERENDER');
   return (
     <>
-      <div style={styles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={styles.map}>
           <AzureMap options={option} cameraOptions={cameraOptions} />
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </>
   );
 };

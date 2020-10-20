@@ -39,8 +39,8 @@ const ControlExample: React.FC = () => {
         Map Control Style
       </Typography>
       <Description>This sample shows how to add the map style picker control to the map.</Description>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option} controls={controls}>
             <AzureMapDataSourceProvider
               events={{
@@ -59,8 +59,8 @@ const ControlExample: React.FC = () => {
               {calculateLineEndPoints(lineData)}
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

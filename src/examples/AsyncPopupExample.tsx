@@ -54,11 +54,11 @@ const PopupExample: React.FC = () => {
 
   return (
     <div style={wrapperStyles.map}>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option}>{memoizedHtmlMarker}</AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

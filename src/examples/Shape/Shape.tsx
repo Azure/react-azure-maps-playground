@@ -56,8 +56,8 @@ const ShapeExample: React.FC = () => {
           Change color
         </Button>
       </div>
-      <div style={{ height: '300px' }}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={{ height: '300px' }}>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider id={'DataSource Provider'}>
               <AzureMapLayerProvider
@@ -66,7 +66,7 @@ const ShapeExample: React.FC = () => {
                 }}
                 id={'shape AzureMapLayerProvider'}
                 type={'BubbleLayer'}
-              ></AzureMapLayerProvider>
+              />
               <AzureMapFeature
                 key={'feature'}
                 variant={'shape'}
@@ -82,8 +82,8 @@ const ShapeExample: React.FC = () => {
               />
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </>
   );
 };

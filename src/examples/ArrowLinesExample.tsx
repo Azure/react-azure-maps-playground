@@ -74,8 +74,8 @@ const ArrowLineExample: React.FC = () => {
         This sample shows how to add arrow icons along a line on the map. When using a symbol layer, set the "placement"
         option to "line", this will render the symbols along the line and rotate the icons (0 degrees = right).
       </Description>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option} imageSprites={[imageSprites]}>
             <AzureMapDataSourceProvider
               events={{
@@ -131,8 +131,8 @@ const ArrowLineExample: React.FC = () => {
               {lines.map((value: AzureDataPosition[]) => renderMultiLine('LineString', value, {}))}
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

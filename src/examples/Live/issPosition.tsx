@@ -57,7 +57,7 @@ const IssMapPosition: React.FC = () => {
     getData(setIssPosition);
     const foo = setInterval(() => {
       getData(setIssPosition);
-    }, 3000);
+    }, 1000);
     return () => {
       clearInterval(foo);
     };
@@ -66,19 +66,21 @@ const IssMapPosition: React.FC = () => {
   return (
     <>
       <Description>International Space Station Current Location</Description>
-      <div style={{ height: '300px' }}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={{ height: '300px' }}>
           <AzureMap imageSprites={[spaceshipImageSprites]} options={option}>
-            <AzureMapDataSourceProvider id={'data source provider'}>
+            <AzureMapDataSourceProvider id={'data source provider'} options={{}}>
               <AzureMapLayerProvider
                 id={'LayerExample1 Layer2'}
                 options={{
                   iconOptions: {
                     image: 'spaceship',
+                    allowOverlap: true, //For smoother animation, allow symbol to overlap all other symbols on the map.
+                    ignorePlacement: true, //For smoother animation, ignore the placement of the icon. This skips the label collision calculations and allows the icon to overlap map labels.
                   },
                 }}
                 type={'SymbolLayer'}
-              ></AzureMapLayerProvider>
+              />
               {issPosition && (
                 <AzureMapFeature
                   id={'LayerExample1 MapFeature'}
@@ -89,12 +91,12 @@ const IssMapPosition: React.FC = () => {
                   }}
                   variant={'shape'}
                   setCoords={issPosition}
-                ></AzureMapFeature>
+                />
               )}
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </>
   );
 };
