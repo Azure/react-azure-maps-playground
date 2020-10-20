@@ -1,35 +1,35 @@
-import React from "react";
+import React from 'react';
 import {
   AzureMap,
   AzureMapDataSourceProvider,
   AzureMapLayerProvider,
   AzureMapsProvider,
   IAzureMapControls,
-  IAzureMapOptions
-} from "react-azure-maps";
-import { AuthenticationType, ControlOptions } from "azure-maps-control";
-import { key } from "../key";
-import Typography from "@material-ui/core/Typography";
-import { wrapperStyles } from "./RouteExample";
-import { calculateLineEndPoints, lineData } from "./mapHelper";
-import Description from "../Layout/Description";
+  IAzureMapOptions,
+} from 'react-azure-maps';
+import { AuthenticationType, ControlOptions } from 'azure-maps-control';
+import { key } from '../key';
+import Typography from '@material-ui/core/Typography';
+import { wrapperStyles } from './RouteExample';
+import { calculateLineEndPoints, lineData } from './mapHelper';
+import Description from '../Layout/Description';
 
 const option: IAzureMapOptions = {
   authOptions: {
     authType: AuthenticationType.subscriptionKey,
-    subscriptionKey: key
+    subscriptionKey: key,
   },
   center: [-100.12, 44.63],
   zoom: 3,
-  view: "Auto"
+  view: 'Auto',
 };
 
 const controls: [IAzureMapControls] = [
   {
-    controlName: "StyleControl",
-    controlOptions: { mapStyles: "all" },
-    options: { position: "top-right" } as ControlOptions
-  }
+    controlName: 'StyleControl',
+    controlOptions: { mapStyles: 'all' },
+    options: { position: 'top-right' } as ControlOptions,
+  },
 ];
 
 const ControlExample: React.FC = () => {
@@ -38,31 +38,29 @@ const ControlExample: React.FC = () => {
       <Typography gutterBottom variant="h5">
         Map Control Style
       </Typography>
-      <Description>
-        This sample shows how to add the map style picker control to the map.
-      </Description>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <Description>This sample shows how to add the map style picker control to the map.</Description>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option} controls={controls}>
             <AzureMapDataSourceProvider
               events={{
                 dataadded: (e: any) => {
-                  console.log("Data on source added", e);
-                }
+                  console.log('Data on source added', e);
+                },
               }}
-              id={"controlExample AzureMapDataSourceProvider"}
+              id={'controlExample AzureMapDataSourceProvider'}
               options={{}}
             >
               <AzureMapLayerProvider
-                id={"controlExample AzureMapLayerProvider"}
+                id={'controlExample AzureMapLayerProvider'}
                 options={{}}
-                type={"SymbolLayer"}
+                type={'SymbolLayer'}
               ></AzureMapLayerProvider>
               {calculateLineEndPoints(lineData)}
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };

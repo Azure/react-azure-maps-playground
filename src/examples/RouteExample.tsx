@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
   AzureMap,
   AzureMapDataSourceProvider,
   AzureMapFeature,
   AzureMapLayerProvider,
   AzureMapsProvider,
-  IAzureMapOptions
-} from "react-azure-maps";
-import { AuthenticationType } from "azure-maps-control";
-import { key } from "../key";
-import Typography from "@material-ui/core/Typography";
-import Description from "../Layout/Description";
+  IAzureMapOptions,
+} from 'react-azure-maps';
+import { AuthenticationType } from 'azure-maps-control';
+import { key } from '../key';
+import Typography from '@material-ui/core/Typography';
+import Description from '../Layout/Description';
 
 function mouseOverLineString(e: any) {
-  console.log("lineString moved", e);
+  console.log('lineString moved', e);
 }
 
 const points = [
@@ -32,17 +32,17 @@ const points = [
   [-122.11595, 47.66712],
   [-122.11063, 47.66735],
   [-122.10668, 47.67035],
-  [-122.10565, 47.67498]
+  [-122.10565, 47.67498],
 ];
 
 const option: IAzureMapOptions = {
   authOptions: {
     authType: AuthenticationType.subscriptionKey,
-    subscriptionKey: key
+    subscriptionKey: key,
   },
   center: [-122.12, 47.63],
   zoom: 10,
-  view: "Auto"
+  view: 'Auto',
 };
 
 const RouteExample: React.FC = () => {
@@ -52,95 +52,94 @@ const RouteExample: React.FC = () => {
         Gradient Line String Route
       </Typography>
       <Description>
-        This sample shows how to apply a stroke gradient to a line on the map.
-        In order to apply this feature to a line, the data source must have the
-        lineMetrics option set to true.
+        This sample shows how to apply a stroke gradient to a line on the map. In order to apply this feature to a line,
+        the data source must have the lineMetrics option set to true.
       </Description>
-      <div style={wrapperStyles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={wrapperStyles.map}>
           <AzureMap options={option}>
             <AzureMapDataSourceProvider
               events={{
                 dataadded: (e: any) => {
-                  console.log("Data on source added", e);
-                }
+                  console.log('Data on source added', e);
+                },
               }}
-              id={"routeExample AzureMapDataSourceProvider"}
+              id={'routeExample AzureMapDataSourceProvider'}
               options={{
                 // This sample shows how to apply a stroke gradient to a line on the map.\
                 // In order to apply this feature to a line, the data source must have the lineMetrics option set to true.
-                lineMetrics: true
+                lineMetrics: true,
               }}
             >
               <AzureMapLayerProvider
-                id={"routeExample AzureMapLayerProvider"}
+                id={'routeExample AzureMapLayerProvider'}
                 options={{
                   strokeWidth: 5,
                   strokeGradient: [
-                    "interpolate",
-                    ["linear"],
-                    ["line-progress"],
+                    'interpolate',
+                    ['linear'],
+                    ['line-progress'],
                     0,
-                    "blue",
+                    'blue',
                     0.1,
-                    "royalblue",
+                    'royalblue',
                     0.3,
-                    "cyan",
+                    'cyan',
                     0.5,
-                    "lime",
+                    'lime',
                     0.7,
-                    "yellow",
+                    'yellow',
                     1,
-                    "red"
-                  ]
+                    'red',
+                  ],
                 }}
                 events={{
-                  mouseenter: mouseOverLineString
+                  mouseenter: mouseOverLineString,
                 }}
                 lifecycleEvents={{
                   layeradded: (e: any) => {
-                    console.log("LAYER ADDED TO MAP", e);
-                  }
+                    console.log('LAYER ADDED TO MAP', e);
+                  },
                 }}
-                type={"LineLayer"}
-              ></AzureMapLayerProvider>
+                type={'LineLayer'}
+              />
               <AzureMapFeature
-                key={"Line String Feature"}
-                id={"Line Strign ID"}
-                type={"LineString"}
+                key={'Line String Feature'}
+                id={'Line Strign ID'}
+                type={'LineString'}
                 coordinates={points}
               />
             </AzureMapDataSourceProvider>
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </div>
   );
 };
 
 export const wrapperStyles = {
   map: {
-    height: "350px"
+    height: '350px',
   },
   wrapper: {
-    padding: "15px",
-    marginTop: "15px"
+    padding: '15px',
+    marginTop: '15px',
   },
   buttonContainer: {
-    display: "grid",
-    gridAutoFlow: "column",
-    gridGap: "10px",
-    gridAutoColumns: "max-content",
-    padding: "10px 0"
+    display: 'grid',
+    gridAutoFlow: 'column',
+    gridGap: '10px',
+    gridAutoColumns: 'max-content',
+    padding: '10px 0',
   },
   buttons: {
-    padding: "15px",
-    flex: 1
+    padding: '15px',
+    flex: 1,
   },
   popupStyles: {
-    padding: "20px",
-    color: "black"
-  }
+    padding: '20px',
+    color: 'black',
+  },
 };
 
 export default RouteExample;

@@ -1,15 +1,15 @@
-import React, {useMemo, useState} from 'react'
+import React, { useMemo, useState } from 'react';
 import {
   AzureMap,
   AzureMapDataSourceProvider,
   AzureMapLayerProvider,
   AzureMapsProvider,
-  IAzureMapOptions
-} from 'react-azure-maps'
-import {AuthenticationType, MapMouseEvent} from 'azure-maps-control'
-import {key} from '../key'
+  IAzureMapOptions,
+} from 'react-azure-maps';
+import { AuthenticationType, MapMouseEvent } from 'azure-maps-control';
+import { key } from '../key';
 
-const defaultColor = '#FFEDA0'
+const defaultColor = '#FFEDA0';
 const steppedExp = [
   'step',
   ['get', 'density'],
@@ -27,67 +27,55 @@ const steppedExp = [
   500,
   '#BD0026',
   1000,
-  '#800026'
-] as any
+  '#800026',
+] as any;
 
 const ChronoplethMap: React.FC = () => {
-  const [properties, setProperties] = useState<any>({})
+  const [properties, setProperties] = useState<any>({});
   const option: IAzureMapOptions = useMemo(() => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: key
+        subscriptionKey: key,
       },
       center: [-110, 50],
       zoom: 2,
-      view: 'Auto'
-    }
-  }, [])
+      view: 'Auto',
+    };
+  }, []);
 
   return (
-    <div
-      style={{
-        height: '300px'
-      }}
-    >
-      <AzureMapsProvider>
+    <AzureMapsProvider>
+      <div style={{ height: '300px' }}>
         <AzureMap options={option}>
           <AzureMapDataSourceProvider
             id={'chronoplethMap DataSourceProvider'}
             dataFromUrl="https://raw.githubusercontent.com/Azure-Samples/AzureMapsCodeSamples/master/AzureMapsCodeSamples/Common/data/geojson/US_States_Population_Density.json"
           >
             <AzureMapLayerProvider
-                id={'chronoplethMap LayerProvider'}
-                options={{
+              id={'chronoplethMap LayerProvider'}
+              options={{
                 base: 100,
                 fillColor: steppedExp,
                 fillOpacity: 0.7,
-                height: [
-                  'interpolate',
-                  ['linear'],
-                  ['get', 'density'],
-                  0,
-                  100,
-                  1200,
-                  960000
-                ]
+                height: ['interpolate', ['linear'], ['get', 'density'], 0, 100, 1200, 960000],
               }}
               type="PolygonExtrusionLayer"
               events={{
                 mousemove: (e: MapMouseEvent) => {
                   if (e.shapes && e.shapes.length > 0) {
-                    const prop: any = e.shapes[0]
-                    setProperties(prop.data.properties)
+                    const prop: any = e.shapes[0];
+                    setProperties(prop.data.properties);
                   }
-                }
+                },
               }}
             ></AzureMapLayerProvider>
           </AzureMapDataSourceProvider>
         </AzureMap>
-      </AzureMapsProvider>
-      <div> {JSON.stringify(properties)}</div>
-    </div>
-  )
-}
+        <div> {JSON.stringify(properties)}</div>
+      </div>
+    </AzureMapsProvider>
+  );
+};
 
-export default ChronoplethMap
+export default ChronoplethMap;

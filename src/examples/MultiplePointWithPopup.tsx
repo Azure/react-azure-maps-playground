@@ -1,4 +1,4 @@
-import React, { memo, useMemo, useState } from 'react'
+import React, { memo, useMemo, useState } from 'react';
 import {
   AzureMap,
   AzureMapDataSourceProvider,
@@ -7,23 +7,21 @@ import {
   AzureMapsProvider,
   IAzureDataSourceChildren,
   IAzureMapOptions,
-  AzureMapPopup
-} from 'react-azure-maps'
-import { AuthenticationType, data, MapMouseEvent, PopupOptions } from 'azure-maps-control'
-import { Button, Chip } from '@material-ui/core'
-import { key } from '../key'
-import Description from "../Layout/Description";
+  AzureMapPopup,
+} from 'react-azure-maps';
+import { AuthenticationType, data, MapMouseEvent, PopupOptions } from 'azure-maps-control';
+import { Button, Chip } from '@material-ui/core';
+import { key } from '../key';
+import Description from '../Layout/Description';
 
 const points = Array.from({ length: 100 }).map(() => {
-  const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120)
-  const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65)
-  return (
-    new data.Position(randomLongitude, randomLatitude)
-  )
-})
+  const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120);
+  const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65);
+  return new data.Position(randomLongitude, randomLatitude);
+});
 
 const renderPoint = (coordinates: data.Position) => {
-  const rendId = Math.random()
+  const rendId = Math.random();
   return (
     <AzureMapFeature
       key={rendId}
@@ -32,103 +30,95 @@ const renderPoint = (coordinates: data.Position) => {
       coordinate={coordinates}
       properties={{
         id: rendId,
-        prop: 'My Feature Prop'
+        prop: 'My Feature Prop',
       }}
     />
-  )
-}
+  );
+};
 
 const MarkersExample: React.FC = () => {
-  const [markers, setMarkers] = useState([...points])
-  const [popupOptions, setPopupOptions] = useState<PopupOptions>({})
-  const [popupProperties, setPopupProperties] = useState({})
+  const [markers, setMarkers] = useState([...points]);
+  const [popupOptions, setPopupOptions] = useState<PopupOptions>({});
+  const [popupProperties, setPopupProperties] = useState({});
 
   const option: IAzureMapOptions = useMemo(() => {
     return {
       authOptions: {
         authType: AuthenticationType.subscriptionKey,
-        subscriptionKey: key
+        subscriptionKey: key,
       },
       center: [-100.01, 45.01],
       zoom: 2,
-      view: 'Auto'
-    }
-  }, [])
+      view: 'Auto',
+    };
+  }, []);
 
   const addRandomMarker = () => {
-    const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120)
-    const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65)
-    const newPoint = new data.Position(randomLongitude, randomLatitude)
-    setMarkers([...markers, newPoint])
-  }
+    const randomLongitude = Math.floor(Math.random() * (-80 - -120) + -120);
+    const randomLatitude = Math.floor(Math.random() * (30 - 65) + 65);
+    const newPoint = new data.Position(randomLongitude, randomLatitude);
+    setMarkers([...markers, newPoint]);
+  };
 
   const removeAllMarkers = () => {
-    setMarkers([])
-  }
+    setMarkers([]);
+  };
 
   const memoizedMarkerRender: IAzureDataSourceChildren = useMemo(
-    (): any => markers.map(marker => renderPoint(marker)),
-    [markers]
-  )
+    (): any => markers.map((marker) => renderPoint(marker)),
+    [markers],
+  );
 
-  console.log('MultiplePoint RENDER')
+  console.log('MultiplePoint RENDER');
   return (
     <>
-      <Description>Simple example with marker's popup <br/>
+      <Description>
+        Simple example with marker's popup <br />
         Popup content are created from markers properties
       </Description>
       <div style={styles.buttonContainer}>
-        <Button
-          size="small"
-          variant="contained"
-          color="primary"
-          onClick={addRandomMarker}
-        >
+        <Button size="small" variant="contained" color="primary" onClick={addRandomMarker}>
           {' '}
           MARKER POINT
         </Button>
-        <Button
-          size="small"
-          variant="contained"
-          color="primary"
-          onClick={removeAllMarkers}
-        >
+        <Button size="small" variant="contained" color="primary" onClick={removeAllMarkers}>
           {' '}
           REMOVE ALL
         </Button>
         <Chip label={`Markers Point on map: ${markers.length}`} />
       </div>
-      <div style={styles.map}>
-        <AzureMapsProvider>
+      <AzureMapsProvider>
+        <div style={styles.map}>
           <AzureMap options={option}>
-            <AzureMapDataSourceProvider
-              id={'MultiplePoint AzureMapDataSourceProvider'}
-            >
+            <AzureMapDataSourceProvider id={'MultiplePoint AzureMapDataSourceProvider'}>
               <AzureMapLayerProvider
                 id={'MultiplePoint AzureMapLayerProvider'}
                 options={{
                   iconOptions: {
-                    image: 'pin-red'
-                  }
+                    image: 'pin-red',
+                  },
                 }}
                 events={{
                   mousemove: (e: MapMouseEvent) => {
                     if (e.shapes && e.shapes.length > 0) {
-                      const prop: any = e.shapes[0]
+                      const prop: any = e.shapes[0];
                       // Set popup options
                       setPopupOptions({
                         ...popupOptions,
-                        position: new data.Position(prop.data.geometry.coordinates[0], prop.data.geometry.coordinates[1]),
+                        position: new data.Position(
+                          prop.data.geometry.coordinates[0],
+                          prop.data.geometry.coordinates[1],
+                        ),
                         pixelOffset: [0, -18],
-                      })
-                      if(prop.data.properties)
+                      });
+                      if (prop.data.properties)
                         // Set popup properties from Feature Properties that are declared on create Feature
-                      setPopupProperties({
-                        ...prop.data.properties,
-                        dumpProp: 'My Popup'
-                      })
+                        setPopupProperties({
+                          ...prop.data.properties,
+                          dumpProp: 'My Popup',
+                        });
                     }
-                  }
+                  },
                 }}
                 type="SymbolLayer"
               ></AzureMapLayerProvider>
@@ -142,15 +132,15 @@ const MarkersExample: React.FC = () => {
               }
             />
           </AzureMap>
-        </AzureMapsProvider>
-      </div>
+        </div>
+      </AzureMapsProvider>
     </>
-  )
-}
+  );
+};
 
 const styles = {
   map: {
-    height: 300
+    height: 300,
   },
   buttonContainer: {
     display: 'grid',
@@ -158,18 +148,18 @@ const styles = {
     gridGap: '10px',
     gridAutoColumns: 'max-content',
     padding: '10px 0',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   button: {
     height: 35,
     width: 80,
     backgroundColor: '#68aba3',
-    'text-align': 'center'
+    'text-align': 'center',
   },
   popupStyles: {
     padding: '20px',
-    color: 'black'
-  }
-}
+    color: 'black',
+  },
+};
 
-export default memo(MarkersExample)
+export default memo(MarkersExample);

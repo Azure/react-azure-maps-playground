@@ -1,7 +1,7 @@
 import React from 'react';
-import { AzureMap, AzureMapsProvider, IAzureMapOptions } from 'react-azure-maps';
+import { AzureMap, IAzureMapOptions } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
-import { key } from '../key';
+import { key } from '../../key';
 
 const option: IAzureMapOptions = {
   authOptions: {
@@ -10,12 +10,12 @@ const option: IAzureMapOptions = {
   },
 };
 
-const DefaultMap: React.FC = () => (
-  <AzureMapsProvider>
+const MapComponent: React.FC = () => {
+  return (
     <div style={{ height: '300px' }}>
       <AzureMap options={option} />
     </div>
-  </AzureMapsProvider>
-);
+  );
+};
 
-export default DefaultMap;
+export default MapComponent;
