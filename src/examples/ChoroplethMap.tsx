@@ -69,7 +69,7 @@ const ChronoplethMap: React.FC = () => {
                   }
                 },
               }}
-            ></AzureMapLayerProvider>
+            />
           </AzureMapDataSourceProvider>
         </AzureMap>
         <div> {JSON.stringify(properties)}</div>

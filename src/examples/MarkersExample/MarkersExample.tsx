@@ -7,6 +7,7 @@ import {
   AzureMapLayerProvider,
   AzureMapsProvider,
   IAzureDataSourceChildren,
+  IAzureMapFeature,
   IAzureMapHtmlMarkerEvent,
   IAzureMapLayerType,
   IAzureMapOptions,
@@ -45,7 +46,7 @@ const memoizedOptions: SymbolLayerOptions = {
 
 const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [{ eventName: 'click', callback: onClick }];
 
-const renderPoint = (coordinates: data.Position) => {
+const renderPoint = (coordinates: data.Position): IAzureMapFeature  => {
   const rendId = Math.random();
 
   return (
@@ -92,14 +93,11 @@ const markersStandardImages = [
   `pin-round-red`,
 ];
 
-const rand = () => {
-  const randomImage2 = markersStandardImages[Math.floor(Math.random() * markersStandardImages.length)];
-  return randomImage2;
-};
+const rand = () => ( markersStandardImages[Math.floor(Math.random() * markersStandardImages.length)] )
 const MarkersExample: React.FC = () => {
   const [markers, setMarkers] = useState([point1, point2, point3]);
   const [htmlMarkers, setHtmlMarkers] = useState([point4]);
-  const [markersLayer, setMarkersLayer] = useState<IAzureMapLayerType>('SymbolLayer');
+  const [markersLayer] = useState<IAzureMapLayerType>('SymbolLayer');
   const [layerOptions, setLayerOptions] = useState<SymbolLayerOptions>(memoizedOptions);
 
   const option: IAzureMapOptions = useMemo(() => {
@@ -218,7 +216,7 @@ const MarkersExample: React.FC = () => {
                   },
                 }}
                 type={markersLayer}
-              ></AzureMapLayerProvider>
+              />
               {memoizedMarkerRender}
               {memoizedHtmlMarkerRender}
             </AzureMapDataSourceProvider>

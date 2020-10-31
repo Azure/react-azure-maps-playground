@@ -5,9 +5,9 @@ import {
   AzureMapFeature,
   AzureMapLayerProvider,
   AzureMapsProvider,
-  IAzureDataSourceChildren,
   IAzureMapOptions,
   AzureMapPopup,
+  IAzureMapFeature,
 } from 'react-azure-maps';
 import { AuthenticationType, data, MapMouseEvent, PopupOptions } from 'azure-maps-control';
 import { Button, Chip } from '@material-ui/core';
@@ -20,7 +20,7 @@ const points = Array.from({ length: 100 }).map(() => {
   return new data.Position(randomLongitude, randomLatitude);
 });
 
-const renderPoint = (coordinates: data.Position) => {
+const renderPoint = (coordinates: data.Position): IAzureMapFeature => {
   const rendId = Math.random();
   return (
     <AzureMapFeature
@@ -64,8 +64,9 @@ const MarkersExample: React.FC = () => {
     setMarkers([]);
   };
 
-  const memoizedMarkerRender: IAzureDataSourceChildren = useMemo(
-    (): any => markers.map((marker) => renderPoint(marker)),
+
+  const memoizedMarkerRender: IAzureMapFeature[] = useMemo(
+    (): IAzureMapFeature[] => markers.map((marker) => renderPoint(marker)),
     [markers],
   );
 
@@ -121,7 +122,7 @@ const MarkersExample: React.FC = () => {
                   },
                 }}
                 type="SymbolLayer"
-              ></AzureMapLayerProvider>
+              />
               {memoizedMarkerRender}
             </AzureMapDataSourceProvider>
             <AzureMapPopup
