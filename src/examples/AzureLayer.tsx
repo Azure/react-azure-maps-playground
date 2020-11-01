@@ -67,7 +67,7 @@ const AzureLayer: React.FC = () => {
                     opacity: 0.8,
                   }}
                   type={'ImageLayer'}
-                ></AzureMapLayerProvider>
+                />
               </AzureMapDataSourceProvider>
               <AzureMapDataSourceProvider id={'LayerExample1 DataSource2 '}>
                 <AzureMapLayerProvider
@@ -79,7 +79,7 @@ const AzureLayer: React.FC = () => {
                     },
                   }}
                   type={'SymbolLayer'}
-                ></AzureMapLayerProvider>
+                />
                 <AzureMapFeature
                   id={'LayerExample1 MapFeature'}
                   type="Point"
@@ -87,7 +87,7 @@ const AzureLayer: React.FC = () => {
                   properties={{
                     title: 'My Title',
                   }}
-                ></AzureMapFeature>
+                />
               </AzureMapDataSourceProvider>
               <AzureMapHtmlMarker
                 markerContent={<div className="pulseIcon"></div>}
@@ -105,13 +105,13 @@ const AzureLayer: React.FC = () => {
                   id={'LayerExample2 HeatMap'}
                   options={{}}
                   type={'HeatLayer'}
-                ></AzureMapLayerProvider>
+                />
                 <AzureMapFeature
                   id={'LayerExample2 MapFeature2'}
                   key={'dddd'}
                   type="Point"
                   coordinate={point1}
-                ></AzureMapFeature>
+                />
               </AzureMapDataSourceProvider>
             </AzureMap>
           </div>

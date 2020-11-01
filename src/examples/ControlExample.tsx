@@ -55,7 +55,7 @@ const ControlExample: React.FC = () => {
                 id={'controlExample AzureMapLayerProvider'}
                 options={{}}
                 type={'SymbolLayer'}
-              ></AzureMapLayerProvider>
+              />
               {calculateLineEndPoints(lineData)}
             </AzureMapDataSourceProvider>
           </AzureMap>
