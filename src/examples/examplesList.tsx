@@ -18,6 +18,7 @@ import TrafficOptionsExample from './TrafficOptions';
 import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
 import MapWrapper from './MapRef/MapWrapper';
 import Building3d from "./Buildings3D";
+import DrawingTool from "./DrawingTool/DrawingTool";
 
 export type MapExampleItem = {
   name: string;
@@ -37,6 +38,11 @@ export const examplesList: MapExampleItem[] = [
     name: 'Map Ref Example',
     component: MapWrapper,
     path: '/map-ref-example',
+  },
+  {
+    name: 'Drawing Tools',
+    component: DrawingTool,
+    path: '/drawing-tools',
   },
   {
     name: 'Layers',
