@@ -123,7 +123,9 @@ const MarkersExample: React.FC = () => {
                 }}
                 type="SymbolLayer"
               />
-              {memoizedMarkerRender}
+              <>
+                {memoizedMarkerRender}
+              </>
             </AzureMapDataSourceProvider>
             <AzureMapPopup
               isVisible={true}

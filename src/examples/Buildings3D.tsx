@@ -33,7 +33,7 @@ const Building3d: React.FC = () => {
         </div>
         <div style={{height: '400px'}}>
             <AzureMapsProvider>
-                <AzureMap options={option} styleOptions={{showBuildingModels: showBuildingModels}} >
+                <AzureMap options={{...option, showBuildingModels }}>
                 </AzureMap>
             </AzureMapsProvider>
         </div>
