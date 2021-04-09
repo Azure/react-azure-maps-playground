@@ -3,7 +3,6 @@ import {
   AzureMapsProvider,
   AzureMap,
   AzureMapDataSourceProvider,
-  AzureMapVectorTileSourceProvider,
   AzureMapLayerProvider,
   AzureMapFeature,
   AzureMapHtmlMarker,
@@ -114,42 +113,6 @@ const AzureLayer: React.FC = () => {
                   coordinate={point1}
                 />
               </AzureMapDataSourceProvider>
-            </AzureMap>
-          </div>
-        </AzureMapsProvider>
-        <AzureMapsProvider>
-          <div style={styles.map}>
-            <AzureMap options={option}>
-              <AzureMapVectorTileSourceProvider 
-                id={"Traffic Flow DataSource"} 
-                options={{
-                  maxZoom: 22,
-                  tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'], 
-                }}>
-                
-                <AzureMapLayerProvider
-                  id={'Flow Layer'}
-                  type={'LineLayer'}
-                  options={{
-                    sourceLayer: 'Traffic flow',
-                    strokeColor: [
-                      'interpolate',
-                      ['linear'],
-                      ['get', 'traffic_level'],
-                      0, 'red',
-                      0.33, 'orange',
-                      0.66, 'green'
-                    ],
-                    strokeWidth: [
-                      'interpolate',
-                      ['linear'],
-                      ['get', 'traffic_level'],
-                      0, 6,
-                      1, 1
-                    ]
-                  }}
-                />
-              </AzureMapVectorTileSourceProvider>
             </AzureMap>
           </div>
         </AzureMapsProvider>

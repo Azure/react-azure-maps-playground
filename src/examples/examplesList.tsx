@@ -18,6 +18,7 @@ import TrafficOptionsExample from './TrafficOptions';
 import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
 import MapWrapper from './MapRef/MapWrapper';
 import Building3d from "./Buildings3D";
+import CustomTrafficVectorDatasourceExample from './CustomTrafficVectorDatasourceExample';
 
 export type MapExampleItem = {
   name: string;
@@ -132,5 +133,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Building 3D',
     component: Building3d,
     path: '/building-3d'
+  },
+  {
+    name: 'Vector Tile Datasource Traffic',
+    component: CustomTrafficVectorDatasourceExample,
+    path: '/custom-traffic'
   }
 ];
