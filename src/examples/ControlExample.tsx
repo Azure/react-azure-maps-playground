@@ -11,7 +11,7 @@ const option: IAzureMapOptions = {
     authType: AuthenticationType.subscriptionKey,
     subscriptionKey: key,
   },
-  center: [-100.12, 44.63],
+  center: [-100, 40],
   zoom: 3,
   view: 'Auto',
 };

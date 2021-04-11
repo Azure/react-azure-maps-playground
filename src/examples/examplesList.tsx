@@ -17,7 +17,7 @@ import PolygonExample from './PolygonExample';
 import TrafficOptionsExample from './TrafficOptions';
 import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
 import MapWrapper from './MapRef/MapWrapper';
-import Building3d from "./Buildings3D";
+import Building3d from './Buildings3D';
 
 export type MapExampleItem = {
   name: string;
@@ -79,7 +79,7 @@ export const examplesList: MapExampleItem[] = [
     path: '/arrowLine-example',
   },
   {
-    name: 'Style Controls',
+    name: 'Map Controls',
     component: ControlExample,
     path: '/controls',
   },
@@ -131,6 +131,6 @@ export const examplesList: MapExampleItem[] = [
   {
     name: 'Building 3D',
     component: Building3d,
-    path: '/building-3d'
-  }
+    path: '/building-3d',
+  },
 ];
