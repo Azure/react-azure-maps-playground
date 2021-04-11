@@ -11,10 +11,15 @@ body {
 
 .sidebar {
   width: 240px;
-  min-height: 100vh;
   box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 64px;
+  bottom: 0;
+}
+
+.sidebar > ul {
+  overflow-x: scroll;
+  height: 100%;
 }
 
 h1 {
