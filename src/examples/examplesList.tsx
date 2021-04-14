@@ -19,6 +19,7 @@ import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
 import MapWrapper from './MapRef/MapWrapper';
 import Building3d from './Buildings3D';
 import CustomTrafficVectorDatasourceExample from './CustomTrafficVectorDatasourceExample';
+import DrawingTools from './DrawingTools';
 
 export type MapExampleItem = {
   name: string;
@@ -138,5 +139,10 @@ export const examplesList: MapExampleItem[] = [
     name: 'Vector Tile Datasource Traffic',
     component: CustomTrafficVectorDatasourceExample,
     path: '/custom-traffic'
+  },
+  {
+    name: 'Drawing Tools',
+    component: DrawingTools,
+    path: '/drawing-tools',
   }
 ];
