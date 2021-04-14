@@ -17,7 +17,7 @@ import PolygonExample from './PolygonExample';
 import TrafficOptionsExample from './TrafficOptions';
 import ChangeOptionsWrapper from './Options/ChangeOptionsWrapper';
 import MapWrapper from './MapRef/MapWrapper';
-import Building3d from "./Buildings3D";
+import Building3d from './Buildings3D';
 import CustomTrafficVectorDatasourceExample from './CustomTrafficVectorDatasourceExample';
 
 export type MapExampleItem = {
@@ -80,7 +80,7 @@ export const examplesList: MapExampleItem[] = [
     path: '/arrowLine-example',
   },
   {
-    name: 'Style Controls',
+    name: 'Map Controls',
     component: ControlExample,
     path: '/controls',
   },
