@@ -101,17 +101,8 @@ const AzureLayer: React.FC = () => {
           <div style={styles.map}>
             <AzureMap options={option}>
               <AzureMapDataSourceProvider id={'LayerExample2 DataSource'}>
-                <AzureMapLayerProvider
-                  id={'LayerExample2 HeatMap'}
-                  options={{}}
-                  type={'HeatLayer'}
-                />
-                <AzureMapFeature
-                  id={'LayerExample2 MapFeature2'}
-                  key={'dddd'}
-                  type="Point"
-                  coordinate={point1}
-                />
+                <AzureMapLayerProvider id={'LayerExample2 HeatMap'} options={{}} type={'HeatLayer'} />
+                <AzureMapFeature id={'LayerExample2 MapFeature2'} key={'dddd'} type="Point" coordinate={point1} />
               </AzureMapDataSourceProvider>
             </AzureMap>
           </div>

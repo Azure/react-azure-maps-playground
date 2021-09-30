@@ -12,7 +12,6 @@ import {
 import { AuthenticationType } from 'azure-maps-control';
 import { key } from '../../key';
 import Description from '../../Layout/Description';
-
 const option: IAzureMapOptions = {
   authOptions: {
     authType: AuthenticationType.subscriptionKey,
@@ -29,7 +28,7 @@ const spaceshipImageSprites: IAzureMapImageSprite = {
   icon: iconUrl,
 };
 
-const getData = (setIssPosition: Function) => {
+const getData = (setIssPosition: (position: AzureDataPosition) => void) => {
   // create a new XMLHttpRequest
   const xhr = new XMLHttpRequest();
 

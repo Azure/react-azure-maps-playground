@@ -46,7 +46,7 @@ const memoizedOptions: SymbolLayerOptions = {
 
 const eventToMarker: Array<IAzureMapHtmlMarkerEvent> = [{ eventName: 'click', callback: onClick }];
 
-const renderPoint = (coordinates: data.Position): IAzureMapFeature  => {
+const renderPoint = (coordinates: data.Position): IAzureMapFeature => {
   const rendId = Math.random();
 
   return (
@@ -93,7 +93,7 @@ const markersStandardImages = [
   `pin-round-red`,
 ];
 
-const rand = () => ( markersStandardImages[Math.floor(Math.random() * markersStandardImages.length)] )
+const rand = () => markersStandardImages[Math.floor(Math.random() * markersStandardImages.length)];
 const MarkersExample: React.FC = () => {
   const [markers, setMarkers] = useState([point1, point2, point3]);
   const [htmlMarkers, setHtmlMarkers] = useState([point4]);

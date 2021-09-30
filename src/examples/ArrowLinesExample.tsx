@@ -71,8 +71,9 @@ const ArrowLineExample: React.FC = () => {
         Arrows to end of paths
       </Typography>
       <Description>
-        This sample shows how to add arrow icons along a line on the map. When using a symbol layer, set the "placement"
-        option to "line", this will render the symbols along the line and rotate the icons (0 degrees = right).
+        This sample shows how to add arrow icons along a line on the map. When using a symbol layer, set the
+        &quot;placement&quot; option to &quot;line&quot;, this will render the symbols along the line and rotate the
+        icons (0 degrees = right).
       </Description>
       <AzureMapsProvider>
         <div style={wrapperStyles.map}>

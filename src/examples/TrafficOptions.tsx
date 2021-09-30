@@ -26,7 +26,7 @@ const TrafficOptionsExample: React.FC = () => {
         This sample shows how the different Traffic Options change how the traffic overlay is rendered on the map.{' '}
         <br />
         As initial traffic options are: <br />
-        incidents: true, flow: 'absolute'
+        incidents: true, flow: &apos;absolute&apos;
       </Description>
       <div style={wrapperStyles.buttonContainer}>
         <Button

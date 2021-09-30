@@ -22,7 +22,7 @@ const option: IAzureMapOptions = {
   view: 'Auto',
 };
 
-const randomColor = (): Object => {
+const randomColor = (): { color: string } => {
   const colorValue = '#000000'.replace(/0/g, function () {
     return (~~(Math.random() * 16)).toString(16);
   });

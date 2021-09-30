@@ -13,8 +13,8 @@ import { wrapperStyles } from '../PopupExample';
 import { HtmlMarkerLayer } from './HTMLMarkerLayer';
 
 function markerHovered(e: any) {
-  var content;
-  var marker = e.target;
+  let content;
+  const marker = e.target;
   if (marker.properties.cluster) {
     content = 'Cluster of ' + marker.properties.point_count_abbreviated + ' markers';
   } else {
@@ -92,7 +92,7 @@ const HTMLCustomMarkerLayer: React.FC = () => (
                     return marker;
                   },
                   clusterRenderCallback: function (id: any, position: any, properties: any) {
-                    var cluster = new HtmlMarker({
+                    const cluster = new HtmlMarker({
                       position: position,
                       color: 'DarkViolet',
                       text: properties.point_count_abbreviated,

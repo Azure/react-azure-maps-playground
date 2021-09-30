@@ -64,7 +64,6 @@ const MarkersExample: React.FC = () => {
     setMarkers([]);
   };
 
-
   const memoizedMarkerRender: IAzureMapFeature[] = useMemo(
     (): IAzureMapFeature[] => markers.map((marker) => renderPoint(marker)),
     [markers],
@@ -74,7 +73,7 @@ const MarkersExample: React.FC = () => {
   return (
     <>
       <Description>
-        Simple example with marker's popup <br />
+        Simple example with marker&apos;s popup <br />
         Popup content are created from markers properties
       </Description>
       <div style={styles.buttonContainer}>

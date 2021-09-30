@@ -25,7 +25,6 @@ const option: IAzureMapOptions = {
 
 const controls: [IAzureCustomControls] = [
   {
-    // @ts-ignore
     control: new BringDataIntoViewControl({
       units: 'imperial',
     }),

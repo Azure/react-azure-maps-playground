@@ -10,7 +10,7 @@ import {
 import { AuthenticationType, data } from 'azure-maps-control';
 import { key } from '../key';
 
-const AsyncPopupContent = ({ lazyData }: { lazyData: Object }) => {
+const AsyncPopupContent = ({ lazyData }: { lazyData: Record<string, unknown> }) => {
   return <div style={wrapperStyles.popupStyles}> {lazyData ? JSON.stringify(lazyData) : 'Loading'} </div>;
 };
 

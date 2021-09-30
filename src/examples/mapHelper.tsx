@@ -28,7 +28,11 @@ export const lineData = [
   ]),
 ];
 
-export const renderMultiLine = (type: IAzureMapFeatureType, coordinates: data.Position[], properties: Object) => {
+export const renderMultiLine = (
+  type: IAzureMapFeatureType,
+  coordinates: data.Position[],
+  properties: Record<string, unknown>,
+) => {
   const rendId = Math.random();
 
   return (
@@ -42,7 +46,11 @@ export const renderMultiLine = (type: IAzureMapFeatureType, coordinates: data.Po
   );
 };
 
-const renderFeature = (type: IAzureMapFeatureType, coordinates: atlas.data.Position, properties: Object) => {
+const renderFeature = (
+  type: IAzureMapFeatureType,
+  coordinates: atlas.data.Position,
+  properties: Record<string, unknown>,
+) => {
   const rendId = Math.random();
 
   return (

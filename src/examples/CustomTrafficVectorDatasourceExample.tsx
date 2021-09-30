@@ -1,5 +1,11 @@
-import React from 'react'
-import { AzureMap, AzureMapLayerProvider, AzureMapsProvider, AzureMapVectorTileSourceProvider, IAzureMapOptions } from 'react-azure-maps'
+import React from 'react';
+import {
+  AzureMap,
+  AzureMapLayerProvider,
+  AzureMapsProvider,
+  AzureMapVectorTileSourceProvider,
+  IAzureMapOptions,
+} from 'react-azure-maps';
 import { key } from '../key';
 import { AuthenticationType } from 'azure-maps-control';
 import { wrapperStyles } from './RouteExample';
@@ -25,17 +31,19 @@ const CustomTrafficVectorDatasourceExample: React.FC = () => (
   <div style={wrapperStyles.map}>
     <Description>
       This sample shows how to create a custom vector tile datasource that renders traffic information
-    </Description>  
+    </Description>
     <AzureMapsProvider>
       <div style={styles.map}>
         <AzureMap options={option}>
-          <AzureMapVectorTileSourceProvider 
-            id={"Traffic Flow DataSource"} 
+          <AzureMapVectorTileSourceProvider
+            id={'Traffic Flow DataSource'}
             options={{
               maxZoom: 22,
-              tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'], 
-            }}>
-            
+              tiles: [
+                'https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}',
+              ],
+            }}
+          >
             <AzureMapLayerProvider
               id={'Flow Layer'}
               type={'LineLayer'}
@@ -45,17 +53,14 @@ const CustomTrafficVectorDatasourceExample: React.FC = () => (
                   'interpolate',
                   ['linear'],
                   ['get', 'traffic_level'],
-                  0, 'red',
-                  0.33, 'orange',
-                  0.66, 'green'
+                  0,
+                  'red',
+                  0.33,
+                  'orange',
+                  0.66,
+                  'green',
                 ],
-                strokeWidth: [
-                  'interpolate',
-                  ['linear'],
-                  ['get', 'traffic_level'],
-                  0, 6,
-                  1, 1
-                ]
+                strokeWidth: ['interpolate', ['linear'], ['get', 'traffic_level'], 0, 6, 1, 1],
               }}
             />
           </AzureMapVectorTileSourceProvider>
@@ -63,6 +68,6 @@ const CustomTrafficVectorDatasourceExample: React.FC = () => (
       </div>
     </AzureMapsProvider>
   </div>
-)
+);
 
-export default CustomTrafficVectorDatasourceExample
+export default CustomTrafficVectorDatasourceExample;

@@ -1,9 +1,9 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import Layout from "./Layout/Layout";
+import Layout from './Layout/Layout';
 
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
 const App: React.FC = () => {
   return (
     <div>

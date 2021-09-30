@@ -132,11 +132,11 @@ export const examplesList: MapExampleItem[] = [
   {
     name: 'Building 3D',
     component: Building3d,
-    path: '/building-3d'
+    path: '/building-3d',
   },
   {
     name: 'Vector Tile Datasource Traffic',
     component: CustomTrafficVectorDatasourceExample,
-    path: '/custom-traffic'
-  }
+    path: '/custom-traffic',
+  },
 ];

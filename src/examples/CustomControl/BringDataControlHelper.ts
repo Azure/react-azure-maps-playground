@@ -98,7 +98,7 @@ export class BringDataIntoViewControl implements atlas.Control {
       let data: atlas.data.Feature<atlas.data.Geometry, any>[] = [];
 
       // @ts-ignore
-      for (let s of this._map.sources['sources'].values()) {
+      for (const s of this._map.sources['sources'].values()) {
         if (s.toJson) {
           data = data.concat((<atlas.source.DataSource>s).toJson().features);
         }
@@ -112,12 +112,12 @@ export class BringDataIntoViewControl implements atlas.Control {
 
       const pos = [];
       // @ts-ignore
-      for (let marker of this._map.markers['markers'].values()) {
+      for (const marker of this._map.markers['markers'].values()) {
         pos.push(marker.getOptions().position);
       }
 
       if (pos.length > 0) {
-        var b = AtlasData.BoundingBox.fromPositions(pos);
+        const b = AtlasData.BoundingBox.fromPositions(pos);
         if (bounds === null) {
           bounds = b;
         } else {
@@ -129,7 +129,7 @@ export class BringDataIntoViewControl implements atlas.Control {
       for (let i = 0; i < l.length; i++) {
         if (l[i].getOptions) {
           // @ts-ignore
-          var b = AtlasData.BoundingBox.fromPositions((<atlas.layer.ImageLayer>l[i]).getOptions().coordinates);
+          const b = AtlasData.BoundingBox.fromPositions((<atlas.layer.ImageLayer>l[i]).getOptions().coordinates);
 
           if (bounds === null) {
             bounds = b;

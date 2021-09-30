@@ -11,7 +11,6 @@
 // import {key} from "../../key";
 // import {Button} from "@material-ui/core";
 
-
 // const option: IAzureMapOptions = {
 //   authOptions: {
 //     authType: AuthenticationType.subscriptionKey,
