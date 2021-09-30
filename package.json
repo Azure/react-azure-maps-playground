@@ -53,6 +53,7 @@
     "immer": "^9.0.6",
     "browserslist": "^4.17.1",
     "set-value": "^4.0.1",
-    "nth-check": "^2.0.1"
+    "nth-check": "^2.0.1",
+    "ansi-html": "git+https://github.com/mahdyar/ansi-html-community#0.0.8"
   }
 }

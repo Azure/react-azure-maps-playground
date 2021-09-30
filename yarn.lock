@@ -2755,10 +2755,9 @@ ansi-escapes@^4.3.1:
   dependencies:
     type-fest "^0.21.3"
 
-ansi-html@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
-  integrity sha1-gTWEAhliqenm/QOflA0S9WynhZ4=
+ansi-html@^0.0.7, "ansi-html@git+https://github.com/mahdyar/ansi-html-community#0.0.8":
+  version "0.0.8"
+  resolved "git+https://github.com/mahdyar/ansi-html-community#f87d7a2f6062de7d98f02a93f90c81adba68fef1"
 
 ansi-regex@^2.0.0:
   version "2.1.1"
