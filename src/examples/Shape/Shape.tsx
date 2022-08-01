@@ -9,7 +9,7 @@ import {
 } from 'react-azure-maps';
 import { AuthenticationType, data } from 'azure-maps-control';
 import { key } from '../../key';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import Description from '../../Layout/Description';
 
 const option: IAzureMapOptions = {

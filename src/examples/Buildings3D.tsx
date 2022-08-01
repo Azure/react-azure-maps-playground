@@ -3,7 +3,7 @@ import { AzureMap, AzureMapsProvider, IAzureMapOptions } from 'react-azure-maps'
 import { AuthenticationType } from 'azure-maps-control';
 import { key } from '../key';
 import Description from '../Layout/Description';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import { wrapperStyles } from './Options/ChangeOptionsWrapper';
 
 const option: IAzureMapOptions = {

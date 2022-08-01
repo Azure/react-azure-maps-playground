@@ -9,7 +9,7 @@
 // import {AuthenticationType} from "azure-maps-control";
 // import {io} from "azure-maps-spatial-io";
 // import {key} from "../../key";
-// import {Button} from "@material-ui/core";
+// import {Button} from "@mui/material";
 
 // const option: IAzureMapOptions = {
 //   authOptions: {

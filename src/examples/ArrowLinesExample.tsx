@@ -9,7 +9,7 @@ import {
 } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
 import { key } from '../key';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import { wrapperStyles } from './RouteExample';
 import { calculateLineEndPoints, lineData, renderMultiLine } from './mapHelper';
 import Description from '../Layout/Description';

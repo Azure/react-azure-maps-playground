@@ -3,9 +3,17 @@
 This project is community-driven initiative originally created by amazing [@psrednicki](https://github.com/psrednicki), [@msasinowski](https://github.com/msasinowski) and [@tbajda](https://github.com/tbajda) and is now maintained by the Azure Maps team.
 
 - How to link local package version:
-  - run yarn watch in `azure-maps-react`
-  - run yarn link `azure-maps-react`
-  - go to the `azure-maps-playground` and run `yarn link "react-azure-maps"`
+  - run `yarn watch` in `azure-maps-react`
+  - run `yarn link` in `azure-maps-react`
+  - go to `azure-maps-playground` and run `yarn link "react-azure-maps"`
+
+- How to avoid "Invalid Hook call" caused by multiple React instances
+  - go to `azure-maps-playground` and run
+    ```
+    cd node_modules/react
+    yarn link
+    ```
+  - go to `azure-maps-react` and run `yarn link react`
 
 ### Subscription key
 

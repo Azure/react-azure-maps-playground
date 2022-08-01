@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AzureMapsContext, IAzureMapsContextProps } from 'react-azure-maps';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import Description from '../../Layout/Description';
 import { data, layer, source } from 'azure-maps-control';
 import MapComponent from './MapComponent';

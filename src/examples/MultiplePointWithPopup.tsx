@@ -1,4 +1,4 @@
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useMemo, useState, ReactElement } from 'react';
 import {
   AzureMap,
   AzureMapDataSourceProvider,
@@ -10,7 +10,7 @@ import {
   IAzureMapFeature,
 } from 'react-azure-maps';
 import { AuthenticationType, data, MapMouseEvent, PopupOptions } from 'azure-maps-control';
-import { Button, Chip } from '@material-ui/core';
+import { Button, Chip } from '@mui/material';
 import { key } from '../key';
 import Description from '../Layout/Description';
 
@@ -20,7 +20,7 @@ const points = Array.from({ length: 100 }).map(() => {
   return new data.Position(randomLongitude, randomLatitude);
 });
 
-const renderPoint = (coordinates: data.Position): IAzureMapFeature => {
+const renderPoint = (coordinates: data.Position): ReactElement<IAzureMapFeature> => {
   const rendId = Math.random();
   return (
     <AzureMapFeature
@@ -64,8 +64,8 @@ const MarkersExample: React.FC = () => {
     setMarkers([]);
   };
 
-  const memoizedMarkerRender: IAzureMapFeature[] = useMemo(
-    (): IAzureMapFeature[] => markers.map((marker) => renderPoint(marker)),
+  const memoizedMarkerRender: ReactElement<IAzureMapFeature>[] = useMemo(
+    (): ReactElement<IAzureMapFeature>[] => markers.map((marker) => renderPoint(marker)),
     [markers],
   );
 

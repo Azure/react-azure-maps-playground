@@ -7,7 +7,7 @@ import {
   IAzureMapOptions,
 } from 'react-azure-maps';
 import { AuthenticationType } from 'azure-maps-control';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import { key } from '../key';
 import { wrapperStyles } from './RouteExample';
 import Description from '../Layout/Description';
