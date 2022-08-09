@@ -11,7 +11,7 @@ import {
 import { AuthenticationType, ControlPosition } from 'azure-maps-control';
 import { BringDataIntoViewControl } from './BringDataControlHelper';
 import { key } from '../../key';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import Description from '../../Layout/Description';
 import { wrapperStyles } from '../RouteExample';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import MarkersExample from './MarkersExample';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import Description from '../../Layout/Description';
 
 const MarkersExampleWrapper: React.FC = () => {

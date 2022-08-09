@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import Description from '../../Layout/Description';
 import ChangeOptionsExample from './ChangeOptions';
 

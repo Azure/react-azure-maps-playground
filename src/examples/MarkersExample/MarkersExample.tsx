@@ -13,7 +13,7 @@ import {
   IAzureMapOptions,
 } from 'react-azure-maps';
 import { AuthenticationType, data, HtmlMarkerOptions, SymbolLayerOptions } from 'azure-maps-control';
-import { Button, Chip } from '@material-ui/core';
+import { Button, Chip } from '@mui/material';
 import { key } from '../../key';
 
 const point1 = new data.Position(-100.01, 45.01);

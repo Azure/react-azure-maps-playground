@@ -4,7 +4,7 @@ import { AuthenticationType, TrafficOptions } from 'azure-maps-control';
 import { key } from '../key';
 import { wrapperStyles } from './RouteExample';
 import Description from '../Layout/Description';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 const option: IAzureMapOptions = {
   authOptions: {
