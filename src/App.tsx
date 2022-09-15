@@ -3,14 +3,16 @@ import './App.css';
 
 import Layout from './Layout/Layout';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 const App: React.FC = () => {
   return (
-    <div>
-      <Router>
-        <Layout />
-      </Router>
-    </div>
+    <React.StrictMode>
+      <div>
+        <BrowserRouter>
+          <Layout />
+        </BrowserRouter>
+      </div>
+    </React.StrictMode>
   );
 };
 
