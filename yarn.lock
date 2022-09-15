@@ -8713,10 +8713,10 @@ react-app-polyfill@3.0.0-next.81+25f516f8:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-azure-maps@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-0.4.3.tgz#01b2edc371f378e227aa917fc986551c56ca9d36"
-  integrity sha512-gIMlErdFc4IlwLRY7qWFi8SW7hhqJ1ipakJZKmJCovOUhYu+hz7z+a+ohixNliCkPCYwRNFrba3LqS4KMi63sA==
+react-azure-maps@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-0.4.4.tgz#97cf5d7cd9ba056f340e1ffbb2b67148e16d0624"
+  integrity sha512-wOthNI9uTB9Ppm6k/j8rNCcDI1RCau6rjWu889EzLzTQuXquiBOPUVQaij3SMg3BFxcwyd1yRVbbbea2pEBzBg==
   dependencies:
     azure-maps-control "2.0.32"
     guid-typescript "^1.0.9"
