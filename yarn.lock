@@ -4019,12 +4019,7 @@ ansi-html-community@^0.0.8:
   version "0.0.8"
   resolved "git+https://github.com/mahdyar/ansi-html-community#f87d7a2f6062de7d98f02a93f90c81adba68fef1"
 
-ansi-regex@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.0.tgz#388539f55179bf39339c81af30a654d69f87cb75"
-  integrity sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==
-
-ansi-regex@^5.0.1:
+ansi-regex@^5.0.0, ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-5.0.1.tgz#082cb2c89c9fe8659a311a53bd6a4dc5301db304"
   integrity sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==
@@ -9750,7 +9745,7 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-azure-maps@0.4.5:
+react-azure-maps@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-0.4.5.tgz#fec073d09aa1ce11e8923a13c4e4578c6499a8ac"
   integrity sha512-5Ctg0GnxkNafo0VPbuoNM6+5lpiOdqFDfuJJPRyyQqJddjBEwSeUIQDPhbK0dBrd3bwkexE5gnOSlpQmESLmSg==
