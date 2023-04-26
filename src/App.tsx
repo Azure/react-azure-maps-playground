@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'azure-maps-control/dist/atlas.min.css'
 
 import Layout from './Layout/Layout';
 
