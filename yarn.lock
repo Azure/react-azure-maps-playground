@@ -2753,6 +2753,11 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
+"@mapbox/mapbox-gl-supported@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-supported/-/mapbox-gl-supported-2.0.1.tgz#c15367178d8bfe4765e6b47b542fe821ce259c7b"
+  integrity sha512-HP6XvfNIzfoMVfyGjBckjiAOQK9WfX0ywdLubuPMPv+Vqf5fj0uCbgBQYpiqcWZT6cbyyRnTSXDheT1ugvF6UQ==
+
 "@mui/base@5.0.0-alpha.91":
   version "5.0.0-alpha.91"
   resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-alpha.91.tgz#124d88829c9d5ee7a61ab2b0b2aee2ca35ee64f2"
@@ -4173,12 +4178,13 @@ axobject-query@^3.1.1:
   dependencies:
     deep-equal "^2.0.5"
 
-azure-maps-control@^3.0.0-preview.6:
-  version "3.0.0-preview.6"
-  resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-3.0.0-preview.6.tgz#e10591cfe7845f195b8884df210e96ca80b8d34c"
-  integrity sha512-+iQhVzdalQrXqFcUi3sSP2qD/Hj1ilg29/V1ajGqN3QzGjwgUr9yCNcr4VHdbXGnYJ2+thHk/TUlmXV8F09u0Q==
+azure-maps-control@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/azure-maps-control/-/azure-maps-control-3.0.1.tgz#bd700e567f837e09ae0cb752eb9b4bb51b125176"
+  integrity sha512-24DesOHXV4g4+iCjutnbf+STkyJCjyUgl60JUyadTyhCFYZaqsgNL+B+z9fvzNIGGM4PXx4X6WWg/31SEIUELQ==
   dependencies:
     "@azure/msal-browser" "^2.32.1"
+    "@mapbox/mapbox-gl-supported" "^2.0.1"
 
 babel-jest@^27.4.2, babel-jest@^27.5.1:
   version "27.5.1"
@@ -9605,12 +9611,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-azure-maps@^1.0.0-beta.1:
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-1.0.0-beta.1.tgz#6d809b3121e9d1bf3922a0f644f69fcc6c1df512"
-  integrity sha512-owxDUvVFHPsdf2Fp3Wy4kWGLjxxmgeyGGAPKKV/MOjEd8XQuVfOxSWhwcttWCjghWxM4ly3SHN1Bz8Avl5h/tg==
+react-azure-maps@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-azure-maps/-/react-azure-maps-1.0.0.tgz#8ecda0527232451bb4c422117217bab9099f7e53"
+  integrity sha512-rroxK/YtjJ8QIYXp4nKMcLT1iZkZ1AL7gvQeiWDPoO1c/78Vy0B4HMm+ktFQ6swBzErOwWEJ4CcNNniZ4W56eQ==
   dependencies:
-    azure-maps-control "^3.0.0-preview.6"
     guid-typescript "^1.0.9"
 
 react-dev-utils@^12.0.1:
