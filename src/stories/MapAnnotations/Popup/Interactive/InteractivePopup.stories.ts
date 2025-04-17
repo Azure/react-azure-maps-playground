@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import InteractivePopup from './InteractivePopupExample';
 
 const meta: Meta<typeof InteractivePopup> = {
-  title: 'Map Annotations/Interactive Popup',
+  title: 'Map Annotations/Popup/Interactive Popup',
   component: InteractivePopup,
   args: {
     isVisible: true,
