@@ -1,0 +1,79 @@
+import { Meta, Source } from '@storybook/blocks';
+
+import AccessiblePopup from './AccessiblePopup';
+
+<Meta title='Map Annotations/Popup/Accessible Popup' />
+
+# Accessible Popup
+This sample shows how to use popups in a way that users can easily access them using keyboard shortcuts (tab).
+<fieldset style={{ width: 'fit-content'}}>Use <b>Tab</b> to navigate.</fieldset>
+<AccessiblePopup />
+<br/>
+<Source code={`
+import {
+  AzureMap,
+  AzureMapDataSourceProvider,
+  AzureMapFeature,
+  AzureMapLayerProvider,
+  AzureMapsProvider,
+  AzureMapPopup,
+} from 'react-azure-maps';
+import { data } from 'azure-maps-control';
+
+const points = Array.from({ length: 10 }).map(() => {
+  const randomLongitude = Math.floor(Math.random() * 60 - 30);
+  const randomLatitude = Math.floor(Math.random() * 40 - 20);
+  return new data.Position(randomLongitude, randomLatitude);
+});
+
+const AccessiblePopups = () => {
+
+  return (
+    <AzureMapsProvider>
+        <div style={...}>
+          <AzureMap options={{...yourOptions, zoom: 2}}>
+            <AzureMapDataSourceProvider 
+                id={'MultiplePoint AzureMapDataSourceProvider'}>
+              <AzureMapLayerProvider
+                id={'MultiplePoint AzureMapLayerProvider'}
+                options={{
+                  iconOptions: {
+                    image: 'pin-red',
+                  },
+                }}
+                type="SymbolLayer"
+              />
+              {
+                points.map(
+                  (coordinates, idx) => 
+                    <AzureMapFeature 
+                        key={idx} 
+                        type="Point" 
+                        coordinate={coordinates} 
+                    />
+                )
+              }
+            </AzureMapDataSourceProvider>
+            <>
+              {points.map((point, idx) => 
+                <AzureMapPopup
+                  key={idx}
+                  isVisible={!idx}
+                  options={{
+                    position: point,
+                    pixelOffset: [0, -5],
+                  }}
+                  popupContent={
+                    <div style={{ padding: '15px' }}>{ \`Lng: \${point[0]}, Lat: \${point[1]}\` }</div>
+                  }
+                />  
+              )}
+            </>
+          </AzureMap>
+      </div>
+    </AzureMapsProvider>
+  );
+}
+
+export default AccessiblePopups;
+`} />
